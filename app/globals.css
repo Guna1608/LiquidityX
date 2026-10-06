@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ─────────────── Tokens ───────────────
+   Near-black base, one warm accent (amber → ember), clean Satoshi type. */
+@theme {
+  --color-ink: #050505;
+  --color-ink-2: #0a0a0b;
+  --color-surface: #0e0e10;
+  --color-surface-2: #151517;
+  --color-surface-3: #1d1d20;
+  --color-bone: #f5f5f4;
+  --color-mist: #a3a3a8;
+  --color-smoke: #6f6f76;
+
+  /* accent scale (kept under the `gold` name used across components) */
+  --color-gold-100: #fff3e6;
+  --color-gold-200: #ffdcb5;
+  --color-gold-300: #ffbd7d;
+  --color-gold-400: #ff9d4a;
+  --color-gold-500: #ff7a1a;
+  --color-gold-600: #e05e09;
+  --color-gold-700: #6e2c05;
+
+  /* quiet secondary used sparingly in charts */
+  --color-cyan-200: #e3ecf5;
+  --color-cyan-300: #b9c8d8;
+  --color-cyan-400: #8ea3b8;
+  --color-cyan-500: #5f7489;
+
+  --color-up: #5fd39a;
+  --color-down: #ff6a4d;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cine: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --breakpoint-xs: 400px;
+
+  --animate-marquee: marquee var(--marquee-duration, 50s) linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s var(--ease-expo) infinite;
+  --animate-blink: blink 1.6s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-orb: orb 12s ease-in-out infinite;
+  --animate-shimmer: shimmer 3.5s linear infinite;
+  --animate-travel: travel 6s var(--ease-cine) infinite;
+
+  @keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+  @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(2); opacity: 0; } }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes orb {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    33% { transform: translate3d(6%, -4%, 0) scale(1.08); }
+    66% { transform: translate3d(-5%, 3%, 0) scale(0.95); }
+  }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  @keyframes travel { 0% { transform: translateX(-40%); opacity: 0; } 15%, 85% { opacity: 1; } 100% { transform: translateX(140vw); opacity: 0; } }
+}
+
+@theme inline {
+  --font-display: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ─────────────── Base ─────────────── */
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  /* No background on body: it would paint over fixed -z layers. */
+  body {
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+  ::selection { background: color-mix(in oklab, var(--color-gold-500) 55%, transparent); color: #fff; }
+  :focus-visible { outline: 2px solid var(--color-gold-400); outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.03em; }
+  p { text-wrap: pretty; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink); }
+  ::-webkit-scrollbar-thumb { background: var(--color-surface-3); border-radius: 10px; border: 2px solid var(--color-ink); }
+}
+
+/* ─────────────── Utilities ─────────────── */
+@utility container-x {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+@utility hairline { border-color: rgb(255 255 255 / 0.08); }
+
+/* warm metallic gradient text */
+@utility text-gold {
+  background: linear-gradient(92deg, #fff3e6 0%, #ffbd7d 35%, #ff7a1a 70%, #ffbd7d 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* soft white → grey text used for large display headings */
+@utility text-fade {
+  background: linear-gradient(180deg, #ffffff 30%, rgb(255 255 255 / 0.55) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-gold-300);
+}
+/* the standard card surface */
+@utility panel {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0.015));
+  border: 1px solid rgb(255 255 255 / 0.08);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 30px 60px -30px rgb(0 0 0 / 0.8);
+}
+@utility panel-blur {
+  background: rgb(14 14 16 / 0.72);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.09);
+}
+@utility glass {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+@utility tech-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+@utility dot-grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+@utility mask-fade-x { mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
+@utility mask-fade-b { mask-image: linear-gradient(to bottom, #000 60%, transparent); }
+@utility no-scrollbar { scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+@utility preserve-3d { transform-style: preserve-3d; }
+
+/* ─────────────── Motion primitives ─────────────── */
+/* Hidden only once JS is confirmed — content is never lost without JS. */
+.js [data-reveal] { opacity: 0; }
+.js [data-split] .split-inner { opacity: 0; }
+.split-line { display: block; }
+.split-word { display: inline-block; white-space: pre; }
+.split-inner { display: inline-block; will-change: transform, filter, opacity; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal], .js [data-split] .split-inner { opacity: 1 !important; filter: none !important; transform: none !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* film grain */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* rotating conic border (premium buttons/cards) */
+@property --angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.border-orbit { position: relative; isolation: isolate; }
+.border-orbit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle), transparent 0 60%, var(--color-gold-300) 75%, #fff 80%, transparent 92%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-expo);
+  animation: orbit 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.border-orbit:hover::before, .border-orbit:focus-visible::before, .border-orbit[data-active="true"]::before { opacity: 1; }
+@keyframes orbit { to { --angle: 360deg; } }
+
+.ticker-track:hover, .ticker-track:focus-within { animation-play-state: paused; }
+
+/* LX logo hover */
+.group\/lx:hover [data-lx="corner"] { transform: translate(var(--o)); }
+.group\/lx:hover [data-lx="dot"] { animation: blink 1.2s ease-in-out infinite; }
+
+/* floating WhatsApp steps aside while the chat panel is open */
+.wa-float { transition: opacity 0.4s, transform 0.4s; }
+[data-chat-open] .wa-float { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(14px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* ── Candle loader ── */
+.lx-candle, .lx-candle-wick { transform-origin: bottom; animation: lx-candle 1.6s var(--ease-expo) infinite; }
+.lx-candle-line polyline { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lx-line 1.6s var(--ease-cine) infinite; }
+.lx-candle-rail { animation: lx-rail 1.6s var(--ease-cine) infinite; }
+@keyframes lx-candle { 0% { transform: scaleY(0); opacity: 0; } 25% { opacity: 1; } 45%, 80% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@keyframes lx-line { 0%, 20% { stroke-dashoffset: 1; opacity: 1; } 70%, 85% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes lx-rail { 0% { transform: scaleX(0); } 75% { transform: scaleX(1); } 100% { transform: scaleX(1); opacity: 0; } }
+
+/* first-visit splash (shown before hydration, hidden when the app is ready) */
+.lx-splash { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; background: #050505; transition: opacity 0.6s var(--ease-expo), visibility 0.6s; }
+.lx-ready .lx-splash { opacity: 0; visibility: hidden; }
+.lx-splash { animation: lx-splash-failsafe 0.01s 4s forwards; }
+@keyframes lx-splash-failsafe { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .lx-splash { display: none; } }
+
+@keyframes delta { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.45); } }
+@keyframes scroll-cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
