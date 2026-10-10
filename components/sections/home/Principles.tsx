@@ -10,7 +10,7 @@ const principles = [
 /** Trust layer — what LiquidityX stands for, stated plainly. */
 export function Principles() {
   return (
-    <MotionSection className="relative py-16 md:py-24" aria-label="Principles">
+    <MotionSection className="relative py-10 md:py-24" aria-label="Principles">
       <div className="container-x">
         <div className="grid gap-px overflow-hidden rounded-[1.75rem] border border-white/[0.07] bg-white/[0.06] md:grid-cols-3" data-reveal-group="0.12">
           {principles.map((p, i) => (

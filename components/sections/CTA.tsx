@@ -18,7 +18,7 @@ export function CTA({
   message?: string;
 }) {
   return (
-    <MotionSection className="relative py-20 md:py-28">
+    <MotionSection className="relative py-12 md:py-28">
       <div className="container-x">
         <div className="relative isolate overflow-hidden rounded-[32px] border border-white/[0.08] bg-[#0b0b0c] px-6 py-20 text-center sm:px-12 md:py-28" data-reveal="scale">
           <GlowOrb className="-bottom-[55%] -left-[10%] -z-10 aspect-square w-[70%]" />

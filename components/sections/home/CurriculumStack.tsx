@@ -32,7 +32,7 @@ export function CurriculumStack({ index, showHeading = true }: { index?: string;
   );
 
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Curriculum">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Curriculum">
       <div className="container-x">
         {showHeading && (
           <SectionTitle
@@ -44,7 +44,7 @@ export function CurriculumStack({ index, showHeading = true }: { index?: string;
             intro={<p>Six curriculum modules, covered across the 15 teaching days — from how markets work to strategy and risk, in the order you need to learn them.</p>}
           />
         )}
-        <div ref={root} className="mx-auto mt-14 max-w-4xl">
+        <div ref={root} className="mx-auto mt-9 md:mt-14 max-w-4xl">
           {curriculum.map((m, i) => (
             <div key={m.index} data-stack-card className="sticky pb-4" style={{ top: `calc(6.5rem + ${i * 14}px)` }}>
               <article className="relative origin-top overflow-hidden rounded-[26px] border border-white/10 bg-[#0d0d0f] p-7 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.9)] sm:p-10">

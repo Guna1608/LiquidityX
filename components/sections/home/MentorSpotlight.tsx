@@ -8,7 +8,7 @@ import { GlowOrb } from "@/components/visuals/Glow";
 
 export function MentorSpotlight() {
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Meet the mentor">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Meet the mentor">
       <div className="container-x">
         <div className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-[#0b0b0c] p-6 sm:p-10 lg:p-14">
           <GlowOrb className="-bottom-40 -left-40 size-[34rem]" intensity={0.35} />

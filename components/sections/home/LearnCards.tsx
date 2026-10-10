@@ -41,7 +41,7 @@ const items: Item[] = [
     t: "GEX Data",
     d: "Bring GEX levels into the same picture as price and volume.",
     viz: (
-      <svg viewBox="0 0 80 48" className="h-12 w-full" aria-hidden>
+      <svg viewBox="0 0 80 48" className="h-12 w-20" aria-hidden>
         {[8, 24, 40].map((y, i) => (
           <line key={y} x1="0" x2="80" y1={y} y2={y} stroke="#8b5cf6" strokeOpacity="0.8" strokeDasharray="4 4" className="motion-safe:animate-[dash_2.4s_linear_infinite]" style={{ animationDelay: `${i * 0.3}s` }} />
         ))}
@@ -87,7 +87,7 @@ const items: Item[] = [
 /** Cards that break the hero promise into its parts — each with a tiny looping animation. */
 export function LearnCards() {
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="What you will connect">
+    <MotionSection className="relative py-12 md:py-28" aria-label="What you will connect">
       <div className="container-x">
         <SectionTitle
           align="center"
@@ -101,15 +101,15 @@ export function LearnCards() {
             </p>
           }
         />
-        <ul className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group="0.07">
+        <ul className="mt-9 md:mt-14 grid grid-cols-2 gap-3 lg:grid-cols-4" data-reveal-group="0.07">
           {items.map((it) => (
             <li key={it.t} data-reveal="rise">
-              <Card tilt={6} className="h-full" innerClassName="flex h-full flex-col p-6">
+              <Card tilt={6} className="h-full" innerClassName="flex h-full flex-col p-4 sm:p-6">
                 <div data-depth="18">{it.viz}</div>
-                <h3 className="mt-6 text-lg font-bold tracking-tight" data-depth="24">
+                <h3 className="mt-4 text-[15px] font-bold leading-snug tracking-tight sm:mt-6 sm:text-lg" data-depth="24">
                   {it.t}
                 </h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-mist">{it.d}</p>
+                <p className="mt-1.5 text-[12.5px] leading-relaxed text-mist sm:mt-2 sm:text-[14px]">{it.d}</p>
               </Card>
             </li>
           ))}

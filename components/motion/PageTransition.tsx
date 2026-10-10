@@ -44,7 +44,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
     const t = setTimeout(() => {
       html.classList.add("lx-ready");
       html.classList.remove("lx-intro");
-    }, 4200);
+    }, 4500);
     return () => clearTimeout(t);
   }, []);
 

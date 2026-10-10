@@ -9,7 +9,7 @@ import { EnrolmentTerms } from "@/components/sections/EnrolmentTerms";
 
 export function Pricing() {
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Course fee and enrolment terms">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Course fee and enrolment terms">
       <div className="container-x">
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div>
@@ -27,7 +27,7 @@ export function Pricing() {
             <FeePanel />
           </div>
         </div>
-        <div className="mt-14" data-reveal="rise">
+        <div className="mt-9 md:mt-14" data-reveal="rise">
           <EnrolmentTerms />
         </div>
       </div>
@@ -37,7 +37,7 @@ export function Pricing() {
 
 export function FaqPreview() {
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Frequently asked questions">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Frequently asked questions">
       <div className="container-x max-w-3xl">
         <SectionTitle align="center" eyebrow="FAQ" title={["Frequently asked questions"]} size="md" />
         <div className="mt-12" data-reveal="rise">

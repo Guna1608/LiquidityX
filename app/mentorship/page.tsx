@@ -52,16 +52,16 @@ export default function MentorshipPage() {
         </div>
       </PageHero>
 
-      <div className="container-x pb-10">
-        <div className="mx-auto max-w-4xl rounded-[24px] border border-white/[0.08] bg-white/[0.02] px-6 pb-8 pt-2 sm:px-10" data-reveal="rise">
+      <MotionSection className="container-x pb-6 md:pb-10">
+        <div className="mx-auto max-w-4xl rounded-[24px] border border-white/[0.08] bg-white/[0.02] px-5 pb-8 pt-2 sm:px-10" data-reveal="rise">
           <DayTimeline />
         </div>
-      </div>
+      </MotionSection>
 
-      <MotionSection className="py-20 md:py-28">
+      <MotionSection className="py-12 md:py-28">
         <div className="container-x">
           <SectionTitle align="center" eyebrow="What's included" title={["Taught live,", "directly by Vignesh."]} accentLine={1} />
-          <div className="mt-14 grid gap-3 lg:grid-cols-12">
+          <div className="mt-9 md:mt-14 grid gap-3 lg:grid-cols-12">
             <Card tilt={4} data-reveal="rise" className="lg:col-span-5" innerClassName="flex h-full flex-col p-2">
               <div className="h-64 rounded-[16px] border border-white/[0.06] bg-[#0a0a0b] p-4 lg:h-80">
                 <LiveClassVisual />
@@ -98,7 +98,7 @@ export default function MentorshipPage() {
 
       <CurriculumStack />
 
-      <MotionSection className="py-20 md:py-28">
+      <MotionSection className="py-12 md:py-28">
         <div className="container-x grid items-start gap-14 lg:grid-cols-2">
           <div>
             <SectionTitle eyebrow="Before you enrol" title={["Common", "questions."]} accentLine={1} size="md" />
@@ -110,7 +110,7 @@ export default function MentorshipPage() {
             <FeePanel />
           </div>
         </div>
-        <div className="container-x mt-14" data-reveal="rise">
+        <div className="container-x mt-9 md:mt-14" data-reveal="rise">
           <EnrolmentTerms />
         </div>
       </MotionSection>

@@ -54,13 +54,13 @@ export default function ClassesPage() {
         </div>
       </PageHero>
 
-      <div className="container-x">
+      <MotionSection className="container-x">
         <div data-reveal="rise">
           <BatchBanner />
         </div>
-      </div>
+      </MotionSection>
 
-      <MotionSection id="schedule" className="scroll-mt-28 py-20 md:py-28" aria-label="Class schedule">
+      <MotionSection id="schedule" className="scroll-mt-28 py-12 md:py-28" aria-label="Class schedule">
         <div className="container-x">
           <SectionTitle eyebrow="Class schedule" title={["Fifteen teaching days.", "Starting 8:30 PM IST."]} accentLine={1} />
           <div className="mt-8 rounded-[24px] border border-white/[0.08] bg-white/[0.02] px-6 pb-8 pt-2 sm:px-10" data-reveal="rise">
@@ -83,10 +83,10 @@ export default function ClassesPage() {
         </div>
       </MotionSection>
 
-      <MotionSection className="py-20 md:py-28" aria-label="How to join">
+      <MotionSection className="py-12 md:py-28" aria-label="How to join">
         <div className="container-x">
           <SectionTitle align="center" eyebrow="How to join" title={["Four simple steps."]} />
-          <ol className="relative mt-14 grid gap-4 md:grid-cols-4" data-reveal-group="0.1">
+          <ol className="relative mt-9 md:mt-14 grid gap-4 md:grid-cols-4" data-reveal-group="0.1">
             <span aria-hidden className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent md:block" />
             {steps.map((s, i) => (
               <li key={s.t} data-reveal="rise" className="relative rounded-[22px] border border-white/[0.08] bg-[#0c0c0d] p-6 text-center">
@@ -101,7 +101,7 @@ export default function ClassesPage() {
         </div>
       </MotionSection>
 
-      <MotionSection className="py-20 md:py-28" aria-label="Schedule questions">
+      <MotionSection className="py-12 md:py-28" aria-label="Schedule questions">
         <div className="container-x max-w-3xl">
           <SectionTitle align="center" eyebrow="Questions" title={["About the batch"]} size="md" />
           <div className="mt-12" data-reveal="rise">

@@ -90,7 +90,7 @@ export function LiquidityChatbot() {
 
   return (
     <>
-      <div className="fixed bottom-[5.6rem] right-4 z-[72] md:bottom-6 md:right-6">
+      <div className="fixed bottom-[5.4rem] right-3 z-[72] md:bottom-6 md:right-6">
         <button
           ref={buttonRef}
           type="button"
@@ -98,7 +98,7 @@ export function LiquidityChatbot() {
           aria-expanded={open}
           aria-controls={panelId}
           aria-label={open ? "Close LiquidityX Assistant" : "Ask LiquidityX — open assistant"}
-          className="group peer relative grid size-14 place-items-center rounded-full border border-gold-400/40 bg-[radial-gradient(circle_at_30%_25%,#1b2029,#07090d_70%)] shadow-[0_20px_60px_-15px_rgba(139,92,246,0.45)] transition-transform duration-500 ease-[var(--ease-expo)] hover:scale-105"
+          className="group peer relative grid size-12 place-items-center md:size-14 rounded-full border border-gold-400/40 bg-[radial-gradient(circle_at_30%_25%,#1b2029,#07090d_70%)] shadow-[0_20px_60px_-15px_rgba(139,92,246,0.45)] transition-transform duration-500 ease-[var(--ease-expo)] hover:scale-105"
         >
           {!open && (
             <>

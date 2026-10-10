@@ -12,7 +12,7 @@ import { ArrowRight, Lock } from "@/components/ui/Icons";
 export function LockedStrategies({ showLink = true, showHeading = true }: { showLink?: boolean; showHeading?: boolean }) {
   const tiles = Array.from({ length: strategyInfo.count }, (_, i) => String(i + 1).padStart(2, "0"));
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Strategies — locked">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Strategies — locked">
       <div className="container-x">
         {showHeading ? (
           <SectionTitle
@@ -28,7 +28,7 @@ export function LockedStrategies({ showLink = true, showHeading = true }: { show
           </p>
         )}
         <p className="sr-only">{strategyInfo.count} strategies are taught inside the mentorship. Their names and rules are not published online.</p>
-        <ul aria-hidden className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" data-reveal-group="0.05">
+        <ul aria-hidden className="mx-auto mt-9 md:mt-14 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" data-reveal-group="0.05">
           {tiles.map((n) => (
             <li
               key={n}

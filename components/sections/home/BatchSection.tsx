@@ -15,7 +15,7 @@ const facts = [
 /** Next batch + schedule facts. Emphasises the 8:30 PM IST start time. */
 export function BatchSection() {
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Next batch and schedule">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Next batch and schedule">
       <div className="container-x">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionTitle eyebrow="Schedule" title={["A new batch", "every month."]} accentLine={1} intro={<p>Batches start on the 25th of every month, with classes at 8:30 PM IST.</p>} />

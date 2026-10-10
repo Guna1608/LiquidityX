@@ -22,7 +22,7 @@ export function MarketPulse() {
   const demo = data?.mode === "demo";
 
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="Market Pulse">
+    <MotionSection className="relative py-12 md:py-28" aria-label="Market Pulse">
       <div className="container-x">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
@@ -37,7 +37,7 @@ export function MarketPulse() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group="0.1">
+        <div className="mt-9 md:mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group="0.1">
           {marketConfig.pulse.map((p) => {
             const [primary, second] = p.symbols;
             return (

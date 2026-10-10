@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5" data-reveal="rise">
             <Link href="/" className="inline-flex items-center gap-2.5" aria-label="LiquidityX Academy — Home">
-              <Wordmark className="text-xl" />
+              <Wordmark markSize={38} id="wf" className="text-xl" />
             </Link>
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-mist">
               Trading education taught in Tamil — market context, volume, order flow and risk across Forex, Futures and Indian markets.
@@ -81,7 +81,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 rounded-[22px] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7" data-reveal="rise">
+        <div className="mt-9 md:mt-14 rounded-[22px] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7" data-reveal="rise">
           <p className="text-sm font-bold">Risk warning</p>
           <p className="mt-2 text-[13px] leading-relaxed text-smoke">
             Trading Forex, Futures and other markets involves substantial risk and is not suitable for everyone. Content on this website is educational and is not financial
@@ -93,7 +93,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div aria-hidden className="mt-14 select-none opacity-[0.14]">
+        <div aria-hidden className="mt-9 md:mt-14 select-none opacity-[0.14]">
           <p className="text-center text-[clamp(3.5rem,15vw,13rem)] font-black leading-[0.8] tracking-[-0.06em] text-fade" data-reveal="blur">
             {brand.wordmark}
           </p>

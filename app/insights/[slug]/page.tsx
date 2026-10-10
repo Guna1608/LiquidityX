@@ -82,7 +82,7 @@ export default async function InsightPage({ params }: PageProps<"/insights/[slug
               </div>
             ))}
           </div>
-          <p className="mt-14 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 text-sm text-smoke">
+          <p className="mt-9 md:mt-14 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 text-sm text-smoke">
             Educational content only — not financial advice and not a recommendation to buy or sell. Trading involves substantial risk.{" "}
             <Link href="/risk-disclaimer" className="text-mist underline underline-offset-4">
               Risk disclaimer

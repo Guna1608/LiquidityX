@@ -28,7 +28,7 @@ export function PageHero({
 }) {
   const center = align === "center";
   return (
-    <MotionSection className={cn("relative isolate overflow-hidden pb-14 pt-40 md:pb-20 md:pt-48", className)}>
+    <MotionSection className={cn("relative isolate overflow-hidden pb-8 pt-28 md:pb-20 md:pt-48", className)}>
       {crumb && <JsonLd data={breadcrumbJsonLd([crumb])} />}
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute inset-0 tech-grid opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_0%,#000,transparent)]" />

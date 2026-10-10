@@ -25,11 +25,11 @@ function ReviewCard({ t }: { t: Testimonial }) {
 export function Testimonials() {
   if (testimonials.length === 0) return null;
   return (
-    <MotionSection className="relative overflow-hidden py-20 md:py-28" aria-label="Student reviews">
+    <MotionSection className="relative overflow-hidden py-12 md:py-28" aria-label="Student reviews">
       <div className="container-x">
         <SectionTitle align="center" eyebrow="Student reviews" title={["What our students", "say."]} accentLine={1} />
       </div>
-      <div className="no-scrollbar mt-14 flex snap-x gap-4 overflow-x-auto px-[clamp(1.25rem,4vw,2.5rem)] pb-4 lg:justify-center" data-reveal="blur">
+      <div className="no-scrollbar mt-9 md:mt-14 flex snap-x gap-4 overflow-x-auto px-[clamp(1.25rem,4vw,2.5rem)] pb-4 lg:justify-center" data-reveal="blur">
         {testimonials.map((t, i) => (
           <div key={i} className="snap-start">
             <ReviewCard t={t} />

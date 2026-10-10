@@ -49,7 +49,7 @@ export function Header() {
           )}
         >
           <Link href="/" aria-label="LiquidityX Academy — Home" className="relative z-[2] flex shrink-0 items-center gap-2.5">
-            <Wordmark compact className="text-[16px]" />
+            <Wordmark compact markSize={30} id="wh" className="text-[16px]" />
           </Link>
 
           <LayoutGroup id="nav">

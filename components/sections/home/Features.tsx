@@ -32,7 +32,7 @@ function Feature({ item }: { item: Item }) {
 /** Bento grid of what the mentorship covers, each card with an animated UI illustration. */
 export function Features() {
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="What you will learn">
+    <MotionSection className="relative py-12 md:py-28" aria-label="What you will learn">
       <div className="container-x">
         <SectionTitle
           align="center"
@@ -41,7 +41,7 @@ export function Features() {
           accentLine={1}
           intro={<p>A structured process — from how auctions work to context, confluence and a risk-aware approach of your own.</p>}
         />
-        <div className="mt-14 grid gap-3 lg:grid-cols-12" data-reveal-group="0.08">
+        <div className="mt-9 md:mt-14 grid gap-3 lg:grid-cols-12" data-reveal-group="0.08">
           {items.map((it) => (
             <Feature key={it.title} item={it} />
           ))}

@@ -15,7 +15,7 @@ import { HeroVisual } from "@/components/visuals/HeroVisual";
  */
 export function Hero() {
   return (
-    <MotionSection className="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-10 pt-24 lg:pt-24" aria-label="Introduction">
+    <MotionSection className="relative isolate flex min-h-[100svh] items-start overflow-hidden pb-28 pt-24 sm:items-center sm:pb-10 lg:pt-24" aria-label="Introduction">
       {/* backdrop: grid, glow, drifting boxes, faint live candles */}
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute inset-0 tech-grid opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_30%,#000,transparent)]" />
@@ -40,10 +40,11 @@ export function Hero() {
           <div className="flex justify-center lg:justify-start" data-reveal="blur">
             <Link
               href="/classes"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] py-1 pl-1 pr-3 text-[12.5px] text-mist backdrop-blur transition-colors hover:border-gold-500/40"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[12px] leading-snug sm:py-1 sm:pl-1 sm:pr-3 sm:text-[12.5px] text-mist backdrop-blur transition-colors hover:border-gold-500/40"
             >
-              <span className="rounded-full bg-gold-500/15 px-2 py-0.5 text-[11px] font-semibold text-gold-300">Next batch</span>
-              {hero.badge}
+              <span className="hidden whitespace-nowrap rounded-full bg-gold-500/15 px-2 py-0.5 text-[11px] font-semibold text-gold-300 sm:inline">Next batch</span>
+              <span className="sm:hidden">Starts 8:30 PM IST · Taught in Tamil</span>
+              <span className="hidden sm:inline">{hero.badge}</span>
               <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
@@ -62,18 +63,18 @@ export function Hero() {
           </h1>
 
           <p className="mt-[clamp(0.6rem,2svh,1.25rem)] text-[clamp(1.05rem,min(1.8vw,3svh),1.45rem)] font-semibold text-bone/90" data-reveal="rise" data-delay="0.8">
-            Master <WordCycler words={["Volume.", "Market Profile.", "Order Flow.", "GEX data.", "Risk control."]} />
+            Master <WordCycler className="justify-items-center lg:justify-items-start" words={["Volume.", "Market Profile.", "Order Flow.", "GEX data.", "Risk control."]} />
           </p>
 
           <p className="mx-auto mt-[clamp(0.6rem,2svh,1.25rem)] max-w-xl text-[clamp(0.95rem,2.2svh,1.05rem)] leading-relaxed text-mist lg:mx-0" data-reveal="rise" data-delay="0.9">
             {hero.supporting}
           </p>
 
-          <div className="mt-[clamp(1rem,3.5svh,2.5rem)] flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start" data-reveal="rise" data-delay="1">
-            <Button href={enrolment.checkoutHref ?? whatsapp.url(enrolment.whatsappMessage)} size="lg" icon={<WhatsApp size={18} />} iconPosition="start">
+          <div className="mx-auto mt-[clamp(1.25rem,3.5svh,2.5rem)] flex w-full max-w-xs flex-col items-stretch gap-3 sm:mx-0 sm:max-w-none sm:flex-row sm:items-center sm:justify-center lg:justify-start" data-reveal="rise" data-delay="1">
+            <Button href={enrolment.checkoutHref ?? whatsapp.url(enrolment.whatsappMessage)} size="lg" className="w-full sm:w-auto" icon={<WhatsApp size={18} />} iconPosition="start">
               {hero.primaryCta}
             </Button>
-            <Button href="/classes" size="lg" variant="ghost" icon={<Calendar size={17} />} iconPosition="start">
+            <Button href="/classes" size="lg" variant="ghost" className="w-full sm:w-auto" icon={<Calendar size={17} />} iconPosition="start">
               Next batch &amp; schedule
             </Button>
           </div>

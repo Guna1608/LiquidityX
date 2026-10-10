@@ -81,17 +81,30 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="text-bone" suppressHydrationWarning>
         <div className="lx-splash" aria-hidden>
-          <span className="lx-fur" />
-          <span className="lx-flash" />
-          <div className="lx-content">
+          <svg className="lx-beams" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" fill="none">
+            <defs>
+              <linearGradient id="lxb1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#2447d8" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#8b5cf6" />
+                <stop offset="1" stopColor="#d8b4fe" />
+              </linearGradient>
+              <linearGradient id="lxb2" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#5278ff" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#5278ff" />
+                <stop offset="1" stopColor="#c4b5fd" />
+              </linearGradient>
+            </defs>
+            <path pathLength="1" d="M-40 -40 L500 300" stroke="url(#lxb1)" />
+            <path pathLength="1" d="M1040 -40 L500 300" stroke="url(#lxb2)" />
+            <path pathLength="1" d="M-40 640 L500 300" stroke="url(#lxb2)" />
+            <path pathLength="1" d="M1040 640 L500 300" stroke="url(#lxb1)" />
+          </svg>
+          <span className="lx-ring lx-ring-a" />
+          <span className="lx-ring lx-ring-b" />
+          <span className="lx-ring lx-ring-c" />
+          <div className="lx-brand">
             <p className="lx-welcome">WELCOME TO</p>
-            <p className="lx-letters">
-              {"LIQUIDITYX".split("").map((c, i) => (
-                <span key={i} style={{ animationDelay: `${0.5 + i * 0.05}s` }}>
-                  {c}
-                </span>
-              ))}
-            </p>
+            <p className="lx-name">LIQUIDITY<b>X</b></p>
             <p className="lx-academy">ACADEMY</p>
           </div>
         </div>

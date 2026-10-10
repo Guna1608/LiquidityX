@@ -8,7 +8,7 @@ import { Horizon } from "@/components/visuals/Glow";
 /** "See the market the way we teach it" — the terminal mockup straightens as you scroll. */
 export function TerminalShowcase() {
   return (
-    <MotionSection className="relative overflow-hidden py-20 md:py-28" aria-label="Inside the classroom">
+    <MotionSection className="relative overflow-hidden py-12 md:py-28" aria-label="Inside the classroom">
       <div className="container-x">
         <SectionTitle
           align="center"

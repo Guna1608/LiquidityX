@@ -61,7 +61,7 @@ export default function AboutPage() {
         </div>
       </MotionSection>
 
-      <MotionSection className="py-20 md:py-28">
+      <MotionSection className="py-12 md:py-28">
         <div className="container-x">
           <div className="grid gap-12 lg:grid-cols-2">
             <SectionTitle eyebrow="Teaching approach" title={["Context", "before strategy."]} accentLine={1} size="md" />
@@ -73,7 +73,7 @@ export default function AboutPage() {
               <p>{mentorship.heroLine}</p>
             </div>
           </div>
-          <ol className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" data-reveal-group="0.08">
+          <ol className="mt-9 md:mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" data-reveal-group="0.08">
             {approachLayers.map((l) => (
               <li key={l.id} className="panel rounded-[22px] p-5" data-reveal="rise">
                 <LayerGlyph id={l.id} className="w-full" />

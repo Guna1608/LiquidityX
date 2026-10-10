@@ -24,7 +24,7 @@ export default function InsightsPage() {
         accentLine={1}
         intro={<p>Educational explanations of how markets work. We don&apos;t publish predictions or tell anyone what to buy or sell.</p>}
       />
-      <MotionSection className="py-16 md:py-24">
+      <MotionSection className="py-10 md:py-24">
         <div className="container-x" data-reveal="fade">
           <InsightsBrowser items={listedInsights} />
         </div>

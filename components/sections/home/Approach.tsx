@@ -28,7 +28,7 @@ export function Approach() {
   );
 
   return (
-    <MotionSection className="relative py-20 md:py-28" aria-label="How LiquidityX approaches the market">
+    <MotionSection className="relative py-12 md:py-28" aria-label="How LiquidityX approaches the market">
       <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:h-fit">
           <SectionTitle eyebrow="Our approach" title={["Context before", "every decision."]} accentLine={1} size="md" />
