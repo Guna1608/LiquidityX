@@ -15,7 +15,7 @@ import { HeroVisual } from "@/components/visuals/HeroVisual";
  */
 export function Hero() {
   return (
-    <MotionSection className="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-8 pt-24 lg:h-[100svh] lg:max-h-[960px] lg:pt-20" aria-label="Introduction">
+    <MotionSection className="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-10 pt-24 lg:pt-24" aria-label="Introduction">
       {/* backdrop: grid, glow, drifting boxes, faint live candles */}
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute inset-0 tech-grid opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_30%,#000,transparent)]" />
@@ -48,7 +48,7 @@ export function Hero() {
             </Link>
           </div>
 
-          <h1 className="mt-8 text-[clamp(2.3rem,4.6vw,4rem)] font-extrabold leading-[1.06] tracking-[-0.035em]">
+          <h1 className="mt-[clamp(1rem,3.2svh,2rem)] text-[clamp(2.1rem,min(4.6vw,7.4svh),4rem)] font-extrabold leading-[1.06] tracking-[-0.035em]">
             <TextReveal
               as="span"
               start="mount"
@@ -61,15 +61,15 @@ export function Hero() {
             />
           </h1>
 
-          <p className="mt-5 text-[clamp(1.1rem,1.8vw,1.45rem)] font-semibold text-bone/90" data-reveal="rise" data-delay="0.8">
+          <p className="mt-[clamp(0.6rem,2svh,1.25rem)] text-[clamp(1.05rem,min(1.8vw,3svh),1.45rem)] font-semibold text-bone/90" data-reveal="rise" data-delay="0.8">
             Master <WordCycler words={["Volume.", "Market Profile.", "Order Flow.", "GEX data.", "Risk control."]} />
           </p>
 
-          <p className="mx-auto mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist lg:mx-0" data-reveal="rise" data-delay="0.9">
+          <p className="mx-auto mt-[clamp(0.6rem,2svh,1.25rem)] max-w-xl text-[clamp(0.95rem,2.2svh,1.05rem)] leading-relaxed text-mist lg:mx-0" data-reveal="rise" data-delay="0.9">
             {hero.supporting}
           </p>
 
-          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start" data-reveal="rise" data-delay="1">
+          <div className="mt-[clamp(1rem,3.5svh,2.5rem)] flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start" data-reveal="rise" data-delay="1">
             <Button href={enrolment.checkoutHref ?? whatsapp.url(enrolment.whatsappMessage)} size="lg" icon={<WhatsApp size={18} />} iconPosition="start">
               {hero.primaryCta}
             </Button>
@@ -78,14 +78,14 @@ export function Hero() {
             </Button>
           </div>
 
-          <p className="mt-8 hidden items-center gap-3 text-[13px] text-smoke sm:flex lg:justify-start" data-reveal="fade" data-delay="1.2">
+          <p className="mt-[clamp(0.75rem,2.5svh,2rem)] hidden items-center gap-3 text-[13px] text-smoke sm:flex lg:justify-start" data-reveal="fade" data-delay="1.2">
             <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_10px_#5278ff]" />
             Monday to Saturday · 8:30 PM IST · Taught in Tamil
           </p>
         </div>
 
         {/* layered visual — height-capped so the hero stays within one screen */}
-        <div className="relative mx-auto hidden aspect-[1/1.02] h-[min(68svh,560px)] lg:block">
+        <div className="relative mx-auto hidden aspect-[1/1.02] h-[min(64svh,540px)] lg:block">
           <HeroVisual />
         </div>
       </div>
