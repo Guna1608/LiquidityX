@@ -21,7 +21,7 @@ type AsButton = Common & { href?: undefined } & Omit<ComponentProps<"button">, "
 
 const variants: Record<Variant, string> = {
   primary:
-    "text-white bg-[linear-gradient(180deg,#ff9a45_0%,#ff7a1a_55%,#e85f0a_100%)] shadow-[0_0_0_1px_rgba(255,170,100,0.5)_inset,0_1px_0_rgba(255,255,255,0.35)_inset,0_12px_36px_-10px_rgba(255,122,26,0.75)] hover:shadow-[0_0_0_1px_rgba(255,190,130,0.7)_inset,0_1px_0_rgba(255,255,255,0.45)_inset,0_18px_50px_-10px_rgba(255,122,26,0.95)] hover:brightness-110",
+    "text-white bg-[linear-gradient(135deg,#2447d8_0%,#5278ff_55%,#8b5cf6_100%)] shadow-[0_0_0_1px_rgba(127,147,255,0.5)_inset,0_1px_0_rgba(255,255,255,0.35)_inset,0_12px_36px_-10px_rgba(82,120,255,0.75)] hover:shadow-[0_0_0_1px_rgba(169,184,255,0.7)_inset,0_1px_0_rgba(255,255,255,0.45)_inset,0_18px_50px_-10px_rgba(82,120,255,0.95)] hover:brightness-110",
   ghost: "text-bone bg-white/[0.05] border border-white/12 hover:bg-white/[0.09] hover:border-white/25 backdrop-blur-md",
   quiet: "text-mist hover:text-bone",
 };

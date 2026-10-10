@@ -65,7 +65,7 @@ export function MarketCard({
               {secondary.symbol} <span className="tabular-nums text-bone">{formatPrice(secondary.price, secondary.decimals)}</span>
             </span>
           ) : (
-            <span className="text-[12px] font-medium text-smoke">{demo ? "Demo data" : "May be delayed"}</span>
+            <span className="text-[12px] font-medium text-smoke">{demo ? "Demo / Simulated" : "May be delayed"}</span>
           )}
           <span className="grid size-8 place-items-center rounded-full border border-white/10 text-gold-200 transition-all duration-500 group-hover/card:rotate-45 group-hover/card:border-gold-400/50">
             <ArrowUpRight size={14} />

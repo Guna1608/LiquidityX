@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { brand, classSessions, contact, faq, mentor, mentorship, socialLinks, testimonials, upcomingBatch, type ClassSession } from "@/config/site";
+import { brand, contact, faq, mentor, mentorship, pricing, schedule, socialLinks } from "@/config/site";
 
 /** Absolute URL helper. */
 export const abs = (path = "/") => `${brand.siteUrl}${path === "/" ? "" : path}`;
@@ -32,7 +32,7 @@ export function pageMetadata({
   noindex?: boolean;
 }): Metadata {
   const url = abs(path);
-  const image = { url: ogImage({ title, eyebrow: eyebrow ?? brand.academy, subtitle: "15-day live Forex & Futures mentorship" }), width: 1200, height: 630, alt: `${title} — ${brand.academy}` };
+  const image = { url: ogImage({ title, eyebrow: eyebrow ?? brand.academy, subtitle: "15-day curriculum · Taught in Tamil" }), width: 1200, height: 630, alt: `${title} — ${brand.academy}` };
   return {
     title,
     description,
@@ -52,10 +52,9 @@ export const organizationJsonLd = {
   alternateName: brand.name,
   description: brand.description,
   logo: { "@type": "ImageObject", url: `${brand.siteUrl}/icon.svg` },
-  image: ogImage({ title: "Understand the market. Trade with clarity." }),
+  image: ogImage({ title: brand.tagline }),
   email: contact.email,
-  telephone: contact.phoneDisplay.replace(/\s/g, ""),
-  sameAs: [socialLinks.instagram.url, socialLinks.telegram.url],
+  sameAs: [socialLinks.instagram.url, socialLinks.telegram.url, socialLinks.youtube.url],
   founder: { "@type": "Person", name: mentor.name, jobTitle: mentor.role },
   knowsLanguage: ["en", "ta"],
   areaServed: "IN",
@@ -63,20 +62,10 @@ export const organizationJsonLd = {
     {
       "@type": "ContactPoint",
       contactType: "customer support",
-      telephone: contact.phoneDisplay.replace(/\s/g, ""),
       email: contact.email,
       availableLanguage: ["English", "Tamil"],
     },
   ],
-  ...(testimonials.length && testimonials.some((t) => t.rating)
-    ? {
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: (testimonials.filter((t) => t.rating).reduce((n, t) => n + (t.rating ?? 0), 0) / testimonials.filter((t) => t.rating).length).toFixed(1),
-          reviewCount: testimonials.filter((t) => t.rating).length,
-        },
-      }
-    : {}),
 };
 
 export const websiteJsonLd = {
@@ -92,49 +81,27 @@ export const websiteJsonLd = {
 const instance = {
   "@type": "CourseInstance",
   courseMode: "Online",
-  courseWorkload: "P15D",
+  courseWorkload: `P${schedule.teachingDays}D`,
   inLanguage: "ta",
   instructor: { "@type": "Person", name: mentor.name },
-  ...(upcomingBatch.startDate ? { startDate: upcomingBatch.startDate } : {}),
-  courseSchedule: { "@type": "Schedule", repeatFrequency: "P1D", byDay: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
+  // The batch start date is recalculated monthly (25th, or Monday 26th) and is shown on the page, not hard-coded here.
+  courseSchedule: { "@type": "Schedule", repeatFrequency: "P1D", byDay: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], startTime: "20:30", scheduleTimezone: "Asia/Kolkata" },
+  ...(pricing.currentFee ? { offers: { "@type": "Offer", price: pricing.currentFee.amount, priceCurrency: pricing.currentFee.currency } } : {}),
 };
 
 export const courseJsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
   "@id": `${brand.siteUrl}/mentorship#course`,
-  name: "LiquidityX 15-Day Live Forex & Futures Trading Mentorship",
-  description: `Live mentorship covering ${mentorship.learning.join(", ")} for Forex and Futures. Taught in Tamil.`,
+  name: "LiquidityX 15-Day Trading Mentorship (Tamil)",
+  description: `Structured 15-day curriculum covering ${mentorship.learning.join(", ")} across Forex, Futures and Indian markets. Taught in Tamil.`,
   url: abs("/mentorship"),
   inLanguage: "ta",
-  educationalLevel: "Beginner to intermediate",
+  educationalLevel: "Beginner",
   teaches: mentorship.learning,
   provider: org,
   hasCourseInstance: [instance],
-  hasPart: classSessions.map((c) => ({ "@type": "Course", name: c.title, url: abs(`/classes/${c.slug}`) })),
 };
-
-export const classesJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "LiquidityX live classes",
-  itemListElement: classSessions.map((c, i) => ({ "@type": "ListItem", position: i + 1, url: abs(`/classes/${c.slug}`), name: c.title })),
-};
-
-export function classJsonLd(c: ClassSession) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name: `${c.title} — LiquidityX live class`,
-    description: `${c.summary} ${c.outcome}`,
-    url: abs(`/classes/${c.slug}`),
-    teaches: c.topics,
-    inLanguage: "ta",
-    provider: org,
-    isPartOf: { "@id": `${brand.siteUrl}/mentorship#course` },
-    hasCourseInstance: [instance],
-  };
-}
 
 export const faqJsonLd = {
   "@context": "https://schema.org",

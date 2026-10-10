@@ -19,13 +19,17 @@ export function MarketDashboard() {
 
   return (
     <div>
-      {(demo || error) && (
-        <div role="status" className="mb-8 flex flex-col gap-2 rounded-2xl border border-gold-500/40 bg-gold-600/[0.08] p-5 sm:flex-row sm:items-center sm:justify-between">
+      {demo && (
+        <div role="status" className="mb-8 rounded-2xl border border-gold-500/40 bg-gold-600/[0.08] p-5">
           <p className="text-sm text-gold-100">
-            <strong className="font-medium">Connect a market-data provider to enable live pricing.</strong>{" "}
-            <span className="text-mist">Values below are simulated demo data — not live and not for trading.</span>
+            <strong className="font-medium">Demo / Simulated data — Not live.</strong>{" "}
+            <span className="text-mist">These values are simulated for illustration and must not be used for trading decisions.</span>
           </p>
-          <code className="shrink-0 font-mono text-[0.68rem] text-smoke">MARKET_DATA_PROVIDER · TWELVEDATA_API_KEY</code>
+        </div>
+      )}
+      {error && !demo && (
+        <div role="status" className="mb-8 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm text-mist">
+          Market data is temporarily unavailable.
         </div>
       )}
 

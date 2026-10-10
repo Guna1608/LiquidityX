@@ -1,9 +1,13 @@
-import { contact, mentorship, pricing, socialLinks, strategies, whatsapp } from "./site";
+import { contact, enrolment, mentor, mentorship, pricing, schedule, socialLinks, strategyInfo, whatsapp } from "./site";
+import { batchAdjustmentNote, formatBatchDate, getBatch, isRegistrationOpen } from "@/lib/batch";
 
 /**
  * Approved knowledge for the LiquidityX Assistant.
- * The local engine (lib/chat) matches user text against `keywords` and
- * `patterns`. Answers use only owner-approved website content.
+ * The local engine (lib/chat) matches user text against `keywords`.
+ * Answers use only owner-approved website content — the current admin-managed
+ * fee (config `pricing`) and the automatically calculated batch date
+ * (lib/batch). Private strategy names and rules are NOT in this file and must
+ * never be added: the assistant only ever states the count.
  */
 
 export type ChatAction = { label: string; href: string; kind: "whatsapp" | "link" | "external" };
@@ -14,151 +18,202 @@ export type KnowledgeEntry = {
   question: string;
   /** Lower-case tokens (English, Tamil, Tanglish). Weighted matching. */
   keywords: string[];
-  answer: string;
+  /** Static text, or a function for answers that depend on the current date. */
+  answer: string | (() => string);
   actions?: ChatAction[];
 };
 
+export const answerOf = (e: Pick<KnowledgeEntry, "answer">) => (typeof e.answer === "function" ? e.answer() : e.answer);
+
 const wa = (label = "WhatsApp", message?: string): ChatAction => ({ label, href: whatsapp.url(message), kind: "whatsapp" });
 
-const feeAnswer = pricing.currentFee
-  ? `The current mentorship fee is ₹${pricing.currentFee.amount.toLocaleString("en-IN")}. Please confirm batch details on WhatsApp.`
-  : "Current fee details are available through LiquidityX. Please contact us on WhatsApp for the latest fee.";
+const feeText = () =>
+  pricing.currentFee
+    ? `The course fee is ₹${pricing.currentFee.amount.toLocaleString("en-IN")}, paid in full in a single transaction. Instalments are not available.`
+    : "Please message us on WhatsApp for the current course fee.";
+
+const batchText = () => {
+  const batch = getBatch();
+  const open = isRegistrationOpen(batch, enrolment.registrationOpen);
+  const note = batchAdjustmentNote(batch);
+  return [
+    `The next batch starts on ${formatBatchDate(batch)} at ${schedule.startTime}.`,
+    note,
+    "A new batch starts on the 25th of every month (the 26th if the 25th is a Sunday). Registration stays open until the batch starts; after that, new registrations move to the following month's batch.",
+    open ? null : "Registration for this batch is currently closed — message us on WhatsApp for the next batch.",
+  ]
+    .filter(Boolean)
+    .join(" ");
+};
 
 export const chatKnowledgeBase: KnowledgeEntry[] = [
   {
     id: "join",
-    question: "How do I join the mentorship?",
-    keywords: ["join", "enrol", "enroll", "register", "admission", "how to join", "signup", "sign up"],
-    answer: "Message LiquidityX on WhatsApp to join. Current batch, fee and enrolment details are shared with you directly.",
-    actions: [wa("Chat on WhatsApp", "Hi LiquidityX, I'd like to join the mentorship.")],
+    question: "How do I enrol?",
+    keywords: ["join", "enrol", "enroll", "register", "registration", "admission", "how to join", "signup", "sign up", "pay", "payment"],
+    answer:
+      "Message us on WhatsApp and we will guide you through enrolment for the upcoming batch. The fee is paid in full in one transaction, and the enrolment terms (including the no-refund policy) are shown before you pay.",
+    actions: [wa("Message us on WhatsApp", enrolment.whatsappMessage), { label: "Schedule & batch", href: "/classes", kind: "link" }],
   },
   {
     id: "curriculum",
-    question: "What does the mentorship teach?",
-    keywords: ["learn", "teach", "curriculum", "syllabus", "topics", "modules", "content", "cover", "course"],
-    answer: `A 15-day live mentorship: ${mentorship.learning.join(" → ")}. Strategy Application covers ${strategies.length} named strategies and setups.`,
-    actions: [
-      { label: "View Curriculum", href: "/learning", kind: "link" },
-      { label: "Strategies", href: "/strategies", kind: "link" },
-    ],
+    question: "What does the course teach?",
+    keywords: ["learn", "teach", "curriculum", "syllabus", "topics", "modules", "content", "cover", "course", "structure"],
+    answer: `A structured ${schedule.teachingDays}-day curriculum with six modules: ${mentorship.learning.join(", ")}. The six modules are not six classes — they are covered across the ${schedule.teachingDays} teaching days. Students learn to build market context, prepare scenarios, evaluate confluences and develop their own trading process.`,
+    actions: [{ label: "View curriculum", href: "/learning", kind: "link" }],
   },
   {
     id: "schedule",
     question: "When are the classes held?",
-    keywords: ["when", "time", "timing", "schedule", "class", "classes", "weekday", "days", "meet", "discord", "online", "live"],
-    answer: "Classes are held live on weekdays over Google Meet or Discord, taught in Tamil. Ask on WhatsApp for the next batch timings.",
-    actions: [wa("Ask on WhatsApp", "Hi LiquidityX, what are the class timings?"), { label: "Class schedule", href: "/classes", kind: "link" }],
+    keywords: ["when", "time", "timing", "schedule", "class", "classes", "days", "meet", "discord", "online", "live", "start time", "ist"],
+    answer: `Classes run ${schedule.days} and start at ${schedule.startTime} (the session runs until about 9:45 PM IST). Sunday is a holiday. Classes are held directly with the mentor on ${schedule.platforms}, in Tamil.`,
+    actions: [{ label: "Schedule & batch", href: "/classes", kind: "link" }],
   },
   {
     id: "fee",
     question: "What is the fee?",
-    keywords: ["fee", "fees", "price", "cost", "pricing", "amount", "charge", "rupees", "₹", "how much", "payment"],
-    answer: feeAnswer,
-    actions: [wa("WhatsApp", "Hi LiquidityX, what is the current mentorship fee?")],
+    keywords: ["fee", "fees", "price", "cost", "pricing", "amount", "charge", "rupees", "₹", "how much", "instalment", "installment", "emi"],
+    answer: feeText,
+    actions: [wa("WhatsApp", "Hi LiquidityX, I have a question about the course fee.")],
+  },
+  {
+    id: "next-batch",
+    question: "When does the next batch start?",
+    keywords: ["batch", "next batch", "start", "starting", "date", "upcoming", "25th", "26th", "closed", "open", "deadline", "cutoff", "cut-off"],
+    answer: batchText,
+    actions: [{ label: "Schedule & batch", href: "/classes", kind: "link" }, wa("Ask on WhatsApp", "Hi LiquidityX, I have a question about the next batch.")],
   },
   {
     id: "markets",
-    question: "Can I learn both Forex and Futures?",
-    keywords: ["forex", "futures", "both", "markets", "market", "fx", "currency", "nq", "gc"],
-    answer: "Yes. The mentorship covers both Forex and Futures.",
+    question: "Which markets are taught?",
+    keywords: ["forex", "futures", "both", "markets", "market", "fx", "currency", "india", "indian", "nifty", "stocks"],
+    answer: `${mentorship.markets.join(", ")}. The approach combines price and time with Volume, Market Profile, Order Flow and GEX data.`,
     actions: [{ label: "Mentorship", href: "/mentorship", kind: "link" }],
   },
   {
-    id: "contact",
-    question: "How do I contact LiquidityX?",
-    keywords: ["contact", "whatsapp", "phone", "number", "call", "email", "mail", "instagram", "telegram", "reach"],
-    answer: `WhatsApp / Phone: ${contact.phoneDisplay}. Email: ${contact.email}. Instagram: ${socialLinks.instagram.handle}. Telegram: ${socialLinks.telegram.handle}.`,
-    actions: [wa("Open WhatsApp"), { label: "Contact page", href: "/contact", kind: "link" }],
+    id: "beginner",
+    question: "Is it beginner-friendly?",
+    keywords: ["beginner", "beginners", "experience", "new", "basic", "basics", "age", "laptop", "mobile", "requirements", "eligible", "eligibility"],
+    answer:
+      "Yes. Prior trading experience is not required. The minimum enrolment age is 18, and you need a laptop or desktop to attend classes.",
+  },
+  {
+    id: "recording",
+    question: "Are recordings available?",
+    keywords: ["recording", "recordings", "recorded", "video", "replay", "miss", "missed", "absent"],
+    answer:
+      "No, class recordings are not provided. If you miss a class, you can request a short explanation of the missed lesson.",
+  },
+  {
+    id: "repeat",
+    question: "Can I repeat the course or transfer batches?",
+    keywords: ["repeat", "again", "transfer", "postpone", "defer", "next batch transfer", "cannot attend", "can't attend", "unable"],
+    answer:
+      "Each student gets one free repeat of the full 15-day course in the next batch — once per student, not indefinitely. Separately, if a paid student cannot attend, they may transfer to the next batch. A transfer is separate from the free repeat.",
+  },
+  {
+    id: "refund",
+    question: "Is there a refund policy?",
+    keywords: ["refund", "refunds", "cancel", "cancellation", "money back", "return"],
+    answer: "No refunds. Please read the enrolment terms before you pay.",
+    actions: [{ label: "Terms & Conditions", href: "/terms", kind: "link" }],
+  },
+  {
+    id: "included",
+    question: "What do I receive with the course?",
+    keywords: ["include", "included", "indicator", "indicators", "gex", "workspace", "workspaces", "notes", "materials", "tshirt", "t-shirt", "shirt", "certificate", "lifetime", "access"],
+    answer:
+      "Custom indicators, GEX data and LiquidityX workspaces are shared during classes, with lifetime access to the supplied indicators, GEX data and workspaces. Course notes and learning materials are shared through Discord. The fee also includes one T-shirt and one printed Course Completion Certificate, delivered within India (T-shirt during the course, certificate after the course ends).",
+  },
+  {
+    id: "software",
+    question: "Do you provide trading software?",
+    keywords: ["software", "subscription", "atas", "deepcharts", "platform", "tools", "tool", "license", "licence"],
+    answer:
+      "No. LiquidityX Academy provides education, not third-party software or software subscriptions. The mentor mainly uses ATAS and Deepcharts, and tools vary according to teaching needs.",
+  },
+  {
+    id: "support",
+    question: "What support is available after the course?",
+    keywords: ["support", "doubt", "doubts", "help", "after course", "lifetime support", "live trading", "live session", "sessions"],
+    answer:
+      "Lifetime doubt-clearing support is available on WhatsApp, Discord and Telegram. Additional live trading sessions are occasional and depend on the mentor's availability — they are not a guaranteed or scheduled benefit.",
+  },
+  {
+    id: "delivery",
+    question: "Do you deliver outside India?",
+    keywords: ["delivery", "deliver", "courier", "address", "international", "abroad", "overseas", "nri", "outside india"],
+    answer:
+      "Delivery of the T-shirt and certificate is within India only. International students can enrol and provide an Indian delivery address.",
+  },
+  {
+    id: "strategies",
+    question: "Which strategies are taught?",
+    keywords: ["strategy", "strategies", "setup", "setups", "scalping", "scalp", "rules", "entry", "entries"],
+    answer: `${strategyInfo.line} Strategy names and rules are not published online — they are shared in classes, not through a student website login.`,
+    actions: [{ label: "Strategies", href: "/strategies", kind: "link" }],
   },
   {
     id: "market-profile",
     question: "What is Market Profile?",
     keywords: ["market profile", "profile", "tpo", "value area", "value", "poc"],
     answer:
-      "Market Profile organises price by time to show where the market spent effort and found value. It helps describe context — balance or imbalance — and is one of the core modules of the mentorship. (Educational explanation, not advice.)",
-    actions: [{ label: "Read more", href: "/insights/what-is-market-profile", kind: "link" }],
+      "Market Profile organises price by time to show where the market spent effort and found value. It helps describe context — acceptance and rejection, balance and imbalance — and is one of the core modules of the curriculum. (Educational explanation, not advice.)",
+    actions: [{ label: "Curriculum", href: "/learning", kind: "link" }],
   },
   {
     id: "order-flow",
     question: "What is Order Flow?",
-    keywords: ["order flow", "orderflow", "footprint", "delta", "aggression", "absorption", "tape", "big trades"],
+    keywords: ["order flow", "orderflow", "footprint", "delta", "aggression", "absorption", "tape"],
     answer:
-      "Order flow studies executed transactions to see which side is acting with urgency — aggression — and how resting liquidity responds. It is most useful read against structure. (Educational explanation, not advice.)",
-    actions: [{ label: "Read more", href: "/insights/understanding-order-flow", kind: "link" }],
+      "Order flow studies executed transactions to see which side is acting with urgency — aggression — and how resting liquidity responds (absorption). It is most useful read against market context. (Educational explanation, not advice.)",
+    actions: [{ label: "Curriculum", href: "/learning", kind: "link" }],
   },
   {
-    id: "next-batch",
-    question: "When does the next batch start?",
-    keywords: ["batch", "next batch", "start", "starting", "date", "upcoming"],
-    answer: "Next batch dates are shared directly on WhatsApp. Send us a message and we'll keep you updated.",
-    actions: [wa("Get batch updates", "Hi LiquidityX, when does the next batch start?"), { label: "Upcoming classes", href: "/classes", kind: "link" }],
+    id: "mentor",
+    question: "Who is the mentor?",
+    keywords: ["mentor", "vignesh", "teacher", "trainer", "founder", "who", "experience of mentor"],
+    answer: `Vignesh is the Founder and Mentor of LiquidityX Academy, with ${mentor.tradingExperience} of trading experience and ${mentor.teachingExperience} of teaching experience. Classes are conducted directly with him, in Tamil.`,
+    actions: [{ label: "About Vignesh", href: "/about", kind: "link" }],
   },
   {
-    id: "recording",
-    question: "Are recordings available?",
-    keywords: ["recording", "recordings", "recorded", "video", "replay"],
-    answer: "No. Classes are live and class recordings are not provided.",
-  },
-  {
-    id: "duration",
-    question: "How long is the mentorship?",
-    keywords: ["duration", "days", "long", "how long", "15", "length", "weeks"],
-    answer: "The mentorship runs for 15 days of live weekday classes.",
+    id: "contact",
+    question: "How do I contact LiquidityX?",
+    keywords: ["contact", "whatsapp", "phone", "number", "call", "email", "mail", "instagram", "telegram", "youtube", "reach"],
+    answer: `Message us on WhatsApp at ${contact.whatsappDisplay} for a quick response (messages only — we do not take calls). Email: ${contact.email}. Instagram: ${socialLinks.instagram.handle}. Telegram: ${socialLinks.telegram.handle}. YouTube: ${socialLinks.youtube.handle}.`,
+    actions: [wa("Open WhatsApp"), { label: "Contact page", href: "/contact", kind: "link" }],
   },
   {
     id: "language",
     question: "What language are classes taught in?",
     keywords: ["tamil", "language", "english"],
-    answer: "Classes are taught in Tamil.",
-  },
-  {
-    id: "mentor",
-    question: "Who is the mentor?",
-    keywords: ["mentor", "vignesh", "teacher", "trainer", "founder", "who"],
-    answer: "Vignesh — Founder / Mentor — personally teaches the LiquidityX mentorship.",
-    actions: [{ label: "Meet Vignesh", href: "/about", kind: "link" }],
-  },
-  {
-    id: "strategies",
-    question: "Which strategies are taught?",
-    keywords: ["strategy", "strategies", "setup", "setups", "vwap", "ivb", "pbd", "frvp", "gex", "killzone", "shark", "1-2-3"],
-    answer: `${strategies.length} strategies: ${strategies.map((s) => s.name).join(", ")}. Rules and examples are taught only inside the live mentorship.`,
-    actions: [{ label: "Strategies", href: "/strategies", kind: "link" }],
+    answer: "Classes are taught in Tamil. The website is in English.",
   },
   {
     id: "guarantee",
     question: "Will I make guaranteed profits?",
     keywords: ["profit", "guarantee", "guaranteed", "returns", "income", "win rate", "accuracy", "money", "earn"],
     answer:
-      "No. Trading involves substantial risk and LiquidityX does not guarantee profits or any specific return. The mentorship is education focused on structure and process.",
+      "No. Trading involves substantial risk and LiquidityX does not guarantee profits or any specific return. The course is education focused on market context and process.",
     actions: [{ label: "Risk Disclaimer", href: "/risk-disclaimer", kind: "link" }],
   },
   {
     id: "signals",
     question: "Do you give buy/sell calls?",
-    keywords: ["signal", "signals", "tips", "call", "calls", "buy", "sell", "recommendation", "advice"],
+    keywords: ["signal", "signals", "tips", "calls", "buy", "sell", "recommendation", "advice"],
     answer: "LiquidityX provides trading education, not personalised financial advice or buy/sell recommendations.",
     actions: [{ label: "Risk Disclaimer", href: "/risk-disclaimer", kind: "link" }],
   },
 ];
 
 /** The chips shown when the panel first opens (order matters). */
-export const quickQuestionIds = [
-  "join",
-  "curriculum",
-  "schedule",
-  "fee",
-  "markets",
-  "contact",
-  "market-profile",
-  "order-flow",
-  "next-batch",
-];
+export const quickQuestionIds = ["join", "next-batch", "fee", "schedule", "curriculum", "included", "refund", "support", "contact"];
 
 export const chatFallback: { answer: string; actions: ChatAction[] } = {
   answer:
-    "I can help with mentorship, classes, fees, markets and contact details. For anything else, the LiquidityX team can answer directly on WhatsApp.",
-  actions: [wa("WhatsApp")],
+    "I can answer questions about the course, schedule, fee, enrolment policies and support. For anything else, message us on WhatsApp and the LiquidityX team will reply.",
+  actions: [wa("Message us on WhatsApp")],
 };
 
-export const chatGreeting = "Hi! I'm the LiquidityX Assistant. Ask me about the mentorship, classes, fees or how to get in touch.";
+export const chatGreeting =
+  "Hi! I'm the LiquidityX Assistant. Ask me about the course, the next batch, the fee or enrolment terms — or message us on WhatsApp for anything else.";

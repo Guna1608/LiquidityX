@@ -1,32 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { upcomingBatch, whatsapp } from "@/config/site";
+import { enrolment, schedule, whatsapp } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Calendar, WhatsApp } from "@/components/ui/Icons";
 import { GlowOrb } from "@/components/visuals/Glow";
 import { cn } from "@/lib/cn";
-
-function useCountdown(iso: string | null) {
-  const [left, setLeft] = useState<number | null>(null);
-  useEffect(() => {
-    if (!iso) return;
-    const target = new Date(iso).getTime();
-    const tick = () => setLeft(Math.max(0, target - Date.now()));
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [iso]);
-  return left;
-}
+import { useBatch } from "./useBatch";
 
 /**
- * Upcoming batch banner. Shows a live countdown once `upcomingBatch.startDate`
- * is set in config; until then: "Dates announced on WhatsApp".
+ * Upcoming-batch banner. The date is calculated automatically in Asia/Kolkata:
+ * the 25th of the month (Monday the 26th if the 25th is a Sunday), starting
+ * 8:30 PM IST. The countdown is to the actual start, which is also the
+ * registration cut-off.
  */
 export function BatchBanner({ className }: { className?: string }) {
-  const b = upcomingBatch;
-  const left = useCountdown(b.startDate);
+  const b = useBatch();
+  const left = b?.msLeft ?? null;
   const parts =
     left === null
       ? null
@@ -36,9 +25,8 @@ export function BatchBanner({ className }: { className?: string }) {
           ["Min", Math.floor((left / 60000) % 60)],
           ["Sec", Math.floor((left / 1000) % 60)],
         ];
-  const dateLabel = b.startDate
-    ? new Date(b.startDate).toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "long", year: "numeric" })
-    : "Dates announced on WhatsApp";
+  const open = b?.registrationOpen ?? true;
+  const checkout = enrolment.checkoutHref && open ? enrolment.checkoutHref : null;
 
   return (
     <div className={cn("relative isolate overflow-hidden rounded-[28px] border border-gold-500/30 bg-[#0c0b0a] p-6 sm:p-9", className)}>
@@ -51,14 +39,20 @@ export function BatchBanner({ className }: { className?: string }) {
               <span className="absolute inset-0 animate-pulse-ring rounded-full bg-gold-400" />
               <span className="relative size-1.5 rounded-full bg-gold-400" />
             </span>
-            Upcoming batch
+            Next batch
           </span>
-          <h3 className="mt-4 text-[clamp(1.8rem,3.4vw,2.6rem)] font-bold leading-[1.05] tracking-[-0.035em]">{b.name}</h3>
+          <h3 className="mt-4 text-[clamp(1.8rem,3.4vw,2.6rem)] font-bold leading-[1.05] tracking-[-0.035em]">
+            {b ? b.dateLabel : "Calculating batch date…"}
+          </h3>
           <p className="mt-2 flex items-center gap-2 text-mist">
-            <Calendar size={16} className="text-gold-400" /> {dateLabel}
+            <Calendar size={16} className="text-gold-400" /> Classes start at <strong className="font-bold text-bone">{schedule.startTime}</strong>
+          </p>
+          {b?.adjustmentNote && <p className="mt-2 text-sm text-gold-200">{b.adjustmentNote}</p>}
+          <p className="mt-2 text-sm text-smoke">
+            {open ? "Registration stays open until the batch starts." : "Registration for this batch is closed. Message us on WhatsApp about the following batch."}
           </p>
           <ul className="mt-6 flex flex-wrap gap-2 text-[13px]">
-            {[b.schedule, b.platform, b.language, "15 days · live", ...(b.seats ? [b.seats] : [])].map((t) => (
+            {[`${schedule.teachingDays} teaching days`, schedule.days, schedule.platforms, `Taught in ${schedule.language}`].map((t) => (
               <li key={t} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-bone/85">
                 {t}
               </li>
@@ -66,8 +60,8 @@ export function BatchBanner({ className }: { className?: string }) {
           </ul>
         </div>
         <div className="flex flex-col gap-5 lg:items-end">
-          {parts && (
-            <div className="grid grid-cols-4 gap-2" aria-label="Time until the batch starts">
+          {parts && open && (
+            <div className="grid grid-cols-4 gap-2" aria-label="Time until the batch starts and registration closes">
               {parts.map(([k, v]) => (
                 <div key={k as string} className="min-w-16 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-3 text-center">
                   <p className="text-3xl font-black tabular-nums tracking-tight">{String(v).padStart(2, "0")}</p>
@@ -76,8 +70,9 @@ export function BatchBanner({ className }: { className?: string }) {
               ))}
             </div>
           )}
-          <Button href={whatsapp.url("Hi LiquidityX, I'd like to reserve a seat in the next batch.")} size="lg" icon={<WhatsApp size={18} />} iconPosition="start">
-            Reserve a seat on WhatsApp
+          {open && <p className="text-xs text-smoke lg:text-right">Registration closes when the batch starts at {schedule.startTime}.</p>}
+          <Button href={checkout ?? whatsapp.url(enrolment.whatsappMessage)} size="lg" icon={<WhatsApp size={18} />} iconPosition="start">
+            {checkout ? "Enrol now" : open ? "Enrol via WhatsApp" : "Ask about the next batch"}
           </Button>
         </div>
       </div>

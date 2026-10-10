@@ -3,7 +3,7 @@ import type { HistoryPoint, HistoryRange, MarketDataProvider, ProviderQuote } fr
 
 /**
  * DEMO provider — deterministic simulated random walks.
- * Output is always flagged `mode: "demo"` and labelled "MARKET DATA DEMO" in the UI.
+ * Output is always flagged `mode: "demo"` and labelled "Demo / Simulated data — Not live" in the UI.
  */
 function hash(s: string) {
   let h = 2166136261;

@@ -1,4 +1,4 @@
-import { hero } from "@/config/site";
+import { headlines, hero } from "@/config/site";
 import { MotionSection } from "@/components/motion/MotionSection";
 import { ScrollTilt } from "@/components/motion/ScrollTilt";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -12,10 +12,10 @@ export function TerminalShowcase() {
       <div className="container-x">
         <SectionTitle
           align="center"
-          eyebrow="Inside the classroom"
-          title={["See the market", "the way we teach it."]}
+          eyebrow="Volume & Order Flow"
+          title={[...headlines.orderFlow]}
           accentLine={1}
-          intro={<p>Price, value area, volume profile, order flow and a risk plan — read together, on one screen, in every live class.</p>}
+          intro={<p>Price, value, volume profile and order flow — read together to build market context, not one signal at a time. Illustrated below.</p>}
         />
       </div>
       <div className="relative mt-16">

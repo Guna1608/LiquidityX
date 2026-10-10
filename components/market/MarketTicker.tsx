@@ -50,7 +50,7 @@ export function MarketTicker({ className }: { className?: string }) {
               mode === "live" && "animate-blink",
             )}
           />
-          <span className="text-[12px] font-medium text-gold-200 sm:text-[0.62rem]">
+          <span className="max-w-[9.5rem] text-[11px] font-medium leading-tight text-gold-200 sm:max-w-none sm:text-[0.62rem]">
             {error ? "DATA UNAVAILABLE" : mode === "demo" ? modeLabel.demo : mode === "delayed" ? "DELAYED" : mode === "live" ? "LIVE" : "LOADING"}
           </span>
         </div>

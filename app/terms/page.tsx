@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Terms & Conditions",
-  description: "Terms for using the LiquidityX Academy website and information about mentorship enrolment.",
+  description: "Terms for using the LiquidityX Academy website and enrolling in the course: fee, batches, missed classes, repeats, batch transfers and the no-refund policy.",
   path: "/terms",
 });
 
@@ -13,7 +13,7 @@ export default function TermsPage() {
     <LegalDocument
       eyebrow="Legal"
       title={["Terms &", "Conditions"]}
-      intro="The terms that apply when you use this website and when you enquire about the LiquidityX mentorship."
+      intro="The terms that apply when you use this website and when you pay for and join the LiquidityX Academy course."
       sections={termsAndConditions}
     />
   );

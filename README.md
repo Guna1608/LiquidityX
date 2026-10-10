@@ -2,11 +2,11 @@
 
 Premium dark, motion-rich website for **LiquidityX Academy** (mentor: Vignesh) — Forex & Futures trading education (classes taught in Tamil; site copy in English).
 
-Public marketing/education site only. No student portal, logins, protected downloads, admin or payments (future phases).
+Public marketing/education site. Payments, the owner admin panel, chatbot storage and analytics are not built yet — see docs/PROJECT_BRIEF.md.
 
 ## Stack
 
-Next.js 16 (App Router, Turbopack) · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger · Framer Motion · Lenis · TradingView Lightweight Charts (Apache-2.0) · three.js/R3F (only the 3D LX object on Contact).
+Next.js 16 (App Router, Turbopack) · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger · Framer Motion · Lenis · TradingView Lightweight Charts (Apache-2.0).
 
 Type: **Satoshi** (Indian Type Foundry, Fontshare Free License — free for commercial use), self-hosted from `app/fonts/`. JetBrains Mono for numbers.
 
@@ -27,31 +27,28 @@ Copy `.env.example` → `.env.local` to configure optional integrations.
 
 | Path | Purpose |
 | --- | --- |
-| `config/site.ts` | **All content**: brand, mentor, contact, WhatsApp, navigation, strategies, curriculum, events, FAQ, pricing, market config, legal placeholders |
-| `config/chatKnowledgeBase.ts` | Approved answers for the chatbot |
-| `config/insights.ts` | Educational articles (currently **draft/demo**, noindex) |
-| `config/legal.ts` | Privacy / Terms / Risk copy (**requires owner/legal review**) |
-| `lib/motion/` | Central animation system: `presets.ts` (`reveal`, `parallax`), `useStickyProgress` |
-| `lib/market/` | `MarketDataProvider` interface, demo + Twelve Data providers, session clock |
-| `lib/chat/engine.ts` | Local FAQ matcher + `ChatProvider` interface for a future AI model |
-| `lib/device.tsx` | Device tiers (`high` / `mid` / `low`) driving 3D complexity |
-| `components/visuals/` | Animated illustrations: trading-terminal mockup, profile/order-flow/live-class/risk card visuals, glow horizon & orbs (all illustrative, labelled) |
-| `components/motion/` | `MotionSection`, `TextReveal` (blur word reveal), `ScrollTilt`, `CountUp`, `Parallax`, `MagneticButton`, `PageTransition`, `SmoothScroll` |
-| `components/3d/` | The interactive 3D LX object (Contact page) with fallbacks |
+| `config/site.ts` | **All content**: brand, headlines, mentor, contact, navigation, curriculum, schedule, fee, enrolment terms, FAQ, market config |
+| `lib/batch.ts` | Monthly batch date logic (Asia/Kolkata, 25th / Monday 26th, 8:30 PM IST cut-off) |
+| `config/chatKnowledgeBase.ts` | Approved chatbot answers (fee and batch date are computed live) |
+| `config/insights.ts` | Articles — all `draft: true` until the owner approves them |
+| `config/legal.ts` | Privacy / Terms / Risk copy |
+| `docs/PROJECT_BRIEF.md` | What is done, what is blocked on a backend, and open owner items |
 
-## Owner checklist (things intentionally left unconfirmed)
+See [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md) for the full status against the update brief.
 
-- **Fee** — `pricing.currentFee` is `null`, so the site shows "Contact for Current Fee". Set e.g. `{ amount: 23000, currency: "INR" }` once confirmed.
-- **Portrait** — add a photo to `public/` and set `mentor.portrait`. Until then a labelled placeholder is shown.
-- **Verified mentor facts** — `mentor.verifiedFacts` is empty by design; add only verified items.
-- **Events** — `events` is empty, so a designed empty state is shown. Add real events to publish cards and detail pages.
-- **Articles** — all insights are marked draft. Review, set `draft: false` and a `date` to publish (they then enter the sitemap).
-- **Legal** — entity name, address, jurisdiction, refund policy, analytics, retention. Every legal page shows "Requires owner/legal review before publication".
-- **Domain** — set `NEXT_PUBLIC_SITE_URL` (used for canonical URLs, sitemap, OG).
+## Owner checklist
+
+- **Fee** — `pricing.currentFee` (currently ₹23,000).
+- **Registration open/close** — set `NEXT_PUBLIC_REGISTRATION_OPEN=false` and redeploy (interim; the admin panel will replace this).
+- **Checkout** — `enrolment.checkoutHref` stays `null` until a payment gateway is configured and tested; until then enrolment is via WhatsApp.
+- **Articles** — review, then set `draft: false` and a `date`. Preview drafts on a private deploy with `SHOW_DRAFT_ARTICLES=1`.
+- **Reviews** — add cleaned WhatsApp screenshots (numbers and photos hidden) to `testimonials`.
+- **Portrait** — add a photo to `public/` and set `mentor.portrait`.
+- **Domain** — set `NEXT_PUBLIC_SITE_URL`.
 
 ## Market data
 
-No provider configured → every market surface is labelled **MARKET DATA DEMO** and shows simulated values. The /market page shows "Connect a market-data provider to enable live pricing." Simulated data is never labelled live.
+No provider configured → every market surface is labelled **Demo / Simulated data — Not live** and shows simulated values. Simulated data is never labelled live.
 
 To connect Twelve Data (free tier available):
 

@@ -27,8 +27,6 @@ export function forexOpen(d = new Date()) {
 
 export function sessionFor(group: MarketGroup, d = new Date()): SessionStatus {
   switch (group) {
-    case "crypto":
-      return "open";
     case "forex":
     case "commodities":
       return forexOpen(d) ? "open" : "closed";

@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "How LiquidityX Academy handles information from website visitors, WhatsApp enquiries and chatbot interactions.",
+  description: "How LiquidityX Academy handles payments, registration and delivery details, analytics, WhatsApp enquiries and website assistant conversations (kept for 30 days).",
   path: "/privacy",
 });
 

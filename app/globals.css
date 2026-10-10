@@ -2,7 +2,7 @@
 @import "lenis/dist/lenis.css";
 
 /* ─────────────── Tokens ───────────────
-   Near-black base, one warm accent (amber → ember), clean Satoshi type. */
+   Near-black base, one blue-violet accent, Plus Jakarta Sans type. */
 @theme {
   --color-ink: #050505;
   --color-ink-2: #0a0a0b;
@@ -14,13 +14,13 @@
   --color-smoke: #6f6f76;
 
   /* accent scale (kept under the `gold` name used across components) */
-  --color-gold-100: #fff3e6;
-  --color-gold-200: #ffdcb5;
-  --color-gold-300: #ffbd7d;
-  --color-gold-400: #ff9d4a;
-  --color-gold-500: #ff7a1a;
-  --color-gold-600: #e05e09;
-  --color-gold-700: #6e2c05;
+  --color-gold-100: #eef0ff;
+  --color-gold-200: #cfd6ff;
+  --color-gold-300: #a9b8ff;
+  --color-gold-400: #7f93ff;
+  --color-gold-500: #5278ff;
+  --color-gold-600: #2447d8;
+  --color-gold-700: #172554;
 
   /* quiet secondary used sparingly in charts */
   --color-cyan-200: #e3ecf5;
@@ -58,8 +58,8 @@
 }
 
 @theme inline {
-  --font-display: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-tamil), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), var(--font-tamil), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
 }
 
@@ -98,7 +98,7 @@
 
 /* warm metallic gradient text */
 @utility text-gold {
-  background: linear-gradient(92deg, #fff3e6 0%, #ffbd7d 35%, #ff7a1a 70%, #ffbd7d 100%);
+  background: linear-gradient(92deg, #eef0ff 0%, #a9b8ff 30%, #5278ff 62%, #8b5cf6 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -227,3 +227,7 @@
 
 @keyframes delta { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.45); } }
 @keyframes scroll-cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
+
+@keyframes box-drift { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 33% { transform: translate3d(18px, -26px, 0) rotate(12deg); } 66% { transform: translate3d(-14px, 12px, 0) rotate(-8deg); } }
+@keyframes bar-grow { 0%, 100% { transform: scaleX(0.55); } 50% { transform: scaleX(1); } }
+@keyframes dash { to { stroke-dashoffset: -12; } }

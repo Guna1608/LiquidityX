@@ -1,4 +1,4 @@
-import { approachLayers, mentor, mentorship } from "@/config/site";
+import { approachLayers, enrolment, mentor, mentorship } from "@/config/site";
 import { pageMetadata } from "@/lib/seo";
 import { MotionSection } from "@/components/motion/MotionSection";
 import { TextReveal } from "@/components/motion/TextReveal";
@@ -12,7 +12,7 @@ import { CTA } from "@/components/sections/CTA";
 import { whatsapp } from "@/config/site";
 
 export const metadata = pageMetadata({
-  title: "About Vignesh — Founder / Mentor",
+  title: "About Vignesh — Founder & Mentor",
   description: mentor.summary,
   path: "/about",
 });
@@ -29,7 +29,7 @@ export default function AboutPage() {
           <div>
             <div data-reveal="blur">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[12px] font-medium text-mist">
-                <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_8px_#ff7a1a]" />
+                <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_8px_#5278ff]" />
                 About · {mentor.role}
               </span>
             </div>
@@ -46,7 +46,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row" data-reveal="rise" data-delay="0.5">
               <Button href={whatsapp.url()} size="lg" icon={<WhatsApp size={18} />} iconPosition="start">
-                Chat on WhatsApp
+                Message us on WhatsApp
               </Button>
               <Button href="/mentorship" size="lg" variant="ghost" icon={<ArrowRight size={16} />}>
                 The mentorship
@@ -62,11 +62,11 @@ export default function AboutPage() {
       <MotionSection className="py-20 md:py-28">
         <div className="container-x">
           <div className="grid gap-12 lg:grid-cols-2">
-            <SectionTitle eyebrow="Teaching approach" title={["Structure", "before strategy."]} accentLine={1} size="md" />
+            <SectionTitle eyebrow="Teaching approach" title={["Context", "before strategy."]} accentLine={1} size="md" />
             <div className="space-y-5 text-[1.05rem] leading-relaxed text-mist lg:pt-12" data-reveal="rise">
               <p>
-                The mentorship is built in layers: first how the market moves, then where it finds value, where volume concentrates and who is acting — and
-                only then how a strategy is applied with defined risk.
+                The curriculum is built in layers: first how price moves through time, then where the market finds value, where volume concentrates and who is acting — alongside GEX
+                data — and only then how context and confluence become structured, risk-defined setups. Students build their own trading process rather than copy someone else&apos;s.
               </p>
               <p>{mentorship.heroLine}</p>
             </div>
@@ -86,23 +86,21 @@ export default function AboutPage() {
 
       <MotionSection className="py-12">
         <div className="container-x grid gap-3 md:grid-cols-4" data-reveal-group="0.08">
-          {mentorship.facts.map((f) => (
+          {[
+            { label: "Trading experience", value: mentor.tradingExperience },
+            { label: "Teaching experience", value: mentor.teachingExperience },
+            { label: "Teaches in", value: "Tamil" },
+            { label: "Markets", value: "Forex, Futures, Indian" },
+          ].map((f) => (
             <div key={f.label} className="panel rounded-[22px] p-6" data-reveal="rise">
               <p className="text-xs text-smoke">{f.label}</p>
               <p className="mt-2 text-xl font-bold tracking-tight">{f.value}</p>
             </div>
           ))}
         </div>
-        {mentor.verifiedFacts.length > 0 && (
-          <ul className="container-x mt-8 space-y-2 text-mist">
-            {mentor.verifiedFacts.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        )}
       </MotionSection>
 
-      <CTA title={["Learn with", "Vignesh."]} />
+      <CTA title={["Learn with", "Vignesh."]} message={enrolment.whatsappMessage} />
     </>
   );
 }

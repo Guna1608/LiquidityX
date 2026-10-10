@@ -17,5 +17,5 @@ export function formatPct(v: number | null) {
 export const modeLabel = {
   live: "LIVE DATA",
   delayed: "MARKET DATA · MAY BE DELAYED",
-  demo: "MARKET DATA DEMO",
+  demo: "Demo / Simulated data — Not live",
 } as const;

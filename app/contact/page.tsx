@@ -1,22 +1,21 @@
 import type { ReactNode } from "react";
-import { contact, socialLinks, whatsapp } from "@/config/site";
+import { contact, socialLinks, whatsapp, youtubeInvite } from "@/config/site";
 import { pageMetadata } from "@/lib/seo";
 import { MotionSection } from "@/components/motion/MotionSection";
 import { TextReveal } from "@/components/motion/TextReveal";
-import { LXObject3D } from "@/components/3d/lazy";
 import { Card } from "@/components/ui/Card";
-import { ArrowUpRight, Instagram, Mail, Telegram, WhatsApp } from "@/components/ui/Icons";
+import { ArrowUpRight, Instagram, Mail, Telegram, WhatsApp, YouTube } from "@/components/ui/Icons";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact LiquidityX Academy on WhatsApp (+91 88700 01201), email, Instagram or Telegram.",
+  description: "Message LiquidityX Academy on WhatsApp (+91 88700 01201) for a quick response, or find us by email, Instagram, Telegram and YouTube.",
   path: "/contact",
 });
 
 type Channel = { label: string; value: string; href: string; icon: ReactNode; cta: string; primary?: boolean };
 
 const channels: Channel[] = [
-  { label: "WhatsApp / Phone", value: contact.phoneDisplay, href: whatsapp.url(), icon: <WhatsApp size={20} />, cta: "WhatsApp", primary: true },
+  { label: "WhatsApp (messages only)", value: contact.whatsappDisplay, href: whatsapp.url(), icon: <WhatsApp size={20} />, cta: "WhatsApp", primary: true },
   { label: "Email", value: contact.email, href: contact.emailHref, icon: <Mail size={20} />, cta: "Email" },
   { label: "Instagram", value: socialLinks.instagram.handle, href: socialLinks.instagram.url, icon: <Instagram size={20} />, cta: "Instagram" },
   { label: "Telegram", value: socialLinks.telegram.handle, href: socialLinks.telegram.url, icon: <Telegram size={20} />, cta: "Telegram" },
@@ -25,7 +24,7 @@ const channels: Channel[] = [
 export default function ContactPage() {
   return (
     <MotionSection className="relative isolate overflow-hidden pb-24 pt-36 md:pt-44">
-      <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="container-x grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="eyebrow" data-reveal="fade">
             Contact
@@ -38,7 +37,7 @@ export default function ContactPage() {
             className="mt-7 text-[clamp(2.8rem,8vw,7rem)] font-semibold leading-[0.95] tracking-[-0.04em]"
           />
           <p className="mt-8 max-w-lg text-mist" data-reveal="rise" data-delay="0.3">
-            Mentorship, batch dates, fee — ask us anything. WhatsApp is the fastest way to reach us.
+            {contact.responseLine} Ask about the next batch, the course or enrolment. The number is for WhatsApp messages only — we do not take phone calls.
           </p>
 
           <ul className="mt-12 grid gap-3 sm:grid-cols-2" data-reveal-group="0.08">
@@ -67,10 +66,24 @@ export default function ContactPage() {
           </ul>
         </div>
 
-        <div className="relative mx-auto aspect-square w-full max-w-sm lg:max-w-none" data-reveal="scale">
-          <div aria-hidden className="absolute inset-[12%] rounded-full bg-gold-400/10 blur-3xl" />
-          <LXObject3D className="absolute inset-0" />
-          <span className="absolute bottom-2 right-2 text-[12px] font-medium text-smoke">Interactive 3D</span>
+        <div className="lg:pt-24" data-reveal="rise">
+          <div className="relative isolate overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#0b0b0c] p-8 sm:p-10">
+            <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-72 rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.3),transparent)]" />
+            <span className="grid size-12 place-items-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-300">
+              <YouTube size={22} />
+            </span>
+            <p className="mt-6 text-2xl font-bold tracking-tight">YouTube</p>
+            <p className="mt-2 text-mist">{youtubeInvite}</p>
+            <a
+              href={socialLinks.youtube.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold-500 px-5 py-2.5 text-sm font-medium text-white hover:brightness-110"
+            >
+              <YouTube size={16} /> Subscribe on YouTube
+            </a>
+            <p className="mt-4 text-xs text-smoke">{socialLinks.youtube.handle}</p>
+          </div>
         </div>
       </div>
     </MotionSection>

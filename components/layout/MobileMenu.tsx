@@ -112,18 +112,21 @@ export function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose
                 href={whatsapp.url()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-14 items-center justify-center rounded-full bg-[linear-gradient(180deg,#ff9a45,#ff7a1a_55%,#e85f0a)] font-medium text-white"
+                className="flex h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#2447d8,#5278ff_55%,#8b5cf6)] font-medium text-white"
               >
                 {whatsapp.cta}
               </a>
               <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-[0.7rem] tracking-wider text-mist">
-                <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
+                <span>WhatsApp {contact.whatsappDisplay}</span>
                 <div className="flex gap-5">
                   <a href={socialLinks.instagram.url} target="_blank" rel="noopener noreferrer">
                     Instagram
                   </a>
                   <a href={socialLinks.telegram.url} target="_blank" rel="noopener noreferrer">
                     Telegram
+                  </a>
+                  <a href={socialLinks.youtube.url} target="_blank" rel="noopener noreferrer">
+                    YouTube
                   </a>
                 </div>
               </div>

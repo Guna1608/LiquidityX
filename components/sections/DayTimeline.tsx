@@ -22,7 +22,7 @@ export function DayTimeline({ days = 15 }: { days?: number }) {
   );
 
   return (
-    <div ref={root} className="relative pt-10" role="img" aria-label={`${days}-day live mentorship timeline`}>
+    <div ref={root} className="relative pt-10" role="img" aria-label={`${days}-day curriculum timeline`}>
       <div data-tl-line className="h-px origin-left bg-gradient-to-r from-gold-200 via-gold-400 to-cyan-400 shadow-[0_0_18px_rgba(231,201,131,0.6)]" />
       <div className="absolute inset-x-0 top-10 flex justify-between">
         {Array.from({ length: days }, (_, i) => (
@@ -35,7 +35,7 @@ export function DayTimeline({ days = 15 }: { days?: number }) {
       </div>
       <div className="mt-9 flex justify-between text-[12px] font-medium text-mist">
         <span data-tl-label>Day 1</span>
-        <span data-tl-label className="hidden sm:inline">Weekday live classes</span>
+        <span data-tl-label className="hidden sm:inline">Monday to Saturday · 8:30 PM IST</span>
         <span data-tl-label>Day {days}</span>
       </div>
     </div>

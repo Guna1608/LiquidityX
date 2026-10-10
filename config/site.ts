@@ -1,49 +1,60 @@
 /**
  * LIQUIDITYX ACADEMY — single source of truth for site content.
  *
- * Only owner-approved facts live here. Anything not yet confirmed is `null`
- * and the UI renders a neutral "contact us" state instead of inventing data.
+ * Only owner-approved facts live here (see docs/PROJECT_BRIEF.md). Anything not
+ * yet confirmed is left out of the public site rather than invented.
  */
+import { insights } from "./insights";
 
 export const brand = {
   name: "LiquidityX",
   wordmark: "LIQUIDITYX",
   academy: "LiquidityX Academy",
   subBrand: "ACADEMY",
-  tagline: "Read the Market. Understand the Structure.",
+  tagline: "Go Beyond Price. Understand the Market.",
   description:
-    "LiquidityX Academy — a 15-day live trading mentorship taught in Tamil. Forex & Futures: Market Dynamics, Market Profile, Volume Profiles, Order Flow, Strategy Application and Risk & Review.",
+    "LiquidityX Academy — a structured 15-day curriculum taught in Tamil by Vignesh. Learn to connect Volume, Market Profile, Order Flow and GEX data and build a risk-aware trading process across Forex, Futures and Indian markets.",
   siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.liquidityxacademy.com").replace(/\/$/, ""),
   locale: "en_IN",
   keywords: [
     "Tamil trading mentorship",
     "Forex mentorship Tamil",
     "Futures trading Tamil",
-    "Trading education Tamil",
+    "Indian markets trading education",
     "Market Profile Tamil",
     "Order Flow Tamil",
     "LiquidityX Academy",
   ],
 } as const;
 
+/** The five approved headlines, each used in one place only. */
+export const headlines = {
+  hero: ["Go Beyond Price.", "Understand the Market."],
+  mentorship: ["Read the Market.", "Build Your Own Edge."],
+  orderFlow: ["Price Is Only", "Part of the Story."],
+  learning: ["From Market Data", "to Trading Decisions."],
+  strategies: ["Understand the Context", "Behind Every Setup."],
+} as const;
+
 export const mentor = {
   name: "Vignesh",
-  role: "Founder / Mentor",
+  role: "Founder & Mentor",
+  tradingExperience: "6 years",
+  teachingExperience: "1 year",
   summary:
-    "Vignesh personally teaches the LiquidityX mentorship with a focus on helping learners understand market structure and develop a structured trading process.",
-  /** Path to an owner-supplied portrait. `null` renders the designed placeholder. */
+    "Vignesh is the Founder and Mentor of LiquidityX Academy, with six years of trading experience and one year of teaching experience. His approach brings together Market Profile, Volume, Order Flow and GEX data to help students understand market context and build a structured trading process.",
+  /** Path to an owner-supplied portrait. While `null`, a name-based layout is shown. */
   portrait: null as string | null,
-  /** Only add owner-verified items here. Never invent credentials. */
-  verifiedFacts: [] as string[],
 };
 
 const whatsappNumber = "918870001201";
 
 export const contact = {
-  phoneDisplay: "+91 88700 01201",
-  phoneHref: "tel:+918870001201",
+  /** WhatsApp messages only — never linked as a phone call. */
+  whatsappDisplay: "+91 88700 01201",
   email: "liquidityx11.11@gmail.com",
   emailHref: "mailto:liquidityx11.11@gmail.com",
+  responseLine: "Message us on WhatsApp for a quick response.",
 };
 
 export const whatsapp = {
@@ -53,36 +64,41 @@ export const whatsapp = {
     const text = encodeURIComponent(message ?? this.defaultMessage);
     return `https://wa.me/${whatsappNumber}?text=${text}`;
   },
-  cta: "Chat on WhatsApp",
+  cta: "Message us on WhatsApp",
 };
 
 export const socialLinks = {
   instagram: { label: "Instagram", handle: "liquidityx_", url: "https://www.instagram.com/liquidityx_/" },
   telegram: { label: "Telegram", handle: "liquidityX11", url: "https://t.me/liquidityX11" },
+  youtube: { label: "YouTube", handle: "@liquidityx_11", url: "https://www.youtube.com/@liquidityx_11" },
 } as const;
 
+export const youtubeInvite = "Subscribe for trading education and upcoming videos.";
+
 export type NavItem = { label: string; href: string };
+
+/** Articles appear in navigation only once at least one has been approved and published. */
+const hasPublishedArticles = insights.some((i) => !i.draft);
 
 export const navigation: { primary: NavItem[]; footer: NavItem[]; legal: NavItem[] } = {
   primary: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Mentorship", href: "/mentorship" },
-    { label: "Classes", href: "/classes" },
+    { label: "Schedule", href: "/classes" },
     { label: "Strategies", href: "/strategies" },
-    { label: "Insights", href: "/insights" },
+    ...(hasPublishedArticles ? [{ label: "Articles", href: "/insights" }] : []),
     { label: "FAQ", href: "/faq" },
   ],
   footer: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Mentorship", href: "/mentorship" },
-    { label: "Classes", href: "/classes" },
+    { label: "Schedule & Batch", href: "/classes" },
     { label: "Strategies", href: "/strategies" },
-    { label: "Learning", href: "/learning" },
-    { label: "Market Insights", href: "/insights" },
+    { label: "Curriculum", href: "/learning" },
+    ...(hasPublishedArticles ? [{ label: "Articles", href: "/insights" }] : []),
     { label: "Market", href: "/market" },
-    { label: "Events", href: "/events" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
   ],
@@ -94,176 +110,208 @@ export const navigation: { primary: NavItem[]; footer: NavItem[]; legal: NavItem
 };
 
 export const hero = {
-  badge: "15-day live mentorship · Forex & Futures",
-  heading: "Understand the market. Trade with clarity.",
+  badge: "15-day curriculum · Taught in Tamil · Classes start 8:30 PM IST",
   supporting:
-    "A live, step-by-step mentorship by Vignesh — from Market Dynamics to Market Profile, Volume and Order Flow — so you read the structure before you take a trade.",
-  primaryCta: "Chat on WhatsApp",
+    "Learn to connect Volume, Market Profile, Order Flow and GEX data through a structured 15-day curriculum taught directly in Tamil. Build market context and a risk-aware trading process across Forex, Futures and Indian markets.",
+  primaryCta: "Message us on WhatsApp",
   secondaryCta: { label: "Explore the mentorship", href: "/mentorship" },
   visualLabel: "Illustrative market visual — not live data",
 };
 
-/** The five-layer philosophy shown in the scroll story. */
+/** The layered teaching approach shown in the scroll story. */
 export const approachLayers = [
-  { id: "dynamics", index: "01", title: "Market Dynamics", line: "How price moves — auctions, buyers and sellers, balance and imbalance." },
-  { id: "profile", index: "02", title: "Market Profile", line: "Where the market found value, and the context around it." },
+  { id: "dynamics", index: "01", title: "Price & Time", line: "How price moves through time — auctions, buyers and sellers, balance and imbalance." },
+  { id: "profile", index: "02", title: "Market Profile", line: "Where the market found value, and the acceptance and rejection around it." },
   { id: "volume", index: "03", title: "Volume", line: "Where participation concentrated — and where it was thin." },
-  { id: "orderflow", index: "04", title: "Order Flow", line: "Who is acting now — reading aggression and absorption." },
-  { id: "strategy", index: "05", title: "Strategy + Risk", line: "Turning context into a structured, risk-defined process." },
+  { id: "orderflow", index: "04", title: "Order Flow & GEX", line: "Executed activity, aggression and absorption, read alongside GEX data." },
+  { id: "strategy", index: "05", title: "Confluence & Risk", line: "Turning context into a structured, risk-defined trading process of your own." },
 ] as const;
 
 export type CurriculumModule = {
   index: string;
   title: string;
   summary: string;
-  topics: string[];
 };
 
+/** Six curriculum modules — NOT six classes. The course runs 15 teaching days. */
 export const curriculum: CurriculumModule[] = [
+  { index: "01", title: "Market Foundations", summary: "Understand auctions, liquidity, buyers, sellers and market dynamics." },
+  { index: "02", title: "Market Profile", summary: "Read value, acceptance and rejection to build market context." },
+  { index: "03", title: "Volume Profiles", summary: "Learn how different profile types support different analytical questions." },
+  { index: "04", title: "Order Flow", summary: "Interpret executed activity, aggression and absorption alongside market context." },
+  { index: "05", title: "Strategy Application", summary: "Connect context, confluence and execution through structured setups." },
+  { index: "06", title: "Risk & Review", summary: "Build risk controls, protect capital and review trading decisions." },
+];
+
+/**
+ * Strategies are NOT published. Only the count is public: no names, areas,
+ * rules or descriptions may appear anywhere on the site (page text, aria
+ * labels, metadata, structured data or the chatbot).
+ */
+export const strategyInfo = {
+  count: 11,
+  line: "11 strategies, including scalping setups — taught inside the mentorship.",
+  notice: "Strategies are shared in classes, not through a student website login. No strategy guarantees a result.",
+};
+
+export const schedule = {
+  teachingDays: 15,
+  days: "Monday to Saturday",
+  holiday: "Sunday is a holiday",
+  startTime: "8:30 PM IST",
+  sessionTime: "8:30–9:45 PM IST",
+  platforms: "Google Meet and Discord",
+  language: "Tamil",
+};
+
+export const mentorship = {
+  heroLine:
+    "A structured 15-day curriculum taught directly by Vignesh in Tamil — from market foundations to context, confluence and risk — across Forex, Futures and Indian markets.",
+  facts: [
+    { label: "Course", value: "15 teaching days" },
+    { label: "Classes", value: "Monday to Saturday" },
+    { label: "Starts at", value: "8:30 PM IST" },
+    { label: "Language", value: "Tamil" },
+  ],
+  markets: ["Forex", "Futures", "Indian markets"],
+  learning: ["Market Foundations", "Market Profile", "Volume Profiles", "Order Flow", "Strategy Application", "Risk & Review"],
+  /** What the fee includes (shown on the fee panel). */
+  included: [
+    "Classes directly with the mentor",
+    "Custom indicators, shared in class",
+    "GEX data, shared in class",
+    "LiquidityX workspaces",
+    "Course notes and materials via Discord",
+    "Lifetime access to supplied indicators, GEX data and workspaces",
+    "Lifetime doubt-clearing on WhatsApp, Discord and Telegram",
+    "One T-shirt and one printed Course Completion Certificate (India delivery)",
+  ],
+  cta: "Message us on WhatsApp",
+};
+
+/** Fee. The owner can change it; payment records must store the amount actually paid. */
+export const pricing: { currentFee: { amount: number; currency: "INR" } | null; lines: string[] } = {
+  currentFee: { amount: 23000, currency: "INR" },
+  lines: ["Full payment in one transaction", "No instalments"],
+};
+
+/**
+ * Enrolment switches.
+ *  - registrationOpen: owner's manual open/close control (set NEXT_PUBLIC_REGISTRATION_OPEN=false to close).
+ *    It is never closed automatically by head-count.
+ *  - checkoutHref: stays null until a payment gateway is configured AND tested.
+ *    While null, the site does not present online checkout and enrolment runs through WhatsApp.
+ */
+export const enrolment: { registrationOpen: boolean; checkoutHref: string | null; whatsappMessage: string } = {
+  registrationOpen: process.env.NEXT_PUBLIC_REGISTRATION_OPEN !== "false",
+  checkoutHref: null,
+  whatsappMessage: "Hi LiquidityX, I'd like to enrol in the next batch.",
+};
+
+/** Terms shown clearly before payment. */
+export const enrolmentTerms: { title: string; items: string[] }[] = [
   {
-    index: "01",
-    title: "Market Foundations",
-    summary: "How markets work, from the auction up.",
-    topics: ["How markets work", "Auction basics", "Buyers and sellers", "Liquidity", "Balance and imbalance", "Market dynamics"],
-  },
-  {
-    index: "02",
-    title: "Market Profile",
-    summary: "Market structure, value and context.",
-    topics: ["Market structure", "Value", "Context"],
-  },
-  {
-    index: "03",
-    title: "Volume Profiles",
-    summary: "Eight profile tools, read in context.",
-    topics: [
-      "FRVP",
-      "RTH Profile",
-      "ETH Profile",
-      "Session Profile",
-      "Session Profile HD",
-      "Periodic Volume Profile",
-      "Visible Range Volume Profile",
-      "Delta Profile",
+    title: "Course & schedule",
+    items: [
+      "15 teaching days, Monday to Saturday. Sunday is a holiday.",
+      "Classes start at 8:30 PM IST and run until about 9:45 PM IST.",
+      "Conducted directly with the mentor on Google Meet and Discord, in Tamil.",
+      "Beginner-friendly — prior trading experience is not required.",
+      "Minimum age 18. A laptop or desktop is required.",
     ],
   },
   {
-    index: "04",
-    title: "Order Flow",
-    summary: "Order-flow reading with practical examples.",
-    topics: ["Order-flow reading", "Practical examples"],
+    title: "Fee & delivery",
+    items: [
+      "The fee is paid in full, in one transaction. There are no instalments.",
+      "The fee includes one T-shirt and one printed Course Completion Certificate. Delivery is within India only.",
+      "The T-shirt is sent during the course; the certificate is sent after the 15-day course ends.",
+    ],
   },
   {
-    index: "05",
-    title: "Strategy Application",
-    summary: "11 named strategies and setups.",
-    topics: ["11 named strategies / setups", "Applying context to execution"],
+    title: "Missed classes, repeats & cancellations",
+    items: [
+      "Class recordings are not provided.",
+      "If you miss a class, you can request a short explanation of the missed lesson.",
+      "Each student gets one free repeat of the full 15-day course in the next batch — once per student.",
+      "If a paid student cannot attend, they may transfer to the next batch. A transfer is separate from the free repeat.",
+      "No refunds.",
+    ],
   },
   {
-    index: "06",
-    title: "Risk & Review",
-    summary: "Protect capital. Review. Keep learning.",
-    topics: ["Risk management", "Money management", "Capital protection", "Review", "Follow-up learning"],
+    title: "Tools",
+    items: [
+      "LiquidityX Academy provides education. It does not supply third-party software or software subscriptions.",
+      "The mentor mainly uses ATAS and Deepcharts; tools vary according to teaching needs.",
+    ],
   },
 ];
-
-export type Strategy = { index: string; name: string; slug: string; area: string };
-
-/**
- * Exactly 11 strategies. Names only — rules, thresholds and examples are
- * taught inside the live mentorship and are intentionally NOT published.
- * IVB and PBD are deliberately not expanded.
- */
-export const strategies: Strategy[] = [
-  { index: "01", name: "1-2-3 Strategy", slug: "1-2-3", area: "Price Structure" },
-  { index: "02", name: "IVB Strategy", slug: "ivb", area: "Taught in class" },
-  { index: "03", name: "Delta Aggression Strategy", slug: "delta-aggression", area: "Order Flow" },
-  { index: "04", name: "Killzone Strategy", slug: "killzone", area: "Session Timing" },
-  { index: "05", name: "VWAP Strategy", slug: "vwap", area: "Volume" },
-  { index: "06", name: "GEX Level Strategies", slug: "gex-levels", area: "Levels" },
-  { index: "07", name: "Profile Framing Strategy", slug: "profile-framing", area: "Market Profile" },
-  { index: "08", name: "FRVP Strategy", slug: "frvp", area: "Volume Profile" },
-  { index: "09", name: "NQ / GC Shark Strategy", slug: "nq-gc-shark", area: "Futures" },
-  { index: "10", name: "Big Trades Strategy", slug: "big-trades", area: "Order Flow" },
-  { index: "11", name: "PBD Strategy", slug: "pbd", area: "Taught in class" },
-];
-
-export const strategyNotice =
-  "Strategy rules, context and examples are taught only inside the live mentorship. No strategy guarantees a result.";
-
-export const mentorship = {
-  heroTitle: ["15 Days.", "Live.", "Structured."],
-  heroLine: "Forex & Futures, taught live in Tamil — from market structure to risk review.",
-  facts: [
-    { label: "Duration", value: "15 days" },
-    { label: "Format", value: "Weekday live classes" },
-    { label: "Language", value: "Tamil instruction" },
-    { label: "Platform", value: "Google Meet or Discord" },
-  ],
-  markets: ["Forex", "Futures"],
-  learning: ["Market Dynamics", "Market Profile", "Volume Profiles", "Order Flow", "Strategy Application", "Risk & Review"],
-  notes: [
-    { title: "No class recordings", body: "Sessions are live. Class recordings are not provided." },
-    { title: "Support & follow-up learning", body: "Support and follow-up learning are part of the mentorship. Details are shared at enrolment." },
-  ],
-  cta: "WhatsApp Enquiry",
-};
-
-/**
- * Fee. Keep `null` until the owner confirms a current fee.
- * When set (e.g. { amount: 23000, currency: "INR" }) the UI shows it automatically.
- */
-export const pricing: { currentFee: { amount: number; currency: "INR" } | null; note: string } = {
-  currentFee: null,
-  note: "Fee and batch details are confirmed directly with LiquidityX.",
-};
-
-export type EventCategory = "Masterclass" | "Event" | "Special Session";
-export type EventStatus = "upcoming" | "past";
-export type LXEvent = {
-  slug: string;
-  title: string;
-  category: EventCategory;
-  status: EventStatus;
-  /** ISO date, e.g. "2026-11-14" */
-  date: string;
-  /** Display time, e.g. "7:00 PM IST" */
-  time: string;
-  summary: string;
-  body?: string[];
-  location?: string;
-};
-
-/**
- * Owner-published events only. Leave empty until real events are confirmed —
- * the Events page renders a designed empty state.
- *
- * Example shape:
- * { slug: "order-flow-masterclass", title: "Order Flow Masterclass", category: "Masterclass",
- *   status: "upcoming", date: "2026-11-14", time: "7:00 PM IST", summary: "…" }
- */
-export const events: LXEvent[] = [];
 
 export type FaqItem = { q: string; a: string };
 
 export const faq: FaqItem[] = [
-  { q: "Are class recordings available?", a: "No. Classes are held live and class recordings are not provided." },
-  { q: "How are the classes conducted?", a: "Live weekday classes over Google Meet or Discord. Instruction is in Tamil." },
-  { q: "How long is the mentorship?", a: "The mentorship runs for 15 days of live classes." },
-  { q: "Which markets are taught?", a: "Forex and Futures." },
-  { q: "Can I learn both Forex and Futures?", a: "Yes. The mentorship covers both Forex and Futures." },
   {
-    q: "Is the mentorship beginner-friendly?",
-    a: "The curriculum starts with Market Foundations — how markets work and auction basics — and builds step by step to Order Flow, Strategy and Risk. Message us on WhatsApp to check whether the current batch suits your experience.",
+    q: "What is the course structure?",
+    a: "A structured 15-day curriculum taught directly by Vignesh. The curriculum has six modules — Market Foundations, Market Profile, Volume Profiles, Order Flow, Strategy Application and Risk & Review. The six modules are not six classes; they are spread across the 15 teaching days.",
   },
-  { q: "How do I enrol?", a: "Message LiquidityX on WhatsApp. Current batch, fee and enrolment details are shared directly." },
+  {
+    q: "When are the classes and what time do they start?",
+    a: "Classes run Monday to Saturday and start at 8:30 PM IST (the session runs until about 9:45 PM IST). Sunday is a holiday. Classes are held on Google Meet and Discord.",
+  },
+  {
+    q: "When does the next batch start?",
+    a: "A new batch starts on the 25th of every month. If the 25th is a Sunday, it starts on Monday the 26th. Registration stays open until the batch starts at 8:30 PM IST; after that, new registrations move to the following month's batch. The exact upcoming date is shown on the Schedule page.",
+  },
+  {
+    q: "What is the fee?",
+    a: "The course fee is ₹23,000, paid in full in a single transaction. Instalments are not available.",
+  },
+  { q: "What language are classes taught in?", a: "Classes are taught in Tamil. This website is in English." },
+  { q: "Which markets are taught?", a: "Forex, Futures and Indian markets." },
+  {
+    q: "Is the course beginner-friendly?",
+    a: "Yes. Prior trading experience is not required. The minimum enrolment age is 18, and you need a laptop or desktop to attend.",
+  },
+  {
+    q: "Are class recordings available?",
+    a: "No. Recordings are not provided. If you miss a class, you can request a short explanation of the missed lesson.",
+  },
+  {
+    q: "What if I can't attend my batch, or I want to repeat the course?",
+    a: "A paid student who cannot attend can transfer to the next batch. Separately, each student gets one free repeat of the full 15-day course in the next batch — once per student, not indefinitely.",
+  },
+  { q: "Is there a refund policy?", a: "No refunds. Please read the enrolment terms before you pay." },
+  {
+    q: "What do I receive with the course?",
+    a: "Custom indicators, GEX data and LiquidityX workspaces are shared during classes, with lifetime access to the supplied items. Course notes and learning materials are shared through Discord. The fee also includes one T-shirt and one printed Course Completion Certificate.",
+  },
+  {
+    q: "Do you provide trading software or subscriptions?",
+    a: "No. LiquidityX Academy provides education, not third-party software or software subscriptions. The mentor mainly uses ATAS and Deepcharts, and tools vary according to teaching needs.",
+  },
+  {
+    q: "What support do I get after the course?",
+    a: "Lifetime doubt-clearing support is available on WhatsApp, Discord and Telegram. Additional live trading sessions are occasional and depend on the mentor's availability — they are not a guaranteed or scheduled benefit.",
+  },
+  {
+    q: "Can I enrol from outside India?",
+    a: "Yes, international students may enrol and provide an Indian delivery address. The T-shirt and certificate are delivered within India only.",
+  },
+  {
+    q: "When do I get the T-shirt and the certificate?",
+    a: "The T-shirt is sent during the course and the certificate after the 15-day course ends.",
+  },
+  {
+    q: "How do I enrol?",
+    a: "Message us on WhatsApp and we will guide you through enrolment for the upcoming batch.",
+  },
   {
     q: "How do I contact LiquidityX?",
-    a: "WhatsApp / Phone: +91 88700 01201 · Email: liquidityx11.11@gmail.com · Instagram: liquidityx_ · Telegram: liquidityX11",
+    a: "Message us on WhatsApp at +91 88700 01201 for a quick response (messages only — we do not take calls). You can also email liquidityx11.11@gmail.com or find us on Instagram, Telegram and YouTube.",
   },
 ];
 
-export type MarketGroup = "global" | "india" | "forex" | "commodities" | "crypto";
+export type MarketGroup = "global" | "india" | "forex" | "commodities";
 
 export type Instrument = {
   symbol: string;
@@ -279,18 +327,17 @@ export type Instrument = {
 export const marketConfig = {
   refreshMs: 60_000,
   groups: [
-    { id: "global", label: "Global Indices" },
     { id: "india", label: "Indian Markets" },
+    { id: "global", label: "Global Indices" },
     { id: "forex", label: "Forex" },
     { id: "commodities", label: "Commodities" },
-    { id: "crypto", label: "Crypto" },
   ] as { id: MarketGroup; label: string }[],
   /** Market Pulse cards on the home page. */
   pulse: [
-    { id: "indices", label: "Indices", symbols: ["NIFTY 50", "NASDAQ"] },
+    { id: "india", label: "Indian markets", symbols: ["NIFTY 50", "BANK NIFTY"] },
+    { id: "global", label: "Global indices", symbols: ["NASDAQ", "S&P 500"] },
+    { id: "forex", label: "Forex", symbols: ["EUR/USD", "USD/INR"] },
     { id: "commodities", label: "Commodities", symbols: ["GOLD"] },
-    { id: "forex", label: "Forex", symbols: ["USD/INR"] },
-    { id: "crypto", label: "Crypto", symbols: ["BTC/USD"] },
   ],
   instruments: [
     { symbol: "NIFTY 50", name: "Nifty 50", group: "india", providerSymbol: "NIFTY", demoBase: 25000, decimals: 2 },
@@ -302,19 +349,13 @@ export const marketConfig = {
     { symbol: "GOLD", name: "Gold Spot", group: "commodities", providerSymbol: "XAU/USD", demoBase: 2600, decimals: 2 },
     { symbol: "USD/INR", name: "US Dollar / Indian Rupee", group: "forex", providerSymbol: "USD/INR", demoBase: 85, decimals: 4 },
     { symbol: "EUR/USD", name: "Euro / US Dollar", group: "forex", providerSymbol: "EUR/USD", demoBase: 1.08, decimals: 5 },
-    { symbol: "BTC/USD", name: "Bitcoin / US Dollar", group: "crypto", providerSymbol: "BTC/USD", demoBase: 90000, decimals: 2 },
   ] as Instrument[],
-  tickerSymbols: ["NIFTY 50", "BANK NIFTY", "SENSEX", "NASDAQ", "S&P 500", "DOW JONES", "GOLD", "USD/INR", "BTC/USD"],
+  tickerSymbols: ["NIFTY 50", "BANK NIFTY", "SENSEX", "NASDAQ", "S&P 500", "DOW JONES", "GOLD", "USD/INR", "EUR/USD"],
   disclaimer: "Market data is for informational/educational purposes only.",
 };
 
 export const legal = {
-  /** Pending owner confirmation — rendered as visible placeholders on legal pages. */
-  entityName: null as string | null,
-  registeredAddress: null as string | null,
-  governingJurisdiction: null as string | null,
-  lastUpdated: "2026-10-05",
-  reviewNotice: "Requires owner/legal review before publication.",
+  lastUpdated: "2026-10-10",
 };
 
 export const insightCategories = [
@@ -330,114 +371,22 @@ export const insightCategories = [
 
 export type InsightCategory = (typeof insightCategories)[number];
 
-/* ───────────────────────── Classes ───────────────────────── */
-
-/**
- * The live class sessions that make up each batch (one per curriculum module).
- * Batch dates are NOT invented: set `upcomingBatch.startDate` (ISO) once confirmed
- * and the site shows the date; until then it shows "Dates announced on WhatsApp".
- */
-export const upcomingBatch: {
-  name: string;
-  startDate: string | null;
-  schedule: string;
-  platform: string;
-  language: string;
-  seats: string | null;
-} = {
-  name: "Next mentorship batch",
-  startDate: null,
-  schedule: "Weekday live classes",
-  platform: "Google Meet or Discord",
-  language: "Taught in Tamil",
-  seats: null,
-};
-
-export type ClassSession = {
-  slug: string;
-  index: string;
-  title: string;
-  summary: string;
-  outcome: string;
-  topics: string[];
-  level: "Foundation" | "Core" | "Applied";
-};
-
-export const classSessions: ClassSession[] = [
-  {
-    slug: "market-foundations",
-    index: "01",
-    title: "Market Foundations",
-    summary: "How markets work, from the auction up.",
-    outcome: "Describe what buyers and sellers are doing and whether the market is in balance or imbalance.",
-    topics: curriculum[0].topics,
-    level: "Foundation",
-  },
-  {
-    slug: "market-profile",
-    index: "02",
-    title: "Market Profile",
-    summary: "Market structure, value and context.",
-    outcome: "Read where the market found value and use it as context for every decision.",
-    topics: curriculum[1].topics,
-    level: "Core",
-  },
-  {
-    slug: "volume-profiles",
-    index: "03",
-    title: "Volume Profiles",
-    summary: "Eight profile tools, read in context.",
-    outcome: "Choose the right volume-profile window for the question you are asking.",
-    topics: curriculum[2].topics,
-    level: "Core",
-  },
-  {
-    slug: "order-flow",
-    index: "04",
-    title: "Order Flow",
-    summary: "Order-flow reading with practical examples.",
-    outcome: "Recognise aggression and absorption and read them against structure.",
-    topics: curriculum[3].topics,
-    level: "Core",
-  },
-  {
-    slug: "strategy-application",
-    index: "05",
-    title: "Strategy Application",
-    summary: "11 named strategies and setups.",
-    outcome: "Apply the 11 strategies in context, with rules taught live in class.",
-    topics: curriculum[4].topics,
-    level: "Applied",
-  },
-  {
-    slug: "risk-and-review",
-    index: "06",
-    title: "Risk & Review",
-    summary: "Protect capital. Review. Keep learning.",
-    outcome: "Size positions from risk, protect capital and review every trade.",
-    topics: curriculum[5].topics,
-    level: "Applied",
-  },
-];
-
 /* ───────────────────────── Student reviews ───────────────────────── */
 
 /**
- * REAL student reviews only — add them here with the student's permission.
- * Never invent reviews. While this list is empty the Reviews section shows a
- * designed "share your experience" state instead of fake quotes.
+ * REAL student reviews only — WhatsApp screenshots supplied by the owner, who
+ * confirms permission to publish. Before adding one: crop/hide phone numbers
+ * and profile photos, keep only the review text and any permitted display name,
+ * and never change its meaning. While this list is empty the Reviews section is
+ * not rendered at all. Never invent reviews, ratings or student counts.
  */
 export type Testimonial = {
-  name: string;
-  /** e.g. "Batch 2026 · Futures" */
-  detail?: string;
+  /** Permitted display name only (no phone number). */
+  name?: string;
+  /** Review text — used as the accessible alt text for the screenshot. */
   quote: string;
-  /** optional 1–5; omit if the student did not give a rating */
-  rating?: number;
-  /** optional path to an owner-supplied photo in /public */
-  photo?: string;
-  /** where the review was originally posted, e.g. an Instagram URL */
-  source?: string;
+  /** Path (in /public) to the cleaned screenshot — numbers and photos hidden. */
+  image?: string;
 };
 
 export const testimonials: Testimonial[] = [];
@@ -462,15 +411,14 @@ export const site = {
   socialLinks,
   whatsapp,
   navigation,
-  strategies,
+  strategyInfo,
   curriculum,
-  events,
+  schedule,
   faq,
   marketConfig,
   legal,
   pricing,
-  upcomingBatch,
-  classSessions,
+  enrolment,
   testimonials,
   marketing,
 };

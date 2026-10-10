@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { chatGreeting, type ChatAction } from "@/config/chatKnowledgeBase";
+import { answerOf, chatGreeting, type ChatAction } from "@/config/chatKnowledgeBase";
 import { entryById, matchLocal, type ChatReply } from "@/lib/chat/engine";
-import { LXLogo } from "@/components/brand/LXLogo";
-import { Close, Send, WhatsApp } from "@/components/ui/Icons";
+import { Chat, Close, Send, WhatsApp } from "@/components/ui/Icons";
 import { cn } from "@/lib/cn";
 import { QuickQuestions } from "./QuickQuestions";
 
@@ -71,7 +70,7 @@ export function LiquidityChatbot() {
     const started = Date.now();
     let reply: ChatReply;
     const preset = presetId ? entryById(presetId) : null;
-    if (preset) reply = { text: preset.answer, actions: preset.actions ?? [], matchedId: preset.id, source: "local" };
+    if (preset) reply = { text: answerOf(preset), actions: preset.actions ?? [], matchedId: preset.id, source: "local" };
     else reply = await ask(text, messages);
     const wait = Math.max(0, 450 - (Date.now() - started));
     setTimeout(() => {
@@ -99,7 +98,7 @@ export function LiquidityChatbot() {
           aria-expanded={open}
           aria-controls={panelId}
           aria-label={open ? "Close LiquidityX Assistant" : "Ask LiquidityX — open assistant"}
-          className="group peer relative grid size-14 place-items-center rounded-full border border-gold-400/40 bg-[radial-gradient(circle_at_30%_25%,#1b2029,#07090d_70%)] shadow-[0_20px_60px_-15px_rgba(214,174,99,0.45)] transition-transform duration-500 ease-[var(--ease-expo)] hover:scale-105"
+          className="group peer relative grid size-14 place-items-center rounded-full border border-gold-400/40 bg-[radial-gradient(circle_at_30%_25%,#1b2029,#07090d_70%)] shadow-[0_20px_60px_-15px_rgba(139,92,246,0.45)] transition-transform duration-500 ease-[var(--ease-expo)] hover:scale-105"
         >
           {!open && (
             <>
@@ -114,7 +113,7 @@ export function LiquidityChatbot() {
               </motion.span>
             ) : (
               <motion.span key="lx" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.6, opacity: 0 }}>
-                <LXLogo size={30} framed={false} interactive={false} title="" />
+                <Chat size={26} className="text-gold-200" />
               </motion.span>
             )}
           </AnimatePresence>
@@ -145,7 +144,7 @@ export function LiquidityChatbot() {
           >
             <div className="relative flex items-center gap-3 border-b border-white/[0.07] px-5 py-4">
               <div className="grid size-10 place-items-center rounded-full border border-gold-400/30 bg-ink">
-                <LXLogo size={24} framed={false} interactive={false} title="" />
+                <Chat size={20} className="text-gold-200" />
               </div>
               <div className="min-w-0">
                 <p className="font-display text-[0.95rem] font-medium text-bone">LiquidityX Assistant</p>
@@ -236,7 +235,7 @@ export function LiquidityChatbot() {
                 <Send size={17} />
               </button>
             </form>
-            <p className="px-5 pb-3 text-[0.62rem] leading-snug text-smoke">Automated answers from LiquidityX website content. Educational only — not financial advice.</p>
+            <p className="px-5 pb-3 text-[0.62rem] leading-snug text-smoke">Automated answers from approved LiquidityX course information. For anything else, message us on WhatsApp. Educational only — not financial advice.</p>
           </motion.div>
         )}
       </AnimatePresence>

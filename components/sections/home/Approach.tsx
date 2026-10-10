@@ -31,8 +31,8 @@ export function Approach() {
     <MotionSection className="relative py-20 md:py-28" aria-label="How LiquidityX approaches the market">
       <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:h-fit">
-          <SectionTitle eyebrow="Our approach" title={["Read the market.", "Understand the structure."]} accentLine={1} size="md" />
-          <div className="relative mt-10 hidden aspect-[5/3] overflow-hidden rounded-[22px] border border-white/[0.08] bg-[radial-gradient(100%_80%_at_50%_100%,rgba(255,122,26,0.18),transparent_60%),#0a0a0b] p-8 lg:block">
+          <SectionTitle eyebrow="Our approach" title={["Context before", "every decision."]} accentLine={1} size="md" />
+          <div className="relative mt-10 hidden aspect-[5/3] overflow-hidden rounded-[22px] border border-white/[0.08] bg-[radial-gradient(100%_80%_at_50%_100%,rgba(82,120,255,0.18),transparent_60%),#0a0a0b] p-8 lg:block">
             {approachLayers.map((l, i) => (
               <div key={l.id} className={cn("absolute inset-8 transition-all duration-700 ease-[var(--ease-expo)]", i === active ? "scale-100 opacity-100 blur-0" : "scale-95 opacity-0 blur-md")}>
                 <LayerGlyph id={l.id} className="h-full w-full" />
@@ -49,7 +49,7 @@ export function Approach() {
               data-layer
               className={cn(
                 "rounded-[22px] border p-6 transition-all duration-700 ease-[var(--ease-expo)] sm:p-8",
-                i === active ? "border-gold-500/40 bg-gold-500/[0.06] shadow-[0_20px_60px_-30px_rgba(255,122,26,0.6)]" : "border-white/[0.07] bg-white/[0.02]",
+                i === active ? "border-gold-500/40 bg-gold-500/[0.06] shadow-[0_20px_60px_-30px_rgba(82,120,255,0.6)]" : "border-white/[0.07] bg-white/[0.02]",
               )}
             >
               <div className="flex items-start gap-5">

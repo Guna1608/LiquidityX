@@ -33,7 +33,7 @@ export function SectionTitle({
     <div className={cn(align === "center" && "mx-auto text-center", className)}>
       <div className={cn("flex", align === "center" && "justify-center")} data-reveal="blur">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[12px] font-medium text-mist">
-          <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_8px_#ff7a1a]" />
+          <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_8px_#5278ff]" />
           {index && <span className="text-smoke">{index}</span>}
           {eyebrow}
         </span>

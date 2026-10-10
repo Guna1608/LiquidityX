@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { LayoutGroup, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { navigation, whatsapp } from "@/config/site";
-import { LXLogo } from "@/components/brand/LXLogo";
+import { Wordmark } from "@/components/brand/Wordmark";
 import { Button } from "@/components/ui/Button";
 import { WhatsApp } from "@/components/ui/Icons";
 import { cn } from "@/lib/cn";
@@ -49,10 +49,7 @@ export function Header() {
           )}
         >
           <Link href="/" aria-label="LiquidityX Academy — Home" className="relative z-[2] flex shrink-0 items-center gap-2.5">
-            <LXLogo size={28} />
-            <span className="text-[15px] font-bold tracking-tight text-bone">
-              LiquidityX<span className="hidden font-medium text-mist xs:inline"> Academy</span>
-            </span>
+            <Wordmark compact className="text-[16px]" />
           </Link>
 
           <LayoutGroup id="nav">
@@ -88,7 +85,7 @@ export function Header() {
 
           <div className="relative z-[2] flex items-center gap-2">
             <Button href={whatsapp.url()} size="sm" icon={<WhatsApp size={15} />} iconPosition="start" className="hidden sm:inline-flex">
-              Chat on WhatsApp
+              Message us on WhatsApp
             </Button>
             <button
               type="button"

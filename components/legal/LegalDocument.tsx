@@ -10,22 +10,17 @@ export function LegalDocument({
   title,
   intro,
   sections,
-  requiresReview = true,
 }: {
   eyebrow: string;
   title: string[];
   intro: string;
   sections: LegalSection[];
-  requiresReview?: boolean;
 }) {
   return (
     <>
       <PageHero eyebrow={eyebrow} title={title} intro={<p>{intro}</p>}>
         <div className="flex flex-wrap gap-3 text-[12px] font-medium text-smoke">
           <span>Last updated · {legal.lastUpdated}</span>
-          {requiresReview && (
-            <span className="rounded-full border border-gold-500/50 bg-gold-600/15 px-3 py-1 text-gold-100">{legal.reviewNotice}</span>
-          )}
         </div>
       </PageHero>
 
@@ -54,11 +49,6 @@ export function LegalDocument({
                   <span className="font-mono text-xs text-gold-300">{String(i + 1).padStart(2, "0")}</span>
                   {s.title}
                 </h2>
-                {s.review && (
-                  <p className="mt-4 rounded-xl border border-gold-500/40 bg-gold-600/10 px-4 py-3 text-sm text-gold-100">
-                    <strong className="font-medium">Owner / legal review required:</strong> {s.review}
-                  </p>
-                )}
                 <div className="mt-5 space-y-4 text-[0.98rem] leading-relaxed text-mist">
                   {s.body.map((b, j) =>
                     typeof b === "string" ? (

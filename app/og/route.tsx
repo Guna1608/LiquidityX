@@ -16,9 +16,9 @@ const CANDLES = [
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const title = (searchParams.get("title") || "Understand the market. Trade with clarity.").slice(0, 110);
+  const title = (searchParams.get("title") || "Go Beyond Price. Understand the Market.").slice(0, 110);
   const eyebrow = (searchParams.get("eyebrow") || "LiquidityX Academy").slice(0, 60);
-  const subtitle = (searchParams.get("subtitle") || "15-day live Forex & Futures mentorship").slice(0, 120);
+  const subtitle = (searchParams.get("subtitle") || "15-day curriculum · Taught in Tamil").slice(0, 120);
 
   const [medium, black] = await Promise.all([
     readFile(join(process.cwd(), "app/og/Satoshi-500.ttf")),
@@ -28,7 +28,7 @@ export async function GET(req: Request) {
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#050505", color: "#f5f5f4", fontFamily: "Satoshi", padding: 72 }}>
-        <div style={{ position: "absolute", left: -200, bottom: -420, width: 900, height: 900, borderRadius: 9999, background: "radial-gradient(closest-side, rgba(255,122,26,0.55), transparent)", display: "flex" }} />
+        <div style={{ position: "absolute", left: -200, bottom: -420, width: 900, height: 900, borderRadius: 9999, background: "radial-gradient(closest-side, rgba(82,120,255,0.55), transparent)", display: "flex" }} />
         <div style={{ position: "absolute", inset: 0, display: "flex", backgroundImage: "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)", backgroundSize: "64px 64px" }} />
 
         {/* candles */}
@@ -43,17 +43,12 @@ export async function GET(req: Request) {
 
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "64%", position: "relative" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-            <svg width="56" height="56" viewBox="0 0 64 64">
-              <path d="M6 16V6H16M48 6H58V16M58 48V58H48M16 58H6V48" fill="none" stroke="#ffbd7d" strokeOpacity="0.7" strokeWidth="2" />
-              <path d="M18 16V46H30M30 16L46 46M46 16L30 46" fill="none" stroke="#ff9d4a" strokeWidth="4" />
-              <circle cx="38" cy="31" r="2.6" fill="#fff3e6" />
-            </svg>
             <div style={{ display: "flex", fontSize: 30, fontWeight: 900, letterSpacing: -0.5 }}>
               LiquidityX<span style={{ color: "#a3a3a8", fontWeight: 500, marginLeft: 8 }}>Academy</span>
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", alignSelf: "flex-start", padding: "8px 18px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.05)", fontSize: 22, color: "#ffbd7d", fontWeight: 500 }}>
+            <div style={{ display: "flex", alignSelf: "flex-start", padding: "8px 18px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.05)", fontSize: 22, color: "#a9b8ff", fontWeight: 500 }}>
               {eyebrow}
             </div>
             <div style={{ display: "flex", marginTop: 26, fontSize: title.length > 50 ? 64 : 78, fontWeight: 900, lineHeight: 1.0, letterSpacing: -3 }}>{title}</div>

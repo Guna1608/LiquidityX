@@ -17,12 +17,12 @@ export function MentorSpotlight() {
               <PortraitFrame className="mx-auto max-w-sm" />
             </div>
             <div>
-              <SectionTitle eyebrow={mentor.role} title={["Meet Vignesh."]} size="lg" intro={<p>{mentor.summary}</p>} />
+              <SectionTitle eyebrow={mentor.role} title={["Meet", "Vignesh."]} accentLine={1} size="lg" intro={<p>{mentor.summary}</p>} />
               <dl className="mt-10 grid gap-3 sm:grid-cols-3" data-reveal-group="0.08">
                 {[
-                  ["Teaches", "Personally, live"],
-                  ["Language", "Tamil"],
-                  ["Focus", "Structure & process"],
+                  ["Trading experience", mentor.tradingExperience],
+                  ["Teaching experience", mentor.teachingExperience],
+                  ["Teaches in", "Tamil"],
                 ].map(([k, v]) => (
                   <div key={k} data-reveal="rise" className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4">
                     <dt className="text-xs text-smoke">{k}</dt>

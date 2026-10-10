@@ -8,7 +8,7 @@ export function DataModeBadge({ mode, provider, className }: { mode: DataMode | 
   if (mode === "demo")
     return (
       <Badge tone="warning" className={className}>
-        {modeLabel.demo} · simulated, not live
+        {modeLabel.demo}
       </Badge>
     );
   if (mode === "delayed")

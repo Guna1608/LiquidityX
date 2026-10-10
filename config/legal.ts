@@ -1,29 +1,30 @@
-import { contact, legal, socialLinks } from "./site";
+import { contact, socialLinks } from "./site";
 
 /**
- * Legal copy. Drafted for LiquidityX — NOT reviewed by a lawyer.
- * Every document is marked "Requires owner/legal review before publication".
- * Pending business details render as visible [placeholders].
+ * Legal copy for LiquidityX Academy.
+ *
+ * OPEN ITEMS (tracked in docs/PROJECT_BRIEF.md, deliberately NOT shown on the site):
+ *  - The owner has not approved publishing a legal business name, GST details or
+ *    a postal address, so none appear here. The operator is described only as
+ *    "LiquidityX Academy". Do not invent an alternative legal entity.
+ *  - Final Terms / Privacy / Risk wording, governing law, tax and invoice wording,
+ *    and any Academy-initiated cancellation or exception policy are still to be
+ *    confirmed. These documents must be finalised before the paid-enrolment site
+ *    is treated as ready.
  */
 export type LegalSection = {
   id: string;
   title: string;
   body: (string | { list: string[] })[];
-  /** Shown as a highlighted review note on the section. */
-  review?: string;
 };
 
-const entity = legal.entityName ?? "[Legal entity name — pending owner confirmation]";
-const address = legal.registeredAddress ?? "[Registered address — pending owner confirmation]";
-const jurisdiction = legal.governingJurisdiction ?? "[Governing law & jurisdiction — pending legal review]";
-const enrolmentPolicy = "Subject to the applicable policy communicated by LiquidityX at the time of enrolment.";
+const operator = "LiquidityX Academy";
 
 const contactBlock = {
   list: [
     `Email: ${contact.email}`,
-    `WhatsApp / Phone: ${contact.phoneDisplay}`,
-    `Instagram: ${socialLinks.instagram.handle} · Telegram: ${socialLinks.telegram.handle}`,
-    `Postal address: ${address}`,
+    `WhatsApp (messages only): ${contact.whatsappDisplay}`,
+    `Instagram: ${socialLinks.instagram.handle} · Telegram: ${socialLinks.telegram.handle} · YouTube: ${socialLinks.youtube.handle}`,
   ],
 };
 
@@ -32,104 +33,141 @@ export const privacyPolicy: LegalSection[] = [
     id: "overview",
     title: "Overview",
     body: [
-      `This Privacy Policy explains how ${entity} ("LiquidityX", "we", "us") handles information when you visit this website or contact us about LiquidityX Academy. This website is a public information site; it does not offer user accounts, logins or online payments.`,
+      `This Privacy Policy explains how ${operator} ("LiquidityX", "we", "us") handles information when you visit this website, chat with the website assistant, contact us or enrol in the course. It covers payments, registration, delivery details, analytics and chatbot storage.`,
     ],
   },
   {
     id: "information-collected",
     title: "Information we collect",
     body: [
-      "We collect only the information needed to respond to you and to operate the website:",
+      "We collect only the information needed to run the website and the course:",
       {
         list: [
-          "Information you choose to send us — for example your name, phone number, email address and the content of your message.",
-          "Technical information sent automatically by your browser, such as IP address, device and browser type, and pages visited, which may appear in standard server logs.",
-          "Analytics information, only if analytics are enabled (see below).",
+          "Enquiries — the details you choose to send us, such as your name, WhatsApp number, email address and message.",
+          "Payment information — when you pay for the course, the payment is processed by a third-party payment gateway. We receive the payment reference, amount and status. We do not receive or store your card, UPI PIN or net-banking credentials.",
+          "Registration details (after a successful payment) — your full name, the name as it should appear on your certificate, WhatsApp number with country code, email address, full delivery address, city, state, PIN code and T-shirt size.",
+          "Assistant conversations — the questions you type into the website assistant and its answers.",
+          "Visitor analytics — which pages are visited and how often (see below).",
+          "Technical information sent automatically by your browser, such as IP address, device and browser type, which may appear in standard server logs.",
         ],
       },
     ],
   },
   {
-    id: "contact-information",
-    title: "Contact information",
+    id: "how-we-use",
+    title: "How we use information",
     body: [
-      "When you contact us by email, phone, Instagram or Telegram, we receive the details you provide and use them to reply, to share information about the mentorship you asked for, and to keep a record of our conversation.",
+      {
+        list: [
+          "To answer your enquiries and provide course information.",
+          "To confirm your payment and associate your registration with the batch you purchased.",
+          "To deliver the T-shirt and Course Completion Certificate included in the course fee (delivery is within India only).",
+          "To provide course access details, class links, materials and support.",
+          "To improve the website, using aggregate analytics.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "payments",
+    title: "Payments",
+    body: [
+      "Course fees are paid in a single transaction through a third-party payment gateway. The gateway processes your payment under its own terms and privacy policy. We verify the payment result on our server and keep a record of the payment reference and the amount you actually paid.",
+    ],
+  },
+  {
+    id: "registration-delivery",
+    title: "Registration and delivery details",
+    body: [
+      "After a successful payment you are asked to complete a registration form. This information is stored in our administration system, which only the owner can access. We may share your name, address, PIN code and contact number with a courier or delivery partner solely so that your T-shirt and certificate can be delivered. If you pay but do not finish the form, you can complete it later through a private registration link.",
     ],
   },
   {
     id: "whatsapp",
-    title: "WhatsApp enquiries",
+    title: "WhatsApp, Discord and Telegram",
     body: [
-      "WhatsApp buttons on this site open WhatsApp with a pre-filled message to our business number. Nothing is sent until you press send in WhatsApp. Messages are handled by WhatsApp (Meta Platforms) under its own terms and privacy policy, and we receive your WhatsApp name, number and message.",
+      "WhatsApp buttons on this site open WhatsApp with a pre-filled message to our business number. Nothing is sent until you press send in WhatsApp. Messages are handled by WhatsApp (Meta Platforms) under its own terms and privacy policy. We also support students on Discord and Telegram, which operate under their own policies.",
     ],
   },
   {
     id: "analytics",
     title: "Website analytics",
-    review: "Confirm whether an analytics tool is used and, if so, name it here.",
     body: [
-      "If we enable website analytics, we use it to understand aggregate usage — such as which pages are visited — so that we can improve the site. We do not use analytics to identify you personally. This section will name the analytics provider if one is enabled.",
+      "We use visitor analytics to see aggregate usage — the number of visits and the most popular pages — so that we can improve the site. Analytics are not used to identify you personally.",
     ],
   },
   {
     id: "cookies",
     title: "Cookies and local storage",
     body: [
-      "The website uses your browser's session storage to remember that you have already seen the intro animation during a visit. It does not set advertising cookies. If analytics or other third-party tools are enabled in future, they may set their own cookies, and this policy will be updated.",
+      "The website uses your browser's session storage to remember that you have already seen the intro animation during a visit. It does not set advertising cookies. Analytics tools may set their own cookies where permitted by your choices.",
     ],
   },
   {
     id: "market-data",
-    title: "Market-data integrations",
+    title: "Market-data displays",
     body: [
-      "Market prices shown on the site may be requested from a third-party market-data provider by our server. These requests do not include your personal information. When no provider is configured, the site shows clearly labelled demonstration data generated on our server.",
+      "Market prices shown on the site may come from a third-party provider (and may be delayed) or may be clearly labelled simulated data. Requests for market data are made by our server and do not include your personal information.",
     ],
   },
   {
     id: "chatbot",
-    title: "Chatbot interactions",
+    title: "Website assistant conversations",
     body: [
-      "The LiquidityX Assistant answers questions from website content. Questions you type are processed to find an answer and are not used to build a profile of you. The current assistant does not send your messages to an external AI service. If an external AI provider is added in future, this policy will be updated before it is enabled.",
+      "The website assistant answers questions from approved course information. Conversations with the assistant are saved for 30 days and then deleted automatically. The owner can view saved conversations during that period to improve answers and follow up on unanswered enquiries. Please do not type sensitive personal information into the assistant. The assistant does not send your messages to an external AI service.",
     ],
-    review: "Confirm whether chatbot messages are logged on the server and for how long.",
   },
   {
     id: "third-parties",
     title: "Third-party services",
     body: [
-      "We rely on third parties to operate parts of this site and our communications, which may include:",
-      { list: ["Website hosting and content delivery", "WhatsApp, Instagram and Telegram for messaging", "Email providers", "Market-data providers (if configured)", "Google Meet or Discord for live classes"] },
+      "We rely on third parties to operate parts of this site and the course, which may include:",
+      {
+        list: [
+          "Website hosting and content delivery",
+          "A payment gateway for course fees",
+          "A visitor-analytics provider",
+          "A courier or delivery partner for the T-shirt and certificate",
+          "WhatsApp, Instagram, Telegram, YouTube and Discord for communication and community",
+          "Google Meet and Discord for live classes",
+          "Market-data providers (if configured)",
+        ],
+      },
       "These services process information under their own privacy policies. Links to external sites are provided for convenience; we are not responsible for their content or practices.",
     ],
   },
   {
     id: "retention",
-    title: "Data retention",
-    review: "Specify retention periods for enquiries and student records.",
+    title: "How long we keep information",
     body: [
-      "We keep enquiry information only for as long as needed to respond to you and for reasonable record-keeping, after which it is deleted or anonymised.",
+      {
+        list: [
+          "Assistant conversations are kept for 30 days and then deleted automatically.",
+          "Student registration details, payment references and delivery details are kept for as long as needed to deliver your certificate, provide lifetime support and course access, maintain our records and meet legal and accounting obligations. They are not subject to the 30-day assistant retention.",
+          "Enquiry messages are kept for as long as needed to respond to you and for reasonable record-keeping.",
+        ],
+      },
     ],
   },
   {
     id: "security",
     title: "Security",
     body: [
-      "We take reasonable measures to protect information we hold. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.",
+      "Student data is stored in an owner-only administration area and payments are verified on the server. We take reasonable measures to protect information we hold. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.",
     ],
   },
   {
     id: "children",
     title: "Children's privacy",
     body: [
-      "This website and the mentorship are intended for adults. We do not knowingly collect personal information from children. If you believe a child has sent us personal information, please contact us and we will delete it.",
+      "The course is for adults: the minimum enrolment age is 18. We do not knowingly collect personal information from anyone under 18. If you believe a minor has sent us personal information, please contact us and we will delete it.",
     ],
-    review: "Confirm the minimum age for enrolment.",
   },
   {
     id: "rights",
     title: "Your rights",
     body: [
-      "Depending on applicable law, you may ask us to access, correct or delete personal information we hold about you, or to stop contacting you. To make a request, contact us using the details below.",
+      "Depending on applicable law, you may ask us to access, correct or delete personal information we hold about you, or to stop contacting you. To make a request, contact us using the details below. Corrections to registration details can be handled by us on request.",
     ],
   },
   {
@@ -145,7 +183,7 @@ export const termsAndConditions: LegalSection[] = [
     id: "acceptance",
     title: "Website usage",
     body: [
-      `These Terms & Conditions govern your use of this website, operated by ${entity}. By using the website you agree to these terms. If you do not agree, please do not use the website.`,
+      `These Terms & Conditions govern your use of this website and your enrolment in the course offered by ${operator}. By using the website or paying for the course you agree to these terms. If you do not agree, please do not use the website or enrol.`,
       "You agree not to misuse the website, attempt to disrupt it, or copy its content except as permitted below.",
     ],
   },
@@ -153,66 +191,121 @@ export const termsAndConditions: LegalSection[] = [
     id: "educational-content",
     title: "Educational content",
     body: [
-      "All content on this website — including articles, strategy names, market visuals and chatbot answers — is provided for general educational and informational purposes only. It is not financial, investment, legal or tax advice, and it does not take into account your personal circumstances.",
-      "Articles marked \"Draft / Demo\" are placeholders and have not yet been reviewed by LiquidityX.",
+      "All content on this website — including articles, curriculum descriptions, market visuals and assistant answers — is provided for general educational and informational purposes only. It is not financial, investment, legal or tax advice, and it does not take into account your personal circumstances.",
     ],
   },
   {
-    id: "mentorship",
-    title: "Mentorship information",
+    id: "course",
+    title: "The course",
     body: [
-      "The website describes the LiquidityX 15-day live mentorship (Tamil instruction, Forex and Futures, weekday live classes via Google Meet or Discord, no class recordings). Final details of any batch — including schedule, content and support — are confirmed directly by LiquidityX at the time of enrolment and may change.",
+      "The course is a structured 15-day curriculum taught directly by the mentor in Tamil, on Google Meet and Discord. Classes run Monday to Saturday; Sunday is a holiday. Each class starts at 8:30 PM IST and the session runs until about 9:45 PM IST. The curriculum has six modules, which are covered across the 15 teaching days.",
+      "The course is beginner-friendly and prior trading experience is not required. A laptop or desktop is required to attend.",
     ],
   },
-  { id: "enrolment", title: "Enrolment", body: ["Enrolment is arranged directly with LiquidityX, currently through WhatsApp. This website does not process enrolments or payments.", enrolmentPolicy] },
-  { id: "fees", title: "Fees", body: ["Fees are confirmed directly by LiquidityX. Any fee shown on this website is for information and is confirmed at enrolment.", enrolmentPolicy] },
+  {
+    id: "eligibility",
+    title: "Eligibility",
+    body: [
+      "The minimum enrolment age is 18. International students may enrol and provide an Indian delivery address; delivery of the T-shirt and certificate is within India only.",
+    ],
+  },
+  {
+    id: "batches",
+    title: "Batches and registration cut-off",
+    body: [
+      "A new batch starts on the 25th of every month. If the 25th is a Sunday, the batch starts on Monday the 26th. All dates and times are in Indian Standard Time (Asia/Kolkata).",
+      "Registration for a batch remains available until the batch's actual start time of 8:30 PM IST. Once that batch has started, new registrations move to the following month's batch. We may open or close registration for a batch at our discretion.",
+    ],
+  },
+  {
+    id: "fees",
+    title: "Fees and payment",
+    body: [
+      "The course fee shown on the website at the time of payment is the amount payable. The fee is paid in full in a single transaction; instalments are not available. The fee may be changed for future enrolments, but the amount you actually paid is recorded and is not affected by later changes.",
+      "Payments are processed by a third-party payment gateway. Your registration is confirmed only after your payment has been successfully verified by us.",
+    ],
+  },
+  {
+    id: "included",
+    title: "What the fee includes",
+    body: [
+      {
+        list: [
+          "Classes conducted directly with the mentor.",
+          "Custom indicators, GEX data and LiquidityX workspaces provided during classes, with lifetime access to the supplied indicators, GEX data and workspaces.",
+          "Course notes and learning materials through Discord.",
+          "Lifetime doubt-clearing support through WhatsApp, Discord and Telegram.",
+          "One T-shirt, sent during the course, and one physical Course Completion Certificate, sent after the 15-day course ends. Delivery is within India only.",
+        ],
+      },
+      "No attendance threshold or exam is required for the certificate. Additional live trading sessions are occasional, depend on the mentor's availability and are not a guaranteed or scheduled benefit. Lifetime support does not mean unlimited scheduled one-to-one sessions.",
+    ],
+  },
+  {
+    id: "tools",
+    title: "Software and tools",
+    body: [
+      "LiquidityX Academy provides education. We do not supply third-party software or software subscriptions. The mentor mainly uses ATAS and Deepcharts, and tools vary according to teaching needs. Any subscription to third-party software is the student's own responsibility and is not part of the course fee.",
+    ],
+  },
+  {
+    id: "missed-classes",
+    title: "Missed classes, repeats and batch transfers",
+    body: [
+      {
+        list: [
+          "Class recordings are not provided.",
+          "If you miss a class, you can request a short explanation of the missed lesson.",
+          "Each student receives one free repeat of the full 15-day course in the next batch. The repeat is available once per student, not indefinitely.",
+          "If a paid student cannot attend, they may transfer to the next batch. A batch transfer is separate from the one-time free repeat.",
+        ],
+      },
+    ],
+  },
   {
     id: "refunds",
     title: "Cancellations and refunds",
-    review: "Insert the confirmed cancellation and refund policy.",
-    body: [enrolmentPolicy],
+    body: ["No refunds. This is the Academy's policy for student cancellations. Please read these terms carefully before you pay."],
   },
   {
     id: "ip",
     title: "Intellectual property",
     body: [
-      "The LiquidityX name, LX mark, website design, text, graphics and teaching materials are owned by or licensed to LiquidityX. You may view and share links to the website for personal, non-commercial use. You may not reproduce, distribute, record or resell LiquidityX content or class sessions without written permission.",
+      "The LiquidityX name, website design, text, graphics, indicators, workspaces, strategies and teaching materials are owned by or licensed to LiquidityX. Strategies are shared in class and are for your personal learning. You may not reproduce, distribute, record, share or resell LiquidityX content, indicators, data, workspaces or class sessions without written permission.",
     ],
   },
   {
     id: "third-party-links",
     title: "Third-party links",
-    body: ["The website links to third-party services such as WhatsApp, Instagram, Telegram and market-data providers. We do not control and are not responsible for their content, availability or practices."],
+    body: ["The website links to third-party services such as WhatsApp, Instagram, Telegram, YouTube and market-data providers. We do not control and are not responsible for their content, availability or practices."],
   },
   {
     id: "market-data",
     title: "Market data",
     body: [
-      "Market data on this website may be delayed, incomplete or provided by third parties, and may be clearly labelled demonstration data when no provider is configured. It is provided \"as is\" for informational purposes and must not be relied on for trading decisions.",
+      "Market data on this website may be delayed, incomplete or provided by third parties, or may be clearly labelled simulated data that is not live. It is provided \"as is\" for informational purposes and must not be relied on for trading decisions.",
     ],
   },
   {
     id: "chatbot",
-    title: "Chatbot",
-    body: ["The LiquidityX Assistant gives automated answers based on website content. Answers may be incomplete or out of date. For anything important — including fees and batch dates — confirm directly with LiquidityX."],
+    title: "Website assistant",
+    body: ["The assistant gives automated answers based on approved course information. Answers may be incomplete or out of date. For anything important — including fees and batch dates — confirm with us on WhatsApp."],
   },
   {
     id: "no-guarantee",
     title: "No guarantee of results",
     body: [
-      "Trading involves substantial risk. LiquidityX does not guarantee profits, income or any specific result from the mentorship, its strategies or any content on this website. Your results depend on many factors outside our control.",
+      "Trading involves substantial risk. LiquidityX does not guarantee profits, income or any specific result from the course, its strategies or any content on this website. Your results depend on many factors outside our control.",
     ],
   },
   {
     id: "liability",
     title: "Limitation of liability",
-    review: "Have this clause reviewed for enforceability under the governing law.",
     body: [
-      "To the maximum extent permitted by law, LiquidityX is not liable for any trading losses or for any indirect, incidental or consequential loss arising from your use of this website or its content. Nothing in these terms excludes liability that cannot be excluded by law.",
+      "To the maximum extent permitted by law, LiquidityX is not liable for any trading losses or for any indirect, incidental or consequential loss arising from your use of this website, the course or its content. Nothing in these terms excludes liability that cannot be excluded by law.",
     ],
   },
-  { id: "changes", title: "Changes to services and terms", body: ["We may change the website, the mentorship or these terms at any time. The \"Last updated\" date shows when these terms last changed."] },
-  { id: "law", title: "Governing law", review: "Confirm governing law and jurisdiction.", body: [`These terms are governed by: ${jurisdiction}.`] },
+  { id: "changes", title: "Changes to services and terms", body: ["We may change the website, the course or these terms at any time. The \"Last updated\" date shows when these terms last changed. The terms shown when you pay apply to that payment."] },
   { id: "contact", title: "Contact", body: ["Questions about these terms:", contactBlock] },
 ];
 
@@ -234,20 +327,20 @@ export const riskDisclaimer: LegalSection[] = [
     id: "not-advice",
     title: "Education, not financial advice",
     body: [
-      "Everything provided by LiquidityX — including the mentorship, strategies, articles, market visuals and chatbot answers — is educational material. It is not financial or investment advice, and it is not a recommendation to buy or sell any instrument.",
+      "Everything provided by LiquidityX — including the course, strategies, articles, market visuals and assistant answers — is educational material. It is not financial or investment advice, and it is not a recommendation to buy or sell any instrument.",
       "LiquidityX does not provide personalised advice or trade signals. If you need advice, consult a suitably qualified and registered adviser.",
     ],
   },
   {
     id: "no-guarantee",
     title: "No guaranteed profits",
-    body: ["LiquidityX does not guarantee profits. No strategy taught — including any of the 11 named strategies — guarantees a specific return or outcome. Any strategy can and will produce losing trades."],
+    body: ["LiquidityX does not guarantee profits and does not claim to predict exact reversal points. No strategy taught — including any of the 11 strategies — guarantees a specific return or outcome. Any strategy can and will produce losing trades."],
   },
   {
     id: "market-data",
     title: "Market data",
     body: [
-      "Market data shown on this website may be delayed, inaccurate or supplied by third parties. When no data provider is connected, the site shows simulated demonstration values that are clearly labelled and must never be used for trading.",
+      "Market data shown on this website may be delayed, inaccurate or supplied by third parties. Where values are simulated, they are clearly labelled \"Demo / Simulated data — Not live\" and must never be used for trading.",
     ],
   },
   {
@@ -256,6 +349,5 @@ export const riskDisclaimer: LegalSection[] = [
     body: [
       "You are solely responsible for your own trading decisions, for the risks you take, and for complying with the laws and regulations that apply to you, including any restrictions on trading particular instruments in your country.",
     ],
-    review: "Add any jurisdiction-specific regulatory statements (e.g. regarding leveraged forex trading for Indian residents).",
   },
 ];

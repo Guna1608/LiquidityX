@@ -9,7 +9,7 @@ import { DataModeBadge } from "./DataModeBadge";
 
 /**
  * Technical area chart (TradingView Lightweight Charts, Apache-2.0).
- * Demo series are overlaid with a persistent "SIMULATED DEMO SERIES" label.
+ * Demo series are overlaid with a persistent "DEMO / SIMULATED — NOT LIVE" label.
  */
 export function MarketChart({
   symbol,
@@ -50,20 +50,20 @@ export function MarketChart({
       timeScale: { borderColor: "rgba(255,255,255,0.08)", timeVisible: true, secondsVisible: false },
       crosshair: {
         mode: CrosshairMode.Magnet,
-        vertLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#6e2c05" },
-        horzLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#6e2c05" },
+        vertLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#172554" },
+        horzLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#172554" },
       },
       handleScroll: { mouseWheel: false, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: false },
       handleScale: { mouseWheel: false, pinch: true, axisPressedMouseMove: true },
     });
     series.current = c.addSeries(AreaSeries, {
-      lineColor: "#ffbd7d",
+      lineColor: "#a9b8ff",
       topColor: "rgba(231,201,131,0.28)",
       bottomColor: "rgba(231,201,131,0.0)",
       lineWidth: 2,
       priceLineVisible: false,
       lastValueVisible: true,
-      crosshairMarkerBackgroundColor: "#fff3e6",
+      crosshairMarkerBackgroundColor: "#eef0ff",
     });
     chart.current = c;
     return () => {
@@ -111,7 +111,7 @@ export function MarketChart({
         <div ref={box} className="absolute inset-0" />
         {data?.mode === "demo" && (
           <div aria-hidden className="pointer-events-none absolute inset-0 grid place-items-center">
-            <span className="font-mono text-[clamp(0.8rem,2.4vw,1.4rem)] text-gold-300/15">SIMULATED DEMO SERIES</span>
+            <span className="font-mono text-[clamp(0.8rem,2.4vw,1.4rem)] text-gold-300/15">DEMO / SIMULATED — NOT LIVE</span>
           </div>
         )}
         {(loading || empty) && (

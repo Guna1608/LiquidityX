@@ -99,3 +99,17 @@ export const Spark = ({ size, ...p }: P) => (
     <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6" />
   </svg>
 );
+
+export const Lock = ({ size, ...p }: P) => (
+  <svg {...base(size)} {...p}>
+    <rect x="4.5" y="10.5" width="15" height="10" rx="2" />
+    <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5" />
+  </svg>
+);
+
+export const YouTube = ({ size, ...p }: P) => (
+  <svg {...base(size)} {...p}>
+    <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+    <path d="m10 9.5 5 2.5-5 2.5v-5Z" />
+  </svg>
+);

@@ -6,14 +6,14 @@ import { MarketTicker } from "@/components/market/MarketTicker";
 import { Features } from "@/components/sections/home/Features";
 import { Approach } from "@/components/sections/home/Approach";
 import { CurriculumStack } from "@/components/sections/home/CurriculumStack";
-import { StrategyMarquee } from "@/components/sections/home/StrategyMarquee";
+import { LockedStrategies } from "@/components/sections/LockedStrategies";
 import { MentorSpotlight } from "@/components/sections/home/MentorSpotlight";
 import { MarketPulse } from "@/components/market/MarketPulse";
 import { FaqPreview, Pricing } from "@/components/sections/home/PricingFaq";
 import { InsightsTeaser } from "@/components/sections/home/InsightsTeaser";
 import { Principles } from "@/components/sections/home/Principles";
 import { CTA } from "@/components/sections/CTA";
-import { ClassesSection } from "@/components/sections/home/ClassesSection";
+import { BatchSection } from "@/components/sections/home/BatchSection";
 import { TerminalShowcase } from "@/components/sections/home/TerminalShowcase";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { VelocityMarquee } from "@/components/motion/Ambience";
@@ -22,12 +22,12 @@ import { courseJsonLd, faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: "Live Forex & Futures Trading Mentorship",
+    title: "Tamil Trading Mentorship — Forex, Futures & Indian Markets",
     description: brand.description,
     path: "/",
-    keywords: ["live trading classes", "forex trading course", "futures trading course", "market profile course", "order flow course", "volume profile training"],
+    keywords: ["forex trading course", "futures trading course", "indian markets course", "market profile course", "order flow course", "volume profile training", "GEX data"],
   }),
-  title: { absolute: `${brand.academy} — Live Forex & Futures Trading Mentorship` },
+  title: { absolute: `${brand.academy} — Go Beyond Price. Understand the Market.` },
 };
 
 export default function HomePage() {
@@ -38,12 +38,12 @@ export default function HomePage() {
       <Hero />
       <MarketTicker />
       <TerminalShowcase />
-      <ClassesSection />
+      <BatchSection />
       <Features />
-      <VelocityMarquee words={["Market Structure", "Volume", "Market Profile", "Order Flow", "Strategy", "Risk"]} />
+      <VelocityMarquee words={["Price & Time", "Volume", "Market Profile", "Order Flow", "GEX", "Risk"]} />
       <Approach />
       <CurriculumStack />
-      <StrategyMarquee />
+      <LockedStrategies />
       <MentorSpotlight />
       <Testimonials />
       <MarketPulse />

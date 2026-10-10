@@ -1,4 +1,4 @@
-import { chatFallback, chatKnowledgeBase, type ChatAction, type KnowledgeEntry } from "@/config/chatKnowledgeBase";
+import { answerOf, chatFallback, chatKnowledgeBase, type ChatAction, type KnowledgeEntry } from "@/config/chatKnowledgeBase";
 
 export type ChatReply = { text: string; actions: ChatAction[]; matchedId: string | null; source: "local" | "ai" };
 
@@ -53,7 +53,7 @@ export function matchLocal(message: string): ChatReply {
   if (!best || bestScore < 3) {
     return { text: chatFallback.answer, actions: chatFallback.actions, matchedId: null, source: "local" };
   }
-  return { text: best.answer, actions: best.actions ?? [], matchedId: best.id, source: "local" };
+  return { text: answerOf(best), actions: best.actions ?? [], matchedId: best.id, source: "local" };
 }
 
 export const localProvider: ChatProvider = {
