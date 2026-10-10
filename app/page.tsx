@@ -3,6 +3,7 @@ import { brand } from "@/config/site";
 import { pageMetadata } from "@/lib/seo";
 import { Hero } from "@/components/sections/home/Hero";
 import { MarketTicker } from "@/components/market/MarketTicker";
+import { LearnCards } from "@/components/sections/home/LearnCards";
 import { Features } from "@/components/sections/home/Features";
 import { Approach } from "@/components/sections/home/Approach";
 import { CurriculumStack } from "@/components/sections/home/CurriculumStack";
@@ -36,6 +37,7 @@ export default function HomePage() {
       <JsonLd data={courseJsonLd} />
       <JsonLd data={faqJsonLd} />
       <Hero />
+      <LearnCards />
       <MarketTicker />
       <TerminalShowcase />
       <BatchSection />
