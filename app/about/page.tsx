@@ -1,5 +1,6 @@
 import { approachLayers, enrolment, mentor, mentorship } from "@/config/site";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, personJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { MotionSection } from "@/components/motion/MotionSection";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { PortraitFrame } from "@/components/sections/PortraitFrame";
@@ -20,6 +21,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={personJsonLd} />
       <MotionSection className="relative isolate overflow-hidden pb-20 pt-36 md:pt-44">
         <div aria-hidden className="absolute inset-0 -z-10">
           <div className="absolute inset-0 tech-grid opacity-50 [mask-image:radial-gradient(60%_60%_at_30%_10%,#000,transparent)]" />

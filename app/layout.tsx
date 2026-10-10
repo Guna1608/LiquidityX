@@ -10,7 +10,6 @@ import { Footer } from "@/components/layout/Footer";
 import { LiquidityChatbot } from "@/components/chat/LiquidityChatbot";
 import { WhatsAppFloat } from "@/components/chat/WhatsAppFloat";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { CandleLoader } from "@/components/brand/CandleLoader";
 import { CursorGlow, ScrollProgress } from "@/components/motion/Ambience";
 
 // Plus Jakarta Sans for English; Noto Sans Tamil is the fallback for Tamil script.
@@ -29,20 +28,24 @@ export const metadata: Metadata = {
     type: "website",
     siteName: brand.academy,
     locale: brand.locale,
+    alternateLocale: ["ta_IN"],
     url: brand.siteUrl,
     title: `${brand.academy} — ${brand.tagline}`,
     description: brand.description,
-    images: [{ url: ogImage({ title: brand.tagline }), width: 1200, height: 630, alt: brand.academy }],
+    images: [{ url: ogImage({ title: brand.tagline }), width: 1200, height: 630, alt: `${brand.academy} — ${brand.tagline}`, type: "image/png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: brand.academy,
+    title: `${brand.academy} — ${brand.tagline}`,
     description: brand.description,
     images: [ogImage({ title: brand.tagline })],
     ...(marketing.twitterHandle ? { site: marketing.twitterHandle, creator: marketing.twitterHandle } : {}),
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   category: "education",
+  icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }], shortcut: "/icon.svg" },
+  appleWebApp: { capable: true, title: brand.academy, statusBarStyle: "black-translucent" },
+
   creator: brand.academy,
   publisher: brand.academy,
   formatDetection: { telephone: false, email: false, address: false },
@@ -62,7 +65,7 @@ export const viewport: Viewport = {
 };
 
 /** Runs before paint: enables JS-gated reveal states. */
-const prePaint = `(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('lx-seen'))d.classList.add('lx-ready')}catch(e){}})();`;
+const prePaint = `(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('lx-seen'))d.classList.add('lx-ready');else d.classList.add('lx-intro')}catch(e){d.classList.add('lx-ready')}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -76,9 +79,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
       </head>
-      <body className="text-bone">
+      <body className="text-bone" suppressHydrationWarning>
         <div className="lx-splash" aria-hidden>
-          <CandleLoader label="Preparing the market…" />
+          <span className="lx-fur" />
+          <span className="lx-flash" />
+          <div className="lx-content">
+            <p className="lx-welcome">WELCOME TO</p>
+            <p className="lx-letters">
+              {"LIQUIDITYX".split("").map((c, i) => (
+                <span key={i} style={{ animationDelay: `${0.5 + i * 0.05}s` }}>
+                  {c}
+                </span>
+              ))}
+            </p>
+            <p className="lx-academy">ACADEMY</p>
+          </div>
         </div>
         <Providers>
           <ScrollProgress />

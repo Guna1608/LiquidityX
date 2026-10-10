@@ -68,13 +68,27 @@ export const organizationJsonLd = {
   ],
 };
 
+export const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${brand.siteUrl}/about#vignesh`,
+  name: mentor.name,
+  jobTitle: mentor.role,
+  description: mentor.summary,
+  url: abs("/about"),
+  worksFor: { "@id": `${brand.siteUrl}/#organization` },
+  knowsLanguage: ["ta", "en"],
+  knowsAbout: ["Market Profile", "Volume Profile", "Order Flow", "GEX data", "Forex", "Futures", "Indian markets", "Trading risk management"],
+  sameAs: [socialLinks.instagram.url, socialLinks.youtube.url],
+};
+
 export const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${brand.siteUrl}/#website`,
   name: brand.academy,
   url: brand.siteUrl,
-  inLanguage: "en-IN",
+  inLanguage: ["en-IN", "ta-IN"],
   publisher: { "@id": `${brand.siteUrl}/#organization` },
 };
 

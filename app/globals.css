@@ -218,12 +218,40 @@
 @keyframes lx-line { 0%, 20% { stroke-dashoffset: 1; opacity: 1; } 70%, 85% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
 @keyframes lx-rail { 0% { transform: scaleX(0); } 75% { transform: scaleX(1); } 100% { transform: scaleX(1); opacity: 0; } }
 
-/* first-visit splash (shown before hydration, hidden when the app is ready) */
-.lx-splash { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; background: #050505; transition: opacity 0.6s var(--ease-expo), visibility 0.6s; }
-.lx-ready .lx-splash { opacity: 0; visibility: hidden; }
-.lx-splash { animation: lx-splash-failsafe 0.01s 4s forwards; }
-@keyframes lx-splash-failsafe { to { opacity: 0; visibility: hidden; } }
-@media (prefers-reduced-motion: reduce) { .lx-splash { display: none; } }
+/* first-visit intro, Netflix-style: bold wordmark, vertical light "fur" streaks, flash, then the letters zoom past the camera */
+.lx-splash { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; overflow: hidden; background: #000; animation: lx-hide 0.7s 3.2s ease-in forwards; }
+.lx-ready .lx-splash { display: none; }
+.lx-fur { position: absolute; inset: -10% 0; opacity: 0; filter: blur(2px);
+  background: repeating-linear-gradient(90deg, transparent 0 7px, rgba(139,92,246,0.55) 8px 9px, transparent 10px 15px, rgba(82,120,255,0.5) 16px 17px, transparent 18px 26px, rgba(217,70,239,0.45) 27px 28px, transparent 29px 40px);
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 50%, #000, transparent 75%); mask-image: radial-gradient(60% 70% at 50% 50%, #000, transparent 75%);
+  transform: scaleX(0.25); animation: lx-fur 3.2s cubic-bezier(0.3, 0, 0.2, 1) forwards; }
+.lx-flash { position: absolute; inset: 0; background: radial-gradient(closest-side, rgba(196,181,253,0.9), rgba(139,92,246,0.35) 45%, transparent 75%); opacity: 0; animation: lx-flash 3.2s ease-out forwards; }
+.lx-content { position: relative; text-align: center; width: min(94vw, 900px); transform-origin: 50% 50%; animation: lx-zoom 3.2s cubic-bezier(0.55, 0, 0.3, 1) forwards; }
+.lx-welcome { font-size: clamp(0.7rem, 1.6vw, 0.95rem); font-weight: 600; letter-spacing: 0.6em; color: #c4b5fd; opacity: 0; animation: lx-fade-up 0.7s 0.2s ease forwards; }
+.lx-letters { display: flex; justify-content: center; margin-top: 0.8rem; font-weight: 900; font-size: clamp(2.6rem, 11vw, 7.2rem); line-height: 1; letter-spacing: 0.02em; }
+.lx-letters span { display: inline-block; opacity: 0; transform: scaleY(1.6) translateY(-30%); filter: blur(10px);
+  background: linear-gradient(180deg, #ffffff 0%, #c4b5fd 45%, #6d5cf0 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: lx-letter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.lx-academy { margin-top: 0.9rem; font-size: clamp(0.75rem, 1.8vw, 1.05rem); font-weight: 500; letter-spacing: 0.9em; color: #8b93b8; opacity: 0; animation: lx-fade-up 0.7s 1.3s ease forwards; }
+@keyframes lx-fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes lx-letter { to { opacity: 1; transform: none; filter: none; } }
+@keyframes lx-fur { 0% { opacity: 0; transform: scaleX(0.25); } 30% { opacity: 0.9; } 70% { opacity: 0.9; transform: scaleX(1.1); } 100% { opacity: 0; transform: scaleX(1.5); } }
+@keyframes lx-flash { 0%, 55% { opacity: 0; } 72% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes lx-zoom { 0%, 62% { transform: scale(1); opacity: 1; } 100% { transform: scale(14); opacity: 0; } }
+@keyframes lx-hide { to { opacity: 0; visibility: hidden; } }
+/* the site fades in as the intro ends */
+.lx-intro main { animation: lx-main-in 0.9s 2.9s ease-out both; }
+@keyframes lx-main-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lx-splash { display: none; } .lx-intro main { animation: none; } }
+
+@utility text-shimmer {
+  background: linear-gradient(90deg, #ffffff 0%, #a9b8ff 25%, #8b5cf6 50%, #a9b8ff 75%, #ffffff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
 
 @keyframes delta { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.45); } }
 @keyframes scroll-cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }

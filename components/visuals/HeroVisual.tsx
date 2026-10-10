@@ -131,31 +131,16 @@ export function HeroVisual() {
         </Card>
       </Float>
 
-      {/* live class */}
-      <Float depth={46} delay={0.4} className="right-0 top-[4%] sm:-right-[4%]">
-        <Card className="flex items-center gap-2.5 !rounded-full !py-2 !pl-2 !pr-4">
-          <span className="grid size-8 place-items-center rounded-full bg-gradient-to-br from-gold-300 to-gold-600 text-[12px] font-black text-ink">V</span>
+      {/* mentor */}
+      <Float depth={46} delay={0.4} className="right-0 top-[3%] sm:-right-[4%]">
+        <Card className="flex items-center gap-3 !rounded-2xl !py-2.5 !pl-2.5 !pr-5">
+          <span className="grid size-10 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-violet-500 text-[15px] font-black text-white">V</span>
           <span>
-            <span className="flex items-center gap-1.5 text-[11px] font-bold">
-              <span className="size-1.5 animate-blink rounded-full bg-down" /> Live class
+            <span className="flex items-center gap-1.5 text-[13px] font-bold">
+              Vignesh <span className="size-1.5 animate-blink rounded-full bg-up" />
             </span>
-            <span className="block text-[10px] text-smoke">with Vignesh</span>
+            <span className="block text-[10.5px] text-smoke">Founder &amp; Mentor · Tamil</span>
           </span>
-        </Card>
-      </Float>
-
-      {/* market profile */}
-      <Float depth={28} delay={0.6} className="-left-[2%] bottom-[4%] hidden xs:block sm:-left-[8%]">
-        <Card className="w-[10.5rem]">
-          <p className="text-[10px] font-semibold text-mist">Market Profile</p>
-          <div className="mt-2 space-y-[3px]">
-            {[0.3, 0.5, 0.75, 1, 0.85, 0.55, 0.35].map((w, i) => (
-              <div key={i} className="flex items-center gap-1.5">
-                <div className={cn("h-[5px] rounded-r-sm", i === 3 ? "bg-gold-300" : i > 1 && i < 5 ? "bg-gold-500/80" : "bg-white/15")} style={{ width: `${w * 100}%` }} />
-                {i === 3 && <span className="text-[8px] font-bold text-gold-300">POC</span>}
-              </div>
-            ))}
-          </div>
         </Card>
       </Float>
 
@@ -175,25 +160,6 @@ export function HeroVisual() {
         </Card>
       </Float>
 
-      {/* risk plan */}
-      <Float depth={52} delay={1} className="right-[10%] top-[44%] hidden sm:block lg:-right-[10%]">
-        <Card className="w-[9.5rem]">
-          <p className="text-[10px] font-semibold text-mist">Risk plan</p>
-          <div className="mt-2 space-y-1.5 text-[10px]">
-            <div className="flex items-center justify-between">
-              <span className="text-smoke">Reward</span>
-              <span className="font-bold text-up">2.0R</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-smoke">Risk</span>
-              <span className="font-bold text-down">1.0R</span>
-            </div>
-            <div className="h-1 overflow-hidden rounded-full bg-white/10">
-              <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-gold-500 to-up" />
-            </div>
-          </div>
-        </Card>
-      </Float>
     </div>
   );
 }

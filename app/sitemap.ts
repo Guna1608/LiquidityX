@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...(listedInsights.length ? ([["/insights", 0.7]] as [string, number][]) : []),
   ];
   return [
-    ...routes.map(([p, priority]) => ({ url: `${base}${p}`, lastModified: now, priority })),
+    ...routes.map(([p, priority]) => ({ url: `${base}${p}`, lastModified: now, priority, changeFrequency: (p === "/classes" || p === "" ? "weekly" : "monthly") as "weekly" | "monthly" })),
     ...listedInsights.map((i) => ({ url: `${base}/insights/${i.slug}`, lastModified: i.date ? new Date(i.date) : now, priority: 0.6 })),
   ];
 }

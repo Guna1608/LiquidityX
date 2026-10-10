@@ -33,17 +33,18 @@ export function PageTransition({ children }: { children: ReactNode }) {
   const busy = useRef(false);
   const pending = useRef<{ started: number; timeout: ReturnType<typeof setTimeout> } | null>(null);
 
-  // first-visit splash: mark the app ready once hydrated
+  // first-visit intro (Netflix-style): shown once, remembered in localStorage
   useEffect(() => {
     const html = document.documentElement;
+    try {
+      localStorage.setItem("lx-seen", "1");
+    } catch {
+      /* private mode */
+    }
     const t = setTimeout(() => {
       html.classList.add("lx-ready");
-      try {
-        sessionStorage.setItem("lx-seen", "1");
-      } catch {
-        /* private mode */
-      }
-    }, 700);
+      html.classList.remove("lx-intro");
+    }, 4200);
     return () => clearTimeout(t);
   }, []);
 
