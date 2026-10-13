@@ -84,14 +84,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <svg className="lx-beams" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" fill="none">
             <defs>
               <linearGradient id="lxb1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#2447d8" stopOpacity="0" />
-                <stop offset="0.5" stopColor="#8b5cf6" />
+                <stop offset="0" stopColor="#e05e09" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#ff7a1a" />
                 <stop offset="1" stopColor="#d8b4fe" />
               </linearGradient>
               <linearGradient id="lxb2" x1="1" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#5278ff" stopOpacity="0" />
-                <stop offset="0.5" stopColor="#5278ff" />
-                <stop offset="1" stopColor="#c4b5fd" />
+                <stop offset="0" stopColor="#ff7a1a" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#ff7a1a" />
+                <stop offset="1" stopColor="#ffbd7d" />
               </linearGradient>
             </defs>
             <path pathLength="1" d="M-40 -40 L500 300" stroke="url(#lxb1)" />

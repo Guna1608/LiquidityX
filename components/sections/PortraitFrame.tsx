@@ -12,7 +12,7 @@ export function PortraitFrame({ className, priority = false }: { className?: str
   return (
     <Card tilt={7} className={cn("aspect-[4/5] w-full", className)} innerClassName="!rounded-[1.75rem] bg-graphite">
       <div className="absolute inset-0 tech-grid opacity-60" data-depth="0" />
-      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_35%,rgba(82,120,255,0.2),transparent_70%)]" />
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_35%,rgba(255,122,26,0.2),transparent_70%)]" />
 
       {mentor.portrait ? (
         <Image

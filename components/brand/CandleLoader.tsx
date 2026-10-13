@@ -32,7 +32,7 @@ export function CandleLoader({ label = "Loading market structure…", className 
           </div>
         ))}
         <svg viewBox="0 0 176 92" className="lx-candle-line absolute inset-0 overflow-visible" aria-hidden>
-          <polyline points="7,40 31,48 55,34 79,44 103,22 127,26 151,6" fill="none" stroke="#7f93ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
+          <polyline points="7,40 31,48 55,34 79,44 103,22 127,26 151,6" fill="none" stroke="#ff9d4a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength={1} />
         </svg>
       </div>
       <div className="mt-7 flex items-center gap-2.5">

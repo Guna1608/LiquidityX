@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <MotionSection as="footer" className="relative isolate overflow-hidden border-t border-white/[0.06] pb-28 pt-20 md:pb-10 md:pt-24">
-      <div aria-hidden className="absolute bottom-[-30%] left-1/2 -z-10 h-[60%] w-[90%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.18),transparent)] blur-3xl" />
+      <div aria-hidden className="absolute bottom-[-30%] left-1/2 -z-10 h-[60%] w-[90%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.18),transparent)] blur-3xl" />
       <div className="container-x">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5" data-reveal="rise">

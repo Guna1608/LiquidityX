@@ -50,20 +50,20 @@ export function MarketChart({
       timeScale: { borderColor: "rgba(255,255,255,0.08)", timeVisible: true, secondsVisible: false },
       crosshair: {
         mode: CrosshairMode.Magnet,
-        vertLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#172554" },
-        horzLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#172554" },
+        vertLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#6e2c05" },
+        horzLine: { color: "rgba(231,201,131,0.45)", style: LineStyle.Dashed, labelBackgroundColor: "#6e2c05" },
       },
       handleScroll: { mouseWheel: false, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: false },
       handleScale: { mouseWheel: false, pinch: true, axisPressedMouseMove: true },
     });
     series.current = c.addSeries(AreaSeries, {
-      lineColor: "#a9b8ff",
+      lineColor: "#ffbd7d",
       topColor: "rgba(231,201,131,0.28)",
       bottomColor: "rgba(231,201,131,0.0)",
       lineWidth: 2,
       priceLineVisible: false,
       lastValueVisible: true,
-      crosshairMarkerBackgroundColor: "#eef0ff",
+      crosshairMarkerBackgroundColor: "#fff3e6",
     });
     chart.current = c;
     return () => {

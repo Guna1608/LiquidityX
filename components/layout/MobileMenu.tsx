@@ -112,7 +112,7 @@ export function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose
                 href={whatsapp.url()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#2447d8,#5278ff_55%,#8b5cf6)] font-medium text-white"
+                className="flex h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#e05e09,#ff7a1a_55%,#ff7a1a)] font-medium text-white"
               >
                 {whatsapp.cta}
               </a>

@@ -68,7 +68,7 @@ export default function ContactPage() {
 
         <div className="lg:pt-24" data-reveal="rise">
           <div className="relative isolate overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#0b0b0c] p-8 sm:p-10">
-            <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-72 rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.3),transparent)]" />
+            <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-72 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.3),transparent)]" />
             <span className="grid size-12 place-items-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-300">
               <YouTube size={22} />
             </span>

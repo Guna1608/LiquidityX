@@ -23,7 +23,7 @@ export function Accordion({ items, defaultOpen = 0 }: { items: AccordionItem[]; 
             key={i}
             className={cn(
               "overflow-hidden rounded-[22px] border transition-all duration-500",
-              isOpen ? "border-gold-500/35 bg-gold-500/[0.05] shadow-[0_20px_50px_-30px_rgba(82,120,255,0.6)]" : "border-white/[0.08] bg-white/[0.03] hover:border-white/15",
+              isOpen ? "border-gold-500/35 bg-gold-500/[0.05] shadow-[0_20px_50px_-30px_rgba(255,122,26,0.6)]" : "border-white/[0.08] bg-white/[0.03] hover:border-white/15",
             )}
           >
             <h3>

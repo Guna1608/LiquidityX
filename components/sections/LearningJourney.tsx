@@ -39,7 +39,7 @@ export function LearningJourney({ className }: { className?: string }) {
         <span aria-hidden className="absolute left-6 right-6 top-[2.2rem] hidden h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent lg:block" />
         {stages.map((s, i) => (
           <li key={s.title} data-reveal="rise" className="relative flex gap-4 lg:block">
-            <span className="relative z-10 grid size-[3.3rem] shrink-0 place-items-center rounded-full border border-gold-500/40 bg-[#0b0b0c] text-sm font-black text-gold-300 shadow-[0_0_30px_-6px_rgba(82,120,255,0.6)] lg:mx-auto">
+            <span className="relative z-10 grid size-[3.3rem] shrink-0 place-items-center rounded-full border border-gold-500/40 bg-[#0b0b0c] text-sm font-black text-gold-300 shadow-[0_0_30px_-6px_rgba(255,122,26,0.6)] lg:mx-auto">
               {i + 1}
             </span>
             <div className="panel flex-1 rounded-[22px] p-5 lg:mt-4">

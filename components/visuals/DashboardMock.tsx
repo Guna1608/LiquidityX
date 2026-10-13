@@ -86,9 +86,9 @@ function Chart({ candles }: { candles: Candle[] }) {
     <svg viewBox={`0 0 ${W} ${H}`} className="h-full w-full" preserveAspectRatio="none" aria-hidden>
       <defs>
         <linearGradient id="dm-va" x1="0" x2="1">
-          <stop offset="0" stopColor="#5278ff" stopOpacity="0" />
-          <stop offset="0.5" stopColor="#5278ff" stopOpacity="0.09" />
-          <stop offset="1" stopColor="#5278ff" stopOpacity="0.02" />
+          <stop offset="0" stopColor="#ff7a1a" stopOpacity="0" />
+          <stop offset="0.5" stopColor="#ff7a1a" stopOpacity="0.09" />
+          <stop offset="1" stopColor="#ff7a1a" stopOpacity="0.02" />
         </linearGradient>
         <linearGradient id="dm-vol" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0" stopColor="#ffffff" stopOpacity="0.22" />
@@ -99,7 +99,7 @@ function Chart({ candles }: { candles: Candle[] }) {
         <line key={g} x1="0" x2={W} y1={H * g} y2={H * g} stroke="rgba(255,255,255,0.05)" />
       ))}
       <rect x="0" y={vaTop} width={W} height={vaBot - vaTop} fill="url(#dm-va)" />
-      <line x1="0" x2={W} y1={(vaTop + vaBot) / 2} y2={(vaTop + vaBot) / 2} stroke="#7f93ff" strokeOpacity="0.5" strokeDasharray="4 5" />
+      <line x1="0" x2={W} y1={(vaTop + vaBot) / 2} y2={(vaTop + vaBot) / 2} stroke="#ff9d4a" strokeOpacity="0.5" strokeDasharray="4 5" />
       {candles.map((c, i) => {
         const x = r2(i * step + step / 2);
         const up = c.c >= c.o;
@@ -114,7 +114,7 @@ function Chart({ candles }: { candles: Candle[] }) {
           </g>
         );
       })}
-      <path d={vwap.join("")} fill="none" stroke="#a9b8ff" strokeWidth="1.6" />
+      <path d={vwap.join("")} fill="none" stroke="#ffbd7d" strokeWidth="1.6" />
       <line x1="0" x2={W} y1={y(last.c)} y2={y(last.c)} stroke="#fff" strokeOpacity="0.25" strokeDasharray="2 4" />
       <g transform={`translate(${W - 4},${y(last.c)})`}>
         <rect x="-40" y="-9" width="40" height="18" rx="4" fill={last.c >= last.o ? "#5fd39a" : "#ff6a4d"} />
@@ -166,7 +166,7 @@ function OrderFlow({ active }: { active: boolean }) {
         <div
           key={i}
           className="rounded-[2px] transition-colors duration-700"
-          style={{ background: v > 0.86 ? "rgba(169,184,255,0.95)" : i % 2 ? `rgba(95,211,154,${r2(0.08 + v * 0.45)})` : `rgba(255,106,77,${r2(0.08 + v * 0.4)})` }}
+          style={{ background: v > 0.86 ? "rgba(255,189,125,0.95)" : i % 2 ? `rgba(95,211,154,${r2(0.08 + v * 0.45)})` : `rgba(255,106,77,${r2(0.08 + v * 0.4)})` }}
         />
       ))}
     </div>

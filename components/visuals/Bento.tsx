@@ -81,8 +81,8 @@ export function LiveClassVisual() {
     <div className="relative grid h-full grid-cols-[1.6fr_1fr] gap-2">
       <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0b0b0c]">
         <svg viewBox="0 0 200 110" className="absolute inset-0 h-full w-full" preserveAspectRatio="none" aria-hidden>
-          <polyline points="0,80 20,72 35,76 55,52 70,58 90,40 110,46 130,30 150,38 175,20 200,26" fill="none" stroke="#a9b8ff" strokeWidth="1.4" />
-          <line x1="0" x2="200" y1="58" y2="58" stroke="#5278ff" strokeOpacity="0.5" strokeDasharray="3 4" />
+          <polyline points="0,80 20,72 35,76 55,52 70,58 90,40 110,46 130,30 150,38 175,20 200,26" fill="none" stroke="#ffbd7d" strokeWidth="1.4" />
+          <line x1="0" x2="200" y1="58" y2="58" stroke="#ff7a1a" strokeOpacity="0.5" strokeDasharray="3 4" />
         </svg>
         <span className="absolute left-2 top-2 flex items-center gap-1.5 rounded-full bg-black/60 px-2 py-0.5 text-[9px] font-medium text-bone backdrop-blur">
           <span className="relative flex size-1.5">
@@ -116,7 +116,7 @@ export function RiskVisual() {
   const { ref, inView } = useInView<HTMLDivElement>();
   const rings = [
     { r: 46, p: 0.72, c: "#5fd39a", label: "Reward" },
-    { r: 34, p: 0.36, c: "#7f93ff", label: "Risk" },
+    { r: 34, p: 0.36, c: "#ff9d4a", label: "Risk" },
     { r: 22, p: 0.18, c: "#ff6a4d", label: "Max loss" },
   ];
   return (

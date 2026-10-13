@@ -76,7 +76,7 @@ export function Card<T extends ElementType = "div">({
         className={cn(
           "panel preserve-3d relative h-full overflow-hidden rounded-[1.25rem] transition-[border-color,box-shadow] duration-700",
           glow === "gold" ? "hover:border-gold-400/35" : "hover:border-cyan-400/30",
-          "hover:shadow-[0_40px_120px_-50px_rgba(139,92,246,0.35)]",
+          "hover:shadow-[0_40px_120px_-50px_rgba(255,122,26,0.35)]",
           innerClassName,
         )}
       >

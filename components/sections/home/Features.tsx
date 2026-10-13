@@ -18,7 +18,7 @@ const items: Item[] = [
 function Feature({ item }: { item: Item }) {
   return (
     <Card tilt={5} data-reveal="rise" className={cn("h-full", item.span)} innerClassName="flex h-full flex-col p-2">
-      <div className="relative h-56 overflow-hidden rounded-[16px] border border-white/[0.06] bg-[radial-gradient(120%_80%_at_50%_0%,rgba(82,120,255,0.12),transparent_60%),#0a0a0b] p-4 sm:h-60">
+      <div className="relative h-56 overflow-hidden rounded-[16px] border border-white/[0.06] bg-[radial-gradient(120%_80%_at_50%_0%,rgba(255,122,26,0.12),transparent_60%),#0a0a0b] p-4 sm:h-60">
         {item.visual}
       </div>
       <div className="px-4 pb-4 pt-5">

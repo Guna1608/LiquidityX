@@ -128,9 +128,9 @@ export function CandleBackdrop({ className, density = 1 }: { className?: string;
 
       // glowing average line
       ctx.save();
-      ctx.shadowColor = "rgba(82,120,255,0.9)";
+      ctx.shadowColor = "rgba(255,122,26,0.9)";
       ctx.shadowBlur = 14;
-      ctx.strokeStyle = "rgba(127,147,255,0.9)";
+      ctx.strokeStyle = "rgba(255,157,74,0.9)";
       ctx.lineWidth = 2;
       ctx.beginPath();
       vw.forEach(([x, yy], i) => (i ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy)));

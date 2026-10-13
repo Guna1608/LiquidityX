@@ -17,9 +17,9 @@ export function FeePanel({ className }: { className?: string }) {
   const amount = fee?.amount.toLocaleString("en-IN");
   return (
     <div className={cn("relative mx-auto w-full max-w-md", className)}>
-      <div aria-hidden className="absolute -inset-px rounded-[30px] bg-[linear-gradient(180deg,rgba(127,147,255,0.9),rgba(82,120,255,0.15)_40%,rgba(255,255,255,0.06))]" />
+      <div aria-hidden className="absolute -inset-px rounded-[30px] bg-[linear-gradient(180deg,rgba(255,157,74,0.9),rgba(255,122,26,0.15)_40%,rgba(255,255,255,0.06))]" />
       <div className="relative overflow-hidden rounded-[29px] bg-[#0b0b0c] p-7 sm:p-9">
-        <div aria-hidden className="absolute -top-32 left-1/2 h-64 w-[130%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.55),transparent)] blur-2xl" />
+        <div aria-hidden className="absolute -top-32 left-1/2 h-64 w-[130%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.55),transparent)] blur-2xl" />
         <div className="relative text-center">
           <span className="inline-flex rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-xs text-bone">15-day curriculum · Taught in Tamil</span>
           {fee ? (

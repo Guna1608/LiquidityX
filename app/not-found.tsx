@@ -9,7 +9,7 @@ export default function NotFound() {
     <section className="relative isolate grid min-h-[80svh] place-items-center overflow-hidden px-6 pt-24 text-center">
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 tech-grid opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_40%,#000,transparent)]" />
-        <div className="absolute left-1/2 top-[10%] h-[60%] w-[70%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.18),transparent)] blur-3xl" />
+        <div className="absolute left-1/2 top-[10%] h-[60%] w-[70%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.18),transparent)] blur-3xl" />
       </div>
       <div>
         <p className="eyebrow">Error 404</p>

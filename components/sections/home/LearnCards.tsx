@@ -43,13 +43,13 @@ const items: Item[] = [
     viz: (
       <svg viewBox="0 0 80 48" className="h-12 w-20" aria-hidden>
         {[8, 24, 40].map((y, i) => (
-          <line key={y} x1="0" x2="80" y1={y} y2={y} stroke="#8b5cf6" strokeOpacity="0.8" strokeDasharray="4 4" className="motion-safe:animate-[dash_2.4s_linear_infinite]" style={{ animationDelay: `${i * 0.3}s` }} />
+          <line key={y} x1="0" x2="80" y1={y} y2={y} stroke="#ff7a1a" strokeOpacity="0.8" strokeDasharray="4 4" className="motion-safe:animate-[dash_2.4s_linear_infinite]" style={{ animationDelay: `${i * 0.3}s` }} />
         ))}
-        <polyline points="0,38 12,30 24,34 38,16 50,22 64,8 80,14" fill="none" stroke="#a9b8ff" strokeWidth="2" />
+        <polyline points="0,38 12,30 24,34 38,16 50,22 64,8 80,14" fill="none" stroke="#ffbd7d" strokeWidth="2" />
       </svg>
     ),
   },
-  { t: "15-day curriculum", d: "A structured path from market foundations to risk and review.", viz: bars([20, 32, 44, 56, 68, 80, 92], "bg-violet-400/80") },
+  { t: "15-day curriculum", d: "A structured path from market foundations to risk and review.", viz: bars([20, 32, 44, 56, 68, 80, 92], "bg-gold-400/80") },
   {
     t: "Taught directly in Tamil",
     d: "Live with the mentor, Monday to Saturday from 8:30 PM IST.",
@@ -61,10 +61,10 @@ const items: Item[] = [
     viz: (
       <div className="flex h-12 flex-col justify-center gap-2">
         <span className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-          <span className="block h-full w-2/3 origin-left rounded-full bg-gradient-to-r from-gold-500 to-violet-500 motion-safe:animate-[bar-grow_3s_ease-in-out_infinite]" />
+          <span className="block h-full w-2/3 origin-left rounded-full bg-gradient-to-r from-gold-500 to-gold-500 motion-safe:animate-[bar-grow_3s_ease-in-out_infinite]" />
         </span>
         <span className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-          <span className="block h-full w-1/3 origin-left rounded-full bg-gradient-to-r from-gold-500 to-violet-500 motion-safe:animate-[bar-grow_3s_ease-in-out_0.4s_infinite]" />
+          <span className="block h-full w-1/3 origin-left rounded-full bg-gradient-to-r from-gold-500 to-gold-500 motion-safe:animate-[bar-grow_3s_ease-in-out_0.4s_infinite]" />
         </span>
       </div>
     ),

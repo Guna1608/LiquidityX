@@ -92,7 +92,7 @@ export default function ClassesPage() {
             <span aria-hidden className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent md:block" />
             {steps.map((s, i) => (
               <li key={s.t} data-reveal="rise" className="relative rounded-[22px] border border-white/[0.08] bg-[#0c0c0d] p-6 text-center">
-                <span className="mx-auto grid size-14 place-items-center rounded-full border border-gold-500/40 bg-gold-500/10 text-lg font-black text-gold-300 shadow-[0_0_30px_-6px_rgba(82,120,255,0.6)]">
+                <span className="mx-auto grid size-14 place-items-center rounded-full border border-gold-500/40 bg-gold-500/10 text-lg font-black text-gold-300 shadow-[0_0_30px_-6px_rgba(255,122,26,0.6)]">
                   {i + 1}
                 </span>
                 <p className="mt-5 text-lg font-bold">{s.t}</p>

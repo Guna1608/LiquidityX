@@ -17,7 +17,7 @@ export function ScrollProgress() {
   });
   return (
     <div aria-hidden className="fixed inset-x-0 top-0 z-[90] h-[2px]">
-      <div ref={bar} className="h-full origin-left bg-gradient-to-r from-gold-600 via-gold-400 to-gold-200 shadow-[0_0_12px_rgba(82,120,255,0.9)]" />
+      <div ref={bar} className="h-full origin-left bg-gradient-to-r from-gold-600 via-gold-400 to-gold-200 shadow-[0_0_12px_rgba(255,122,26,0.9)]" />
     </div>
   );
 }
@@ -48,7 +48,7 @@ export function CursorGlow() {
     <div
       ref={dot}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[1] -ml-[260px] -mt-[260px] size-[520px] rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.09),transparent)] opacity-0 transition-opacity duration-500 max-lg:hidden"
+      className="pointer-events-none fixed left-0 top-0 z-[1] -ml-[260px] -mt-[260px] size-[520px] rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.09),transparent)] opacity-0 transition-opacity duration-500 max-lg:hidden"
     />
   );
 }
@@ -109,7 +109,7 @@ export function VelocityMarquee({ words }: { words: string[] }) {
                 >
                   {w}
                 </span>
-                <span className="size-3 rotate-45 rounded-[3px] bg-gold-500 shadow-[0_0_14px_#5278ff]" />
+                <span className="size-3 rotate-45 rounded-[3px] bg-gold-500 shadow-[0_0_14px_#ff7a1a]" />
               </span>
             ))}
           </div>

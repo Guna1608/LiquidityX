@@ -91,13 +91,13 @@ export function HeroVisual() {
   return (
     <div ref={root} className="relative h-full w-full [perspective:1400px]">
       {/* glow + rings */}
-      <div aria-hidden className="absolute inset-[8%] rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.35),transparent)] blur-2xl" />
+      <div aria-hidden className="absolute inset-[8%] rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.35),transparent)] blur-2xl" />
       <div aria-hidden className="absolute inset-[4%] rounded-full border border-white/[0.06]" />
       <div aria-hidden className="absolute inset-[16%] rounded-full border border-dashed border-gold-500/20 motion-safe:animate-[spin_60s_linear_infinite]" />
 
       {/* main terminal card */}
       <Float depth={14} className="inset-x-[6%] top-[16%] bottom-[18%]">
-        <div className="relative h-full overflow-hidden rounded-[22px] border border-white/12 bg-[#09090a]/90 shadow-[0_40px_100px_-30px_rgba(0,0,0,1),0_0_80px_-30px_rgba(82,120,255,0.6)] backdrop-blur-xl">
+        <div className="relative h-full overflow-hidden rounded-[22px] border border-white/12 bg-[#09090a]/90 shadow-[0_40px_100px_-30px_rgba(0,0,0,1),0_0_80px_-30px_rgba(255,122,26,0.6)] backdrop-blur-xl">
           <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
             <span className="size-2 rounded-full bg-[#ff5f57]" />
             <span className="size-2 rounded-full bg-[#febc2e]" />
@@ -134,7 +134,7 @@ export function HeroVisual() {
       {/* mentor */}
       <Float depth={46} delay={0.4} className="right-0 top-[3%] sm:-right-[4%]">
         <Card className="flex items-center gap-3 !rounded-2xl !py-2.5 !pl-2.5 !pr-5">
-          <span className="grid size-10 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-violet-500 text-[15px] font-black text-white">V</span>
+          <span className="grid size-10 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-500 text-[15px] font-black text-white">V</span>
           <span>
             <span className="flex items-center gap-1.5 text-[13px] font-bold">
               Vignesh <span className="size-1.5 animate-blink rounded-full bg-up" />

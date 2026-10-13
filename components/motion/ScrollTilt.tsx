@@ -26,7 +26,7 @@ export function ScrollTilt({ children, className, from = 28 }: { children: React
   return (
     <div ref={root} className={cn("[perspective:1400px]", className)}>
       <div ref={card} className="origin-top will-change-transform" style={{ transformStyle: "preserve-3d" }}>
-        <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-2 shadow-[0_0_80px_-20px_rgba(82,120,255,0.35)] sm:p-3">{children}</div>
+        <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-2 shadow-[0_0_80px_-20px_rgba(255,122,26,0.35)] sm:p-3">{children}</div>
       </div>
     </div>
   );

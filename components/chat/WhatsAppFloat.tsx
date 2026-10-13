@@ -28,7 +28,7 @@ export function WhatsAppFloat() {
           href={whatsapp.url()}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-12 items-center justify-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#2447d8,#5278ff_55%,#8b5cf6)] text-[0.95rem] font-medium text-white"
+          className="flex h-12 items-center justify-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#e05e09,#ff7a1a_55%,#ff7a1a)] text-[0.95rem] font-medium text-white"
         >
           <WhatsApp size={18} />
           {whatsapp.cta}

@@ -32,12 +32,12 @@ export function PageHero({
       {crumb && <JsonLd data={breadcrumbJsonLd([crumb])} />}
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute inset-0 tech-grid opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_0%,#000,transparent)]" />
-        <div className="absolute left-1/2 top-[-35%] h-[80%] w-[80%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.2),transparent)] blur-3xl" />
+        <div className="absolute left-1/2 top-[-35%] h-[80%] w-[80%] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.2),transparent)] blur-3xl" />
       </div>
       <div className={cn("container-x", center && "text-center")}>
         <div className={cn("flex", center && "justify-center")} data-reveal="blur">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[12px] font-medium text-mist">
-            <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_8px_#5278ff]" />
+            <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_8px_#ff7a1a]" />
             {eyebrow}
           </span>
         </div>

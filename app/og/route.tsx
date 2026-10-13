@@ -28,7 +28,7 @@ export async function GET(req: Request) {
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#050505", color: "#f5f5f4", fontFamily: "Satoshi", padding: 72 }}>
-        <div style={{ position: "absolute", left: -200, bottom: -420, width: 900, height: 900, borderRadius: 9999, background: "radial-gradient(closest-side, rgba(82,120,255,0.55), transparent)", display: "flex" }} />
+        <div style={{ position: "absolute", left: -200, bottom: -420, width: 900, height: 900, borderRadius: 9999, background: "radial-gradient(closest-side, rgba(255,122,26,0.55), transparent)", display: "flex" }} />
         <div style={{ position: "absolute", inset: 0, display: "flex", backgroundImage: "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)", backgroundSize: "64px 64px" }} />
 
         {/* candles */}
@@ -48,7 +48,7 @@ export async function GET(req: Request) {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", alignSelf: "flex-start", padding: "8px 18px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.05)", fontSize: 22, color: "#a9b8ff", fontWeight: 500 }}>
+            <div style={{ display: "flex", alignSelf: "flex-start", padding: "8px 18px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.05)", fontSize: 22, color: "#ffbd7d", fontWeight: 500 }}>
               {eyebrow}
             </div>
             <div style={{ display: "flex", marginTop: 26, fontSize: title.length > 50 ? 64 : 78, fontWeight: 900, lineHeight: 1.0, letterSpacing: -3 }}>{title}</div>

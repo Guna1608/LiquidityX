@@ -19,14 +19,14 @@ export function Hero() {
       {/* backdrop: grid, glow, drifting boxes, faint live candles */}
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute inset-0 tech-grid opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_30%,#000,transparent)]" />
-        <div className="absolute -right-[10%] top-[5%] h-[70%] w-[70%] rounded-full bg-[radial-gradient(closest-side,rgba(82,120,255,0.2),transparent)] blur-3xl" />
-        <div className="absolute -left-[15%] bottom-0 h-[50%] w-[60%] rounded-full bg-[radial-gradient(closest-side,rgba(139,92,246,0.14),transparent)] blur-3xl" />
+        <div className="absolute -right-[10%] top-[5%] h-[70%] w-[70%] rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.2),transparent)] blur-3xl" />
+        <div className="absolute -left-[15%] bottom-0 h-[50%] w-[60%] rounded-full bg-[radial-gradient(closest-side,rgba(255,122,26,0.14),transparent)] blur-3xl" />
         {[
           "left-[6%] top-[22%] size-14 [animation-duration:14s]",
           "left-[52%] bottom-[16%] size-16 [animation-duration:17s] [animation-delay:-6s]",
           "right-[5%] top-[30%] size-12 [animation-duration:13s] [animation-delay:-2s]",
         ].map((c) => (
-          <span key={c} className={`absolute rounded-xl border border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-violet-500/10 backdrop-blur-[1px] motion-safe:animate-[box-drift_12s_ease-in-out_infinite] ${c}`} />
+          <span key={c} className={`absolute rounded-xl border border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-500/10 backdrop-blur-[1px] motion-safe:animate-[box-drift_12s_ease-in-out_infinite] ${c}`} />
         ))}
         <div className="absolute inset-x-0 bottom-0 h-[40%] opacity-25 [mask-image:linear-gradient(to_top,#000,transparent)]">
           <CandleBackdrop density={1.2} />
@@ -80,7 +80,7 @@ export function Hero() {
           </div>
 
           <p className="mt-[clamp(0.75rem,2.5svh,2rem)] hidden items-center gap-3 text-[13px] text-smoke sm:flex lg:justify-start" data-reveal="fade" data-delay="1.2">
-            <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_10px_#5278ff]" />
+            <span className="size-1.5 rounded-full bg-gold-400 shadow-[0_0_10px_#ff7a1a]" />
             Monday to Saturday · 8:30 PM IST · Taught in Tamil
           </p>
         </div>
