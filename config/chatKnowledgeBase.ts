@@ -39,7 +39,7 @@ const batchText = () => {
   return [
     `The next batch starts on ${formatBatchDate(batch)} at ${schedule.startTime}.`,
     note,
-    "A new batch starts on the 25th of every month (the 26th if the 25th is a Sunday). Registration stays open until the batch starts; after that, new registrations move to the following month's batch.",
+    "A new batch starts on the 25th of every month (the 26th if the 25th is a Sunday). Registration stays open until the batch starts and may close earlier when seats fill; after the batch starts, new registrations move to the following month's batch.",
     open ? null : "Registration for this batch is currently closed — message us on WhatsApp for the next batch.",
   ]
     .filter(Boolean)
@@ -52,14 +52,14 @@ export const chatKnowledgeBase: KnowledgeEntry[] = [
     question: "How do I enrol?",
     keywords: ["join", "enrol", "enroll", "register", "registration", "admission", "how to join", "signup", "sign up", "pay", "payment"],
     answer:
-      "Message us on WhatsApp and we will guide you through enrolment for the upcoming batch. The fee is paid in full in one transaction, and the enrolment terms (including the no-refund policy) are shown before you pay.",
+      "Message us on WhatsApp and we will guide you through enrolment for the upcoming batch. The fee is paid in full in one transaction, and the enrolment terms are shown before you pay.",
     actions: [wa("Message us on WhatsApp", enrolment.whatsappMessage), { label: "Schedule & batch", href: "/classes", kind: "link" }],
   },
   {
     id: "curriculum",
     question: "What does the course teach?",
     keywords: ["learn", "teach", "curriculum", "syllabus", "topics", "modules", "content", "cover", "course", "structure"],
-    answer: `A structured ${schedule.teachingDays}-day curriculum with six modules: ${mentorship.learning.join(", ")}. The six modules are not six classes — they are covered across the ${schedule.teachingDays} teaching days. Students learn to build market context, prepare scenarios, evaluate confluences and develop their own trading process.`,
+    answer: `A structured ${schedule.teachingDays}-day curriculum with seven modules: ${mentorship.learning.join(", ")}. The seven modules are not seven classes — they are covered across the ${schedule.teachingDays} teaching days. Students learn to build market context, prepare scenarios, evaluate confluences and develop their own trading process.`,
     actions: [{ label: "View curriculum", href: "/learning", kind: "link" }],
   },
   {
@@ -109,21 +109,14 @@ export const chatKnowledgeBase: KnowledgeEntry[] = [
     question: "Can I repeat the course or transfer batches?",
     keywords: ["repeat", "again", "transfer", "postpone", "defer", "next batch transfer", "cannot attend", "can't attend", "unable"],
     answer:
-      "Each student gets one free repeat of the full 15-day course in the next batch — once per student, not indefinitely. Separately, if a paid student cannot attend, they may transfer to the next batch. A transfer is separate from the free repeat.",
-  },
-  {
-    id: "refund",
-    question: "Is there a refund policy?",
-    keywords: ["refund", "refunds", "cancel", "cancellation", "money back", "return"],
-    answer: "No refunds. Please read the enrolment terms before you pay.",
-    actions: [{ label: "Terms & Conditions", href: "/terms", kind: "link" }],
+      "Each student can repeat the full 15-day course once, in the next batch, for a small additional fee — once per student, not indefinitely. Separately, if a paid student cannot attend, they may transfer to the next batch. A transfer is separate from the repeat.",
   },
   {
     id: "included",
     question: "What do I receive with the course?",
-    keywords: ["include", "included", "indicator", "indicators", "gex", "workspace", "workspaces", "notes", "materials", "tshirt", "t-shirt", "shirt", "certificate", "lifetime", "access"],
+    keywords: ["include", "included", "indicator", "indicators", "gex", "workspace", "workspaces", "notes", "materials", "lifetime", "access"],
     answer:
-      "Custom indicators, GEX data and LiquidityX workspaces are shared during classes, with lifetime access to the supplied indicators, GEX data and workspaces. Course notes and learning materials are shared through Discord. The fee also includes one T-shirt and one printed Course Completion Certificate, delivered within India (T-shirt during the course, certificate after the course ends).",
+      "Custom indicators, GEX data and LiquidityX workspaces are shared during classes, with lifetime access to the supplied indicators, GEX data and workspaces. Course notes and learning materials are shared through Discord.",
   },
   {
     id: "software",
@@ -138,13 +131,6 @@ export const chatKnowledgeBase: KnowledgeEntry[] = [
     keywords: ["support", "doubt", "doubts", "help", "after course", "lifetime support", "live trading", "live session", "sessions"],
     answer:
       "Lifetime doubt-clearing support is available on WhatsApp, Discord and Telegram. Additional live trading sessions are occasional and depend on the mentor's availability — they are not a guaranteed or scheduled benefit.",
-  },
-  {
-    id: "delivery",
-    question: "Do you deliver outside India?",
-    keywords: ["delivery", "deliver", "courier", "address", "international", "abroad", "overseas", "nri", "outside india"],
-    answer:
-      "Delivery of the T-shirt and certificate is within India only. International students can enrol and provide an Indian delivery address.",
   },
   {
     id: "strategies",
@@ -173,7 +159,7 @@ export const chatKnowledgeBase: KnowledgeEntry[] = [
     id: "mentor",
     question: "Who is the mentor?",
     keywords: ["mentor", "vignesh", "teacher", "trainer", "founder", "who", "experience of mentor"],
-    answer: `Vignesh is the Founder and Mentor of LiquidityX Academy, with ${mentor.tradingExperience} of trading experience and ${mentor.teachingExperience} of teaching experience. Classes are conducted directly with him, in Tamil.`,
+    answer: `Vignesh is the Founder and Mentor of LiquidityX Academy, with ${mentor.tradingExperience} of trading experience. Classes are conducted directly with him, in Tamil.`,
     actions: [{ label: "About Vignesh", href: "/about", kind: "link" }],
   },
   {
@@ -207,7 +193,7 @@ export const chatKnowledgeBase: KnowledgeEntry[] = [
 ];
 
 /** The chips shown when the panel first opens (order matters). */
-export const quickQuestionIds = ["join", "next-batch", "fee", "schedule", "curriculum", "included", "refund", "support", "contact"];
+export const quickQuestionIds = ["join", "next-batch", "fee", "schedule", "curriculum", "included", "support", "contact"];
 
 export const chatFallback: { answer: string; actions: ChatAction[] } = {
   answer:

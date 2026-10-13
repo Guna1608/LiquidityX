@@ -40,9 +40,8 @@ export const mentor = {
   name: "Vignesh",
   role: "Founder & Mentor",
   tradingExperience: "6 years",
-  teachingExperience: "1 year",
   summary:
-    "Vignesh is the Founder and Mentor of LiquidityX Academy, with six years of trading experience and one year of teaching experience. His approach brings together Market Profile, Volume, Order Flow and GEX data to help students understand market context and build a structured trading process.",
+    "Vignesh is the Founder and Mentor of LiquidityX Academy, with six years of trading experience. His approach brings together Market Profile, Volume, Order Flow and GEX data to help students understand market context and build a structured trading process.",
   /** Path to an owner-supplied portrait. While `null`, a name-based layout is shown. */
   portrait: null as string | null,
 };
@@ -133,14 +132,15 @@ export type CurriculumModule = {
   summary: string;
 };
 
-/** Six curriculum modules — NOT six classes. The course runs 15 teaching days. */
+/** Seven curriculum modules — NOT seven classes. The course runs 15 teaching days. */
 export const curriculum: CurriculumModule[] = [
   { index: "01", title: "Market Foundations", summary: "Understand auctions, liquidity, buyers, sellers and market dynamics." },
   { index: "02", title: "Market Profile", summary: "Read value, acceptance and rejection to build market context." },
   { index: "03", title: "Volume Profiles", summary: "Learn how different profile types support different analytical questions." },
   { index: "04", title: "Order Flow", summary: "Interpret executed activity, aggression and absorption alongside market context." },
-  { index: "05", title: "Strategy Application", summary: "Connect context, confluence and execution through structured setups." },
-  { index: "06", title: "Risk & Review", summary: "Build risk controls, protect capital and review trading decisions." },
+  { index: "05", title: "GEX Data Analysis", summary: "Learn to read GEX data and bring it into your market context alongside profiles and Order Flow." },
+  { index: "06", title: "Strategy Application", summary: "Connect context, confluence and execution through structured setups." },
+  { index: "07", title: "Risk & Review", summary: "Build risk controls, protect capital and review trading decisions." },
 ];
 
 /**
@@ -151,7 +151,7 @@ export const curriculum: CurriculumModule[] = [
 export const strategyInfo = {
   count: 11,
   line: "11 strategies, including scalping setups — taught inside the mentorship.",
-  notice: "Strategies are shared in classes, not through a student website login. No strategy guarantees a result.",
+  notice: "Strategies are shared in classes.",
 };
 
 export const schedule = {
@@ -174,7 +174,7 @@ export const mentorship = {
     { label: "Language", value: "Tamil" },
   ],
   markets: ["Forex", "Futures", "Indian markets"],
-  learning: ["Market Foundations", "Market Profile", "Volume Profiles", "Order Flow", "Strategy Application", "Risk & Review"],
+  learning: ["Market Foundations", "Market Profile", "Volume Profiles", "Order Flow", "GEX Data Analysis", "Strategy Application", "Risk & Review"],
   /** What the fee includes (shown on the fee panel). */
   included: [
     "Classes directly with the mentor",
@@ -184,21 +184,26 @@ export const mentorship = {
     "Course notes and materials via Discord",
     "Lifetime access to supplied indicators, GEX data and workspaces",
     "Lifetime doubt-clearing on WhatsApp, Discord and Telegram",
-    "One T-shirt and one printed Course Completion Certificate (India delivery)",
   ],
   cta: "Message us on WhatsApp",
 };
 
 /** Fee. The owner can change it; payment records must store the amount actually paid. */
-export const pricing: { currentFee: { amount: number; currency: "INR" } | null; lines: string[] } = {
+export const pricing: { currentFee: { amount: number; currency: "INR" } | null; note: string } = {
   currentFee: { amount: 23000, currency: "INR" },
-  lines: ["Full payment in one transaction", "No instalments"],
+  note: "Institutional-grade mentorship. The current fee may increase for future enrolments. Secure your place at today's price.",
+};
+
+/** Seat-limit wording (no seat number is published). Registration is still opened/closed manually by the owner. */
+export const seatNotice = {
+  banner: "Limited seats per batch. Registration closes once all seats are filled. Book your slot today.",
+  short: "Registration may close earlier when seats fill.",
 };
 
 /**
  * Enrolment switches.
- *  - registrationOpen: owner's manual open/close control (set NEXT_PUBLIC_REGISTRATION_OPEN=false to close).
- *    It is never closed automatically by head-count.
+ *  - registrationOpen: owner's manual open/close control (set NEXT_PUBLIC_REGISTRATION_OPEN=false to close,
+ *    e.g. when all seats are filled). It is never closed automatically by head-count.
  *  - checkoutHref: stays null until a payment gateway is configured AND tested.
  *    While null, the site does not present online checkout and enrolment runs through WhatsApp.
  */
@@ -221,21 +226,12 @@ export const enrolmentTerms: { title: string; items: string[] }[] = [
     ],
   },
   {
-    title: "Fee & delivery",
-    items: [
-      "The fee is paid in full, in one transaction. There are no instalments.",
-      "The fee includes one T-shirt and one printed Course Completion Certificate. Delivery is within India only.",
-      "The T-shirt is sent during the course; the certificate is sent after the 15-day course ends.",
-    ],
-  },
-  {
-    title: "Missed classes, repeats & cancellations",
+    title: "Missed classes, repeats & transfers",
     items: [
       "Class recordings are not provided.",
       "If you miss a class, you can request a short explanation of the missed lesson.",
-      "Each student gets one free repeat of the full 15-day course in the next batch — once per student.",
-      "If a paid student cannot attend, they may transfer to the next batch. A transfer is separate from the free repeat.",
-      "No refunds.",
+      "Each student can repeat the full 15-day course once, in the next batch, for a small additional fee.",
+      "If a paid student cannot attend, they may transfer to the next batch. A transfer is separate from the repeat.",
     ],
   },
   {
@@ -252,7 +248,7 @@ export type FaqItem = { q: string; a: string };
 export const faq: FaqItem[] = [
   {
     q: "What is the course structure?",
-    a: "A structured 15-day curriculum taught directly by Vignesh. The curriculum has six modules — Market Foundations, Market Profile, Volume Profiles, Order Flow, Strategy Application and Risk & Review. The six modules are not six classes; they are spread across the 15 teaching days.",
+    a: "A structured 15-day curriculum taught directly by Vignesh. The curriculum has seven modules — Market Foundations, Market Profile, Volume Profiles, Order Flow, GEX Data Analysis, Strategy Application and Risk & Review. The seven modules are not seven classes; they are spread across the 15 teaching days.",
   },
   {
     q: "When are the classes and what time do they start?",
@@ -260,7 +256,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "When does the next batch start?",
-    a: "A new batch starts on the 25th of every month. If the 25th is a Sunday, it starts on Monday the 26th. Registration stays open until the batch starts at 8:30 PM IST; after that, new registrations move to the following month's batch. The exact upcoming date is shown on the Schedule page.",
+    a: "A new batch starts on the 25th of every month. If the 25th is a Sunday, it starts on Monday the 26th. Registration stays open until the batch starts at 8:30 PM IST, and may close earlier when seats fill; after the batch starts, new registrations move to the following month's batch. The exact upcoming date is shown on the Schedule page.",
   },
   {
     q: "What is the fee?",
@@ -278,12 +274,11 @@ export const faq: FaqItem[] = [
   },
   {
     q: "What if I can't attend my batch, or I want to repeat the course?",
-    a: "A paid student who cannot attend can transfer to the next batch. Separately, each student gets one free repeat of the full 15-day course in the next batch — once per student, not indefinitely.",
+    a: "A paid student who cannot attend can transfer to the next batch. Separately, each student can repeat the full 15-day course once, in the next batch, for a small additional fee — once per student, not indefinitely.",
   },
-  { q: "Is there a refund policy?", a: "No refunds. Please read the enrolment terms before you pay." },
   {
     q: "What do I receive with the course?",
-    a: "Custom indicators, GEX data and LiquidityX workspaces are shared during classes, with lifetime access to the supplied items. Course notes and learning materials are shared through Discord. The fee also includes one T-shirt and one printed Course Completion Certificate.",
+    a: "Custom indicators, GEX data and LiquidityX workspaces are shared during classes, with lifetime access to the supplied items. Course notes and learning materials are shared through Discord.",
   },
   {
     q: "Do you provide trading software or subscriptions?",
@@ -295,11 +290,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Can I enrol from outside India?",
-    a: "Yes, international students may enrol and provide an Indian delivery address. The T-shirt and certificate are delivered within India only.",
-  },
-  {
-    q: "When do I get the T-shirt and the certificate?",
-    a: "The T-shirt is sent during the course and the certificate after the 15-day course ends.",
+    a: "Yes, international students may enrol.",
   },
   {
     q: "How do I enrol?",

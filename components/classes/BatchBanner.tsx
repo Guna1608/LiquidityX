@@ -1,6 +1,6 @@
 "use client";
 
-import { enrolment, schedule, whatsapp } from "@/config/site";
+import { enrolment, schedule, seatNotice, whatsapp } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Calendar, WhatsApp } from "@/components/ui/Icons";
 import { GlowOrb } from "@/components/visuals/Glow";
@@ -70,7 +70,7 @@ export function BatchBanner({ className }: { className?: string }) {
               ))}
             </div>
           )}
-          {open && <p className="text-xs text-smoke lg:text-right">Registration closes when the batch starts at {schedule.startTime}.</p>}
+          {open && <p className="text-xs text-smoke lg:text-right">{seatNotice.banner}</p>}
           <Button href={checkout ?? whatsapp.url(enrolment.whatsappMessage)} size="lg" icon={<WhatsApp size={18} />} iconPosition="start">
             {checkout ? "Enrol now" : open ? "Enrol via WhatsApp" : "Ask about the next batch"}
           </Button>

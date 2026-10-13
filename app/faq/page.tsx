@@ -8,7 +8,7 @@ import { CTA } from "@/components/sections/CTA";
 
 export const metadata = pageMetadata({
   title: "FAQ",
-  description: "LiquidityX Academy FAQ — course structure, batch dates, 8:30 PM IST classes, fee, recordings, repeats, refunds, certificate, support and contact.",
+  description: "LiquidityX Academy FAQ — course structure, batch dates, 8:30 PM IST classes, fee, recordings, repeats, support and contact.",
   path: "/faq",
 });
 

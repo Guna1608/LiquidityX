@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Terms & Conditions",
-  description: "Terms for using the LiquidityX Academy website and enrolling in the course: fee, batches, missed classes, repeats, batch transfers and the no-refund policy.",
+  description: "Terms for using the LiquidityX Academy website and enrolling in the course: fee, batches, missed classes, repeats and batch transfers.",
   path: "/terms",
 });
 

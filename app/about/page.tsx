@@ -87,10 +87,9 @@ export default function AboutPage() {
       </MotionSection>
 
       <MotionSection className="py-12">
-        <div className="container-x grid gap-3 md:grid-cols-4" data-reveal-group="0.08">
+        <div className="container-x grid gap-3 md:grid-cols-3" data-reveal-group="0.08">
           {[
             { label: "Trading experience", value: mentor.tradingExperience },
-            { label: "Teaching experience", value: mentor.teachingExperience },
             { label: "Teaches in", value: "Tamil" },
             { label: "Markets", value: "Forex, Futures, Indian" },
           ].map((f) => (

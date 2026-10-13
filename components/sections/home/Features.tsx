@@ -49,7 +49,7 @@ export function Features() {
         <div className="mt-3 grid gap-3 lg:grid-cols-12">
           <Card tilt={4} className="lg:col-span-12" innerClassName="grid items-center gap-6 p-6 sm:p-8 md:grid-cols-[1fr_1.1fr]">
             <div data-reveal="rise">
-              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Six modules, in order.</h3>
+              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Seven modules, in order.</h3>
               <p className="mt-3 max-w-md text-mist">Each module builds on the last, across the 15 teaching days — so you understand the context behind each decision rather than memorising setups.</p>
             </div>
             <div className="h-64 rounded-[16px] border border-white/[0.06] bg-[#0a0a0b] p-5" data-reveal="blur">
@@ -57,7 +57,6 @@ export function Features() {
             </div>
           </Card>
         </div>
-        <p className="mt-5 text-center text-xs text-smoke">Visuals are illustrative and do not show real market data.</p>
       </div>
     </MotionSection>
   );

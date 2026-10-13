@@ -4,7 +4,7 @@ import { MotionSection } from "@/components/motion/MotionSection";
 const principles = [
   { k: "Education, not signals", v: "We teach how to read structure. We don't send buy/sell calls or personalised advice." },
   { k: "Risk first", v: "Risk and capital protection are taught as part of every strategy — not as an afterthought." },
-  { k: "No promises", v: "No guaranteed profits, no win-rate claims, no fake screenshots. Trading involves substantial risk." },
+  { k: "Professional Trading Education", v: "Explore professional trading approaches through personalised teaching, practical examples and structured strategies. Build the understanding to develop your own informed, risk-aware trading process." },
 ];
 
 /** Trust layer — what LiquidityX stands for, stated plainly. */

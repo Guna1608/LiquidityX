@@ -39,9 +39,9 @@ export function CurriculumStack({ index, showHeading = true }: { index?: string;
             align="center"
             index={index}
             eyebrow="Curriculum"
-            title={["Six modules.", "One structured path."]}
+            title={["Seven modules.", "One structured path."]}
             accentLine={1}
-            intro={<p>Six curriculum modules, covered across the 15 teaching days — from how markets work to strategy and risk, in the order you need to learn them.</p>}
+            intro={<p>Seven curriculum modules, covered across the 15 teaching days — from how markets work to strategy and risk, in the order you need to learn them.</p>}
           />
         )}
         <div ref={root} className="mx-auto mt-9 md:mt-14 max-w-4xl">

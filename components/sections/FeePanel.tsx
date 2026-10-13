@@ -27,7 +27,7 @@ export function FeePanel({ className }: { className?: string }) {
           ) : (
             <p className="mt-6 text-[2rem] font-black leading-[1.05] tracking-[-0.04em]">Message us for the current fee</p>
           )}
-          <p className="mt-3 text-sm text-mist">{pricing.lines.join(" · ")}</p>
+          <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-mist">{pricing.note}</p>
         </div>
         <NextBatchDate className="relative mt-6" />
         <ul className="relative mt-6 space-y-2">
@@ -44,7 +44,7 @@ export function FeePanel({ className }: { className?: string }) {
           <Button href={checkout ?? whatsapp.url(enrolment.whatsappMessage)} size="lg" icon={<WhatsApp size={18} />} iconPosition="start" className="w-full" magnetic={false}>
             {checkout ? `Enrol — pay ₹${amount}` : open ? "Enrol via WhatsApp" : "Registration closed — ask on WhatsApp"}
           </Button>
-          <p className="mt-3 text-center text-xs text-smoke">No refunds · No class recordings · Read the terms before paying</p>
+          <p className="mt-3 text-center text-xs text-smoke">No class recordings · Read the terms before paying</p>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { ArrowRight, WhatsApp } from "@/components/ui/Icons";
 import { BatchBanner } from "@/components/classes/BatchBanner";
 import { DayTimeline } from "@/components/sections/DayTimeline";
+import { LearningJourney } from "@/components/sections/LearningJourney";
 import { EnrolmentTerms } from "@/components/sections/EnrolmentTerms";
 import { CTA } from "@/components/sections/CTA";
 
@@ -21,7 +22,7 @@ export const metadata = pageMetadata({
 const steps = [
   { t: "Check the batch", d: "See the start date and the enrolment terms on this page." },
   { t: "Message us on WhatsApp", d: "We guide you through enrolment and payment for the upcoming batch." },
-  { t: "Complete your details", d: "Share your name for the certificate, contact and delivery details." },
+  { t: "Complete your details", d: "Share your name and contact details." },
   { t: "Join the classes", d: "Monday to Saturday, 8:30 PM IST, on Google Meet and Discord." },
 ];
 
@@ -74,6 +75,7 @@ export default function ClassesPage() {
               </div>
             ))}
           </dl>
+          <LearningJourney className="mt-14 md:mt-20" />
         </div>
       </MotionSection>
 

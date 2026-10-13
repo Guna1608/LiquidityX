@@ -7,7 +7,7 @@ import { CTA } from "@/components/sections/CTA";
 export const metadata = pageMetadata({
   title: "Curriculum",
   description:
-    "The LiquidityX curriculum has six modules taught across 15 teaching days: Market Foundations, Market Profile, Volume Profiles, Order Flow, Strategy Application and Risk & Review.",
+    "The LiquidityX curriculum has seven modules taught across 15 teaching days: Market Foundations, Market Profile, Volume Profiles, Order Flow, GEX Data Analysis, Strategy Application and Risk & Review.",
   path: "/learning",
 });
 

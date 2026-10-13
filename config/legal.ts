@@ -33,7 +33,7 @@ export const privacyPolicy: LegalSection[] = [
     id: "overview",
     title: "Overview",
     body: [
-      `This Privacy Policy explains how ${operator} ("LiquidityX", "we", "us") handles information when you visit this website, chat with the website assistant, contact us or enrol in the course. It covers payments, registration, delivery details, analytics and chatbot storage.`,
+      `This Privacy Policy explains how ${operator} ("LiquidityX", "we", "us") handles information when you visit this website, chat with the website assistant, contact us or enrol in the course. It covers payments, registration details, analytics and chatbot storage.`,
     ],
   },
   {
@@ -45,7 +45,7 @@ export const privacyPolicy: LegalSection[] = [
         list: [
           "Enquiries — the details you choose to send us, such as your name, WhatsApp number, email address and message.",
           "Payment information — when you pay for the course, the payment is processed by a third-party payment gateway. We receive the payment reference, amount and status. We do not receive or store your card, UPI PIN or net-banking credentials.",
-          "Registration details (after a successful payment) — your full name, the name as it should appear on your certificate, WhatsApp number with country code, email address, full delivery address, city, state, PIN code and T-shirt size.",
+          "Registration details (after a successful payment) — your full name, WhatsApp number with country code and email address.",
           "Assistant conversations — the questions you type into the website assistant and its answers.",
           "Visitor analytics — which pages are visited and how often (see below).",
           "Technical information sent automatically by your browser, such as IP address, device and browser type, which may appear in standard server logs.",
@@ -61,7 +61,6 @@ export const privacyPolicy: LegalSection[] = [
         list: [
           "To answer your enquiries and provide course information.",
           "To confirm your payment and associate your registration with the batch you purchased.",
-          "To deliver the T-shirt and Course Completion Certificate included in the course fee (delivery is within India only).",
           "To provide course access details, class links, materials and support.",
           "To improve the website, using aggregate analytics.",
         ],
@@ -76,10 +75,10 @@ export const privacyPolicy: LegalSection[] = [
     ],
   },
   {
-    id: "registration-delivery",
-    title: "Registration and delivery details",
+    id: "registration-details",
+    title: "Registration details",
     body: [
-      "After a successful payment you are asked to complete a registration form. This information is stored in our administration system, which only the owner can access. We may share your name, address, PIN code and contact number with a courier or delivery partner solely so that your T-shirt and certificate can be delivered. If you pay but do not finish the form, you can complete it later through a private registration link.",
+      "After a successful payment you are asked to complete a registration form. This information is stored in our administration system, which only the owner can access. If you pay but do not finish the form, you can complete it later through a private registration link.",
     ],
   },
   {
@@ -127,7 +126,6 @@ export const privacyPolicy: LegalSection[] = [
           "Website hosting and content delivery",
           "A payment gateway for course fees",
           "A visitor-analytics provider",
-          "A courier or delivery partner for the T-shirt and certificate",
           "WhatsApp, Instagram, Telegram, YouTube and Discord for communication and community",
           "Google Meet and Discord for live classes",
           "Market-data providers (if configured)",
@@ -143,7 +141,7 @@ export const privacyPolicy: LegalSection[] = [
       {
         list: [
           "Assistant conversations are kept for 30 days and then deleted automatically.",
-          "Student registration details, payment references and delivery details are kept for as long as needed to deliver your certificate, provide lifetime support and course access, maintain our records and meet legal and accounting obligations. They are not subject to the 30-day assistant retention.",
+          "Student registration details and payment references are kept for as long as needed to provide lifetime support and course access, maintain our records and meet legal and accounting obligations. They are not subject to the 30-day assistant retention.",
           "Enquiry messages are kept for as long as needed to respond to you and for reasonable record-keeping.",
         ],
       },
@@ -198,7 +196,7 @@ export const termsAndConditions: LegalSection[] = [
     id: "course",
     title: "The course",
     body: [
-      "The course is a structured 15-day curriculum taught directly by the mentor in Tamil, on Google Meet and Discord. Classes run Monday to Saturday; Sunday is a holiday. Each class starts at 8:30 PM IST and the session runs until about 9:45 PM IST. The curriculum has six modules, which are covered across the 15 teaching days.",
+      "The course is a structured 15-day curriculum taught directly by the mentor in Tamil, on Google Meet and Discord. Classes run Monday to Saturday; Sunday is a holiday. Each class starts at 8:30 PM IST and the session runs until about 9:45 PM IST. The curriculum has seven modules, which are covered across the 15 teaching days.",
       "The course is beginner-friendly and prior trading experience is not required. A laptop or desktop is required to attend.",
     ],
   },
@@ -206,7 +204,7 @@ export const termsAndConditions: LegalSection[] = [
     id: "eligibility",
     title: "Eligibility",
     body: [
-      "The minimum enrolment age is 18. International students may enrol and provide an Indian delivery address; delivery of the T-shirt and certificate is within India only.",
+      "The minimum enrolment age is 18. International students may enrol.",
     ],
   },
   {
@@ -214,7 +212,7 @@ export const termsAndConditions: LegalSection[] = [
     title: "Batches and registration cut-off",
     body: [
       "A new batch starts on the 25th of every month. If the 25th is a Sunday, the batch starts on Monday the 26th. All dates and times are in Indian Standard Time (Asia/Kolkata).",
-      "Registration for a batch remains available until the batch's actual start time of 8:30 PM IST. Once that batch has started, new registrations move to the following month's batch. We may open or close registration for a batch at our discretion.",
+      "Seats are limited, so registration may close earlier when seats fill. Otherwise it remains available until the batch's actual start time of 8:30 PM IST. Once that batch has started, new registrations move to the following month's batch. We may open or close registration for a batch at our discretion.",
     ],
   },
   {
@@ -235,10 +233,9 @@ export const termsAndConditions: LegalSection[] = [
           "Custom indicators, GEX data and LiquidityX workspaces provided during classes, with lifetime access to the supplied indicators, GEX data and workspaces.",
           "Course notes and learning materials through Discord.",
           "Lifetime doubt-clearing support through WhatsApp, Discord and Telegram.",
-          "One T-shirt, sent during the course, and one physical Course Completion Certificate, sent after the 15-day course ends. Delivery is within India only.",
         ],
       },
-      "No attendance threshold or exam is required for the certificate. Additional live trading sessions are occasional, depend on the mentor's availability and are not a guaranteed or scheduled benefit. Lifetime support does not mean unlimited scheduled one-to-one sessions.",
+      "Additional live trading sessions are occasional, depend on the mentor's availability and are not a guaranteed or scheduled benefit. Lifetime support does not mean unlimited scheduled one-to-one sessions.",
     ],
   },
   {
@@ -256,16 +253,11 @@ export const termsAndConditions: LegalSection[] = [
         list: [
           "Class recordings are not provided.",
           "If you miss a class, you can request a short explanation of the missed lesson.",
-          "Each student receives one free repeat of the full 15-day course in the next batch. The repeat is available once per student, not indefinitely.",
-          "If a paid student cannot attend, they may transfer to the next batch. A batch transfer is separate from the one-time free repeat.",
+          "Each student may repeat the full 15-day course once, in the next batch, for a small additional fee. The repeat is available once per student, not indefinitely.",
+          "If a paid student cannot attend, they may transfer to the next batch. A batch transfer is separate from the one-time repeat.",
         ],
       },
     ],
-  },
-  {
-    id: "refunds",
-    title: "Cancellations and refunds",
-    body: ["No refunds. This is the Academy's policy for student cancellations. Please read these terms carefully before you pay."],
   },
   {
     id: "ip",
@@ -311,43 +303,39 @@ export const termsAndConditions: LegalSection[] = [
 
 export const riskDisclaimer: LegalSection[] = [
   {
-    id: "substantial-risk",
-    title: "Trading involves substantial risk",
+    id: "risk-and-learning",
+    title: "Risk and learning",
     body: [
-      "Trading Forex, Futures and other leveraged instruments involves substantial risk of loss and is not suitable for everyone. Leverage can work against you as well as for you. You can lose some or all of your capital, and with some products you may lose more than your initial deposit.",
-      "Only trade with money you can afford to lose.",
+      "Trading Forex, Futures and other leveraged instruments involves risk of loss and is not suitable for everyone. You can lose some or all of your capital, and with some products you may lose more than your initial deposit. Only trade with money you can afford to lose.",
+      "The course teaches you to understand that risk, manage losses and make disciplined decisions. It cannot remove the risk of trading.",
     ],
   },
   {
-    id: "past-performance",
-    title: "Past performance",
-    body: ["Past performance — of any market, strategy, setup or individual — is not indicative of future results. Examples shown in education are illustrative and do not represent typical or expected outcomes."],
-  },
-  {
-    id: "not-advice",
+    id: "education-not-advice",
     title: "Education, not financial advice",
     body: [
-      "Everything provided by LiquidityX — including the course, strategies, articles, market visuals and assistant answers — is educational material. It is not financial or investment advice, and it is not a recommendation to buy or sell any instrument.",
-      "LiquidityX does not provide personalised advice or trade signals. If you need advice, consult a suitably qualified and registered adviser.",
+      "Everything provided by LiquidityX — including the course, strategies, articles, market visuals and assistant answers — is educational material. It is not financial or investment advice, and it is not a recommendation to buy or sell any instrument. LiquidityX does not provide personalised investment advice or trade signals. If you need advice, consult a suitably qualified and registered adviser.",
     ],
   },
   {
-    id: "no-guarantee",
-    title: "No guaranteed profits",
-    body: ["LiquidityX does not guarantee profits and does not claim to predict exact reversal points. No strategy taught — including any of the 11 strategies — guarantees a specific return or outcome. Any strategy can and will produce losing trades."],
+    id: "no-guaranteed-results",
+    title: "No guaranteed results",
+    body: [
+      "LiquidityX does not guarantee profits or any specific result. No strategy taught guarantees a return, and any strategy can produce losing trades. Past performance is not indicative of future results, and examples and visuals are illustrative — they do not represent typical or expected outcomes.",
+    ],
   },
   {
     id: "market-data",
     title: "Market data",
     body: [
-      "Market data shown on this website may be delayed, inaccurate or supplied by third parties. Where values are simulated, they are clearly labelled \"Demo / Simulated data — Not live\" and must never be used for trading.",
+      "Market data on this website may be delayed, inaccurate or supplied by third parties. Simulated values, where shown, are not live and must never be used for trading.",
     ],
   },
   {
     id: "responsibility",
     title: "Your responsibility",
     body: [
-      "You are solely responsible for your own trading decisions, for the risks you take, and for complying with the laws and regulations that apply to you, including any restrictions on trading particular instruments in your country.",
+      "You are responsible for your own trading decisions and for complying with the laws and regulations that apply to you, including any restrictions on trading particular instruments in your country.",
     ],
   },
 ];

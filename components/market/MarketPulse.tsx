@@ -8,7 +8,6 @@ import { TextReveal } from "@/components/motion/TextReveal";
 import { Dialog } from "@/components/ui/Dialog";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
-import { DataModeBadge } from "./DataModeBadge";
 import { MarketCard } from "./MarketCard";
 import { MarketChart } from "./MarketChart";
 
@@ -32,7 +31,6 @@ export function MarketPulse() {
             <TextReveal as="h2" lines={["MARKET PULSE"]} className="mt-5 text-[clamp(2.4rem,7vw,6rem)] font-semibold leading-[0.92] tracking-[-0.03em]" />
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end" data-reveal="fade">
-            <DataModeBadge mode={data?.mode ?? null} provider={data?.providerLabel} />
             <p className="max-w-xs text-sm text-mist md:text-right">{marketConfig.disclaimer}</p>
           </div>
         </div>

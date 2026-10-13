@@ -28,10 +28,9 @@ export function PortraitFrame({ className, priority = false }: { className?: str
           <p className="eyebrow">Founder &amp; Mentor</p>
           <p className="mt-4 text-[clamp(3rem,9vw,4.6rem)] font-black leading-[0.95] tracking-[-0.05em] text-bone">{mentor.name}</p>
           <p className="mt-2 text-sm text-mist">LiquidityX Academy</p>
-          <dl className="mt-10 grid grid-cols-2 gap-3">
+          <dl className="mt-10 grid grid-cols-1 gap-3">
             {[
               ["Trading", mentor.tradingExperience],
-              ["Teaching", mentor.teachingExperience],
             ].map(([k, v]) => (
               <div key={k} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4">
                 <dt className="text-xs text-smoke">{k} experience</dt>

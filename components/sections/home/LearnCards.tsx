@@ -114,7 +114,6 @@ export function LearnCards() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-center text-xs text-smoke">Visuals are illustrative and do not show real market data.</p>
       </div>
     </MotionSection>
   );
