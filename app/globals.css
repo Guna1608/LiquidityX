@@ -219,7 +219,7 @@
 @keyframes lx-rail { 0% { transform: scaleX(0); } 75% { transform: scaleX(1); } 100% { transform: scaleX(1); opacity: 0; } }
 
 /* first-visit intro: four light beams converge into an "X", rings pulse out, the wordmark appears and zooms through the camera */
-.lx-splash { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; overflow: hidden; background: radial-gradient(70% 60% at 50% 50%, #14123a 0%, #07061a 55%, #030308 100%); animation: lx-hide 0.5s 3.9s ease-in forwards; }
+.lx-splash { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; overflow: hidden; background: radial-gradient(70% 60% at 50% 50%, #2b1306 0%, #120804 55%, #050302 100%); animation: lx-hide 0.5s 3.9s ease-in forwards; }
 .lx-ready .lx-splash { display: none; }
 .lx-beams { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 0 10px #ff7a1a); animation: lx-beams-out 0.5s 2.2s ease-in forwards; }
 .lx-beams path { stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: lx-draw 1.3s 0.2s cubic-bezier(0.5, 0, 0.2, 1) forwards; }
@@ -231,7 +231,7 @@
 .lx-welcome { font-size: clamp(0.7rem, 1.6vw, 0.95rem); font-weight: 600; letter-spacing: 0.6em; color: #ffbd7d; }
 .lx-name { margin-top: 0.7rem; font-weight: 800; font-size: clamp(2.4rem, 10.5vw, 6.6rem); line-height: 1; letter-spacing: -0.02em; color: transparent; background: linear-gradient(100deg, #ffffff 0%, #ffffff 40%, #ffbd7d 50%, #ffffff 60%, #ffffff 100%) 100% 0 / 250% 100%; -webkit-background-clip: text; background-clip: text; animation: lx-sweep 1.2s 2.2s ease-in-out forwards; }
 .lx-name b { color: #ff7a1a; -webkit-text-fill-color: #ff7a1a; text-shadow: 0 0 40px rgba(255,122,26,0.9); }
-.lx-academy { margin-top: 0.9rem; font-size: clamp(0.75rem, 1.8vw, 1.05rem); font-weight: 500; letter-spacing: 0.9em; color: #8b93b8; }
+.lx-academy { margin-top: 0.9rem; font-size: clamp(0.75rem, 1.8vw, 1.05rem); font-weight: 500; letter-spacing: 0.9em; color: #b8a08b; }
 @keyframes lx-draw { to { stroke-dashoffset: 0; } }
 @keyframes lx-pulse { 0% { opacity: 0.9; transform: scale(0.3); } 100% { opacity: 0; transform: scale(14); } }
 @keyframes lx-beams-out { to { opacity: 0; } }

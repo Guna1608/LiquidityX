@@ -86,7 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <linearGradient id="lxb1" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stopColor="#e05e09" stopOpacity="0" />
                 <stop offset="0.5" stopColor="#ff7a1a" />
-                <stop offset="1" stopColor="#d8b4fe" />
+                <stop offset="1" stopColor="#ffdcb5" />
               </linearGradient>
               <linearGradient id="lxb2" x1="1" y1="0" x2="0" y2="1">
                 <stop offset="0" stopColor="#ff7a1a" stopOpacity="0" />
